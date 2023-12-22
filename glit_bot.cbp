@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="glit_bot" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/glit_bot" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="allegro/include" />
+				</Compiler>
+				<Linker>
+					<Add library="allegro/lib/liballegro_monolith-debug.dll.a" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/glit_bot" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="Bullet.cpp" />
+		<Unit filename="Bullet.h" />
+		<Unit filename="Circle.cpp" />
+		<Unit filename="Circle.h" />
+		<Unit filename="DataCenter.cpp" />
+		<Unit filename="DataCenter.h" />
+		<Unit filename="GameWindow.cpp" />
+		<Unit filename="GameWindow.h" />
+		<Unit filename="Hero.cpp" />
+		<Unit filename="Hero.h" />
+		<Unit filename="Level.cpp" />
+		<Unit filename="Level.h" />
+		<Unit filename="Main.cpp" />
+		<Unit filename="Object.h" />
+		<Unit filename="allegro/include/allegro5/alcompat.h" />
+		<Unit filename="allegro/include/allegro5/allegro.h" />
+		<Unit filename="allegro/include/allegro5/allegro5.h" />
+		<Unit filename="allegro/include/allegro5/allegro_acodec.h" />
+		<Unit filename="allegro/include/allegro5/allegro_audio.h" />
+		<Unit filename="allegro/include/allegro5/allegro_color.h" />
+		<Unit filename="allegro/include/allegro5/allegro_direct3d.h" />
+		<Unit filename="allegro/include/allegro5/allegro_font.h" />
+		<Unit filename="allegro/include/allegro5/allegro_image.h" />
+		<Unit filename="allegro/include/allegro5/allegro_memfile.h" />
+		<Unit filename="allegro/include/allegro5/allegro_native_dialog.h" />
+		<Unit filename="allegro/include/allegro5/allegro_opengl.h" />
+		<Unit filename="allegro/include/allegro5/allegro_physfs.h" />
+		<Unit filename="allegro/include/allegro5/allegro_primitives.h" />
+		<Unit filename="allegro/include/allegro5/allegro_ttf.h" />
+		<Unit filename="allegro/include/allegro5/allegro_video.h" />
+		<Unit filename="allegro/include/allegro5/allegro_windows.h" />
+		<Unit filename="allegro/include/allegro5/altime.h" />
+		<Unit filename="allegro/include/allegro5/base.h" />
+		<Unit filename="allegro/include/allegro5/bitmap.h" />
+		<Unit filename="allegro/include/allegro5/bitmap_draw.h" />
+		<Unit filename="allegro/include/allegro5/bitmap_io.h" />
+		<Unit filename="allegro/include/allegro5/bitmap_lock.h" />
+		<Unit filename="allegro/include/allegro5/blender.h" />
+		<Unit filename="allegro/include/allegro5/clipboard.h" />
+		<Unit filename="allegro/include/allegro5/color.h" />
+		<Unit filename="allegro/include/allegro5/config.h" />
+		<Unit filename="allegro/include/allegro5/cpu.h" />
+		<Unit filename="allegro/include/allegro5/debug.h" />
+		<Unit filename="allegro/include/allegro5/display.h" />
+		<Unit filename="allegro/include/allegro5/drawing.h" />
+		<Unit filename="allegro/include/allegro5/error.h" />
+		<Unit filename="allegro/include/allegro5/events.h" />
+		<Unit filename="allegro/include/allegro5/file.h" />
+		<Unit filename="allegro/include/allegro5/fixed.h" />
+		<Unit filename="allegro/include/allegro5/fmaths.h" />
+		<Unit filename="allegro/include/allegro5/fshook.h" />
+		<Unit filename="allegro/include/allegro5/fullscreen_mode.h" />
+		<Unit filename="allegro/include/allegro5/haptic.h" />
+		<Unit filename="allegro/include/allegro5/internal/alconfig.h" />
+		<Unit filename="allegro/include/allegro5/joystick.h" />
+		<Unit filename="allegro/include/allegro5/keyboard.h" />
+		<Unit filename="allegro/include/allegro5/keycodes.h" />
+		<Unit filename="allegro/include/allegro5/memory.h" />
+		<Unit filename="allegro/include/allegro5/monitor.h" />
+		<Unit filename="allegro/include/allegro5/mouse.h" />
+		<Unit filename="allegro/include/allegro5/mouse_cursor.h" />
+		<Unit filename="allegro/include/allegro5/opengl/GLext/gl_ext_alias.h" />
+		<Unit filename="allegro/include/allegro5/opengl/GLext/gl_ext_api.h" />
+		<Unit filename="allegro/include/allegro5/opengl/GLext/gl_ext_defs.h" />
+		<Unit filename="allegro/include/allegro5/opengl/GLext/gl_ext_list.h" />
+		<Unit filename="allegro/include/allegro5/opengl/GLext/glx_ext_alias.h" />
+		<Unit filename="allegro/include/allegro5/opengl/GLext/glx_ext_api.h" />
+		<Unit filename="allegro/include/allegro5/opengl/GLext/glx_ext_defs.h" />
+		<Unit filename="allegro/include/allegro5/opengl/GLext/glx_ext_list.h" />
+		<Unit filename="allegro/include/allegro5/opengl/GLext/wgl_ext_alias.h" />
+		<Unit filename="allegro/include/allegro5/opengl/GLext/wgl_ext_api.h" />
+		<Unit filename="allegro/include/allegro5/opengl/GLext/wgl_ext_defs.h" />
+		<Unit filename="allegro/include/allegro5/opengl/GLext/wgl_ext_list.h" />
+		<Unit filename="allegro/include/allegro5/opengl/gl_ext.h" />
+		<Unit filename="allegro/include/allegro5/path.h" />
+		<Unit filename="allegro/include/allegro5/platform/alandroid.h" />
+		<Unit filename="allegro/include/allegro5/platform/alandroidcfg.h" />
+		<Unit filename="allegro/include/allegro5/platform/albcc32.h" />
+		<Unit filename="allegro/include/allegro5/platform/aliphone.h" />
+		<Unit filename="allegro/include/allegro5/platform/aliphonecfg.h" />
+		<Unit filename="allegro/include/allegro5/platform/allegro_sdl_config.h" />
+		<Unit filename="allegro/include/allegro5/platform/almngw32.h" />
+		<Unit filename="allegro/include/allegro5/platform/almsvc.h" />
+		<Unit filename="allegro/include/allegro5/platform/alosx.h" />
+		<Unit filename="allegro/include/allegro5/platform/alosxcfg.h" />
+		<Unit filename="allegro/include/allegro5/platform/alplatf.h" />
+		<Unit filename="allegro/include/allegro5/platform/alraspberrypi.h" />
+		<Unit filename="allegro/include/allegro5/platform/alraspberrypicfg.h" />
+		<Unit filename="allegro/include/allegro5/platform/alucfg.h" />
+		<Unit filename="allegro/include/allegro5/platform/alunix.h" />
+		<Unit filename="allegro/include/allegro5/platform/alwatcom.h" />
+		<Unit filename="allegro/include/allegro5/platform/alwin.h" />
+		<Unit filename="allegro/include/allegro5/platform/astdbool.h" />
+		<Unit filename="allegro/include/allegro5/platform/astdint.h" />
+		<Unit filename="allegro/include/allegro5/render_state.h" />
+		<Unit filename="allegro/include/allegro5/shader.h" />
+		<Unit filename="allegro/include/allegro5/system.h" />
+		<Unit filename="allegro/include/allegro5/threads.h" />
+		<Unit filename="allegro/include/allegro5/timer.h" />
+		<Unit filename="allegro/include/allegro5/tls.h" />
+		<Unit filename="allegro/include/allegro5/touch_input.h" />
+		<Unit filename="allegro/include/allegro5/transformations.h" />
+		<Unit filename="allegro/include/allegro5/utf8.h" />
+		<Unit filename="global.cpp" />
+		<Unit filename="global.h" />
+		<Unit filename="srcs/assets/bullet.png" />
+		<Unit filename="srcs/assets/character breakdown/damage/hot wheels1.png" />
+		<Unit filename="srcs/assets/character breakdown/damage/hot wheels2.png" />
+		<Unit filename="srcs/assets/character breakdown/death/hot wheels1.png" />
+		<Unit filename="srcs/assets/character breakdown/death/hot wheels2.png" />
+		<Unit filename="srcs/assets/character breakdown/death/hot wheels3.png" />
+		<Unit filename="srcs/assets/character breakdown/death/hot wheels4.png" />
+		<Unit filename="srcs/assets/character breakdown/death/hot wheels5.png" />
+		<Unit filename="srcs/assets/character breakdown/death/hot wheels6.png" />
+		<Unit filename="srcs/assets/character breakdown/idle/hot wheels1.png" />
+		<Unit filename="srcs/assets/character breakdown/idle/hot wheels2.png" />
+		<Unit filename="srcs/assets/character breakdown/idle/hot wheels3.png" />
+		<Unit filename="srcs/assets/character breakdown/idle/hot wheels4.png" />
+		<Unit filename="srcs/assets/character breakdown/idle/idle(separate weapon)/character/hot wheels1.png" />
+		<Unit filename="srcs/assets/character breakdown/idle/idle(separate weapon)/character/hot wheels2.png" />
+		<Unit filename="srcs/assets/character breakdown/idle/idle(separate weapon)/character/hot wheels3.png" />
+		<Unit filename="srcs/assets/character breakdown/idle/idle(separate weapon)/character/hot wheels4.png" />
+		<Unit filename="srcs/assets/character breakdown/idle/idle(separate weapon)/weapon/hot wheels1.png" />
+		<Unit filename="srcs/assets/character breakdown/idle/idle(separate weapon)/weapon/hot wheels2.png" />
+		<Unit filename="srcs/assets/character breakdown/idle/idle(separate weapon)/weapon/hot wheels3.png" />
+		<Unit filename="srcs/assets/character breakdown/idle/idle(separate weapon)/weapon/hot wheels4.png" />
+		<Unit filename="srcs/assets/character breakdown/move/hot wheels1.png" />
+		<Unit filename="srcs/assets/character breakdown/move/hot wheels2.png" />
+		<Unit filename="srcs/assets/character breakdown/move/hot wheels3.png" />
+		<Unit filename="srcs/assets/character breakdown/move/hot wheels4.png" />
+		<Unit filename="srcs/assets/character breakdown/move/hot wheels5.png" />
+		<Unit filename="srcs/assets/character breakdown/move/hot wheels6.png" />
+		<Unit filename="srcs/assets/character breakdown/move/hot wheels7.png" />
+		<Unit filename="srcs/assets/character breakdown/move/hot wheels8.png" />
+		<Unit filename="srcs/assets/character breakdown/shoot/hot wheels1.png" />
+		<Unit filename="srcs/assets/character breakdown/shoot/hot wheels2.png" />
+		<Unit filename="srcs/assets/character breakdown/shoot/hot wheels3.png" />
+		<Unit filename="srcs/assets/character breakdown/shoot/hot wheels4.png" />
+		<Unit filename="srcs/assets/character breakdown/shoot/shoot(separate weapon)/character/hot wheels1.png" />
+		<Unit filename="srcs/assets/character breakdown/shoot/shoot(separate weapon)/character/hot wheels2.png" />
+		<Unit filename="srcs/assets/character breakdown/shoot/shoot(separate weapon)/character/hot wheels3.png" />
+		<Unit filename="srcs/assets/character breakdown/shoot/shoot(separate weapon)/character/hot wheels4.png" />
+		<Unit filename="srcs/assets/character breakdown/shoot/shoot(separate weapon)/weapon/hot wheels1.png" />
+		<Unit filename="srcs/assets/character breakdown/shoot/shoot(separate weapon)/weapon/hot wheels2.png" />
+		<Unit filename="srcs/assets/character breakdown/shoot/shoot(separate weapon)/weapon/hot wheels3.png" />
+		<Unit filename="srcs/assets/character breakdown/shoot/shoot(separate weapon)/weapon/hot wheels4.png" />
+		<Unit filename="srcs/assets/character breakdown/wake/hot wheels1.png" />
+		<Unit filename="srcs/assets/character breakdown/wake/hot wheels2.png" />
+		<Unit filename="srcs/assets/character breakdown/wake/hot wheels3.png" />
+		<Unit filename="srcs/assets/character breakdown/wake/hot wheels4.png" />
+		<Unit filename="srcs/assets/character breakdown/wake/hot wheels5.png" />
+		<Unit filename="srcs/assets/crosshair.png" />
+		<Unit filename="srcs/assets/enemy breakdown/attack/small droid1.png" />
+		<Unit filename="srcs/assets/enemy breakdown/attack/small droid10.png" />
+		<Unit filename="srcs/assets/enemy breakdown/attack/small droid2.png" />
+		<Unit filename="srcs/assets/enemy breakdown/attack/small droid3.png" />
+		<Unit filename="srcs/assets/enemy breakdown/attack/small droid4.png" />
+		<Unit filename="srcs/assets/enemy breakdown/attack/small droid5.png" />
+		<Unit filename="srcs/assets/enemy breakdown/attack/small droid6.png" />
+		<Unit filename="srcs/assets/enemy breakdown/attack/small droid7.png" />
+		<Unit filename="srcs/assets/enemy breakdown/attack/small droid8.png" />
+		<Unit filename="srcs/assets/enemy breakdown/attack/small droid9.png" />
+		<Unit filename="srcs/assets/enemy breakdown/damaged/small droid1.png" />
+		<Unit filename="srcs/assets/enemy breakdown/damaged/small droid2.png" />
+		<Unit filename="srcs/assets/enemy breakdown/death/small droid1.png" />
+		<Unit filename="srcs/assets/enemy breakdown/death/small droid2.png" />
+		<Unit filename="srcs/assets/enemy breakdown/death/small droid3.png" />
+		<Unit filename="srcs/assets/enemy breakdown/death/small droid4.png" />
+		<Unit filename="srcs/assets/enemy breakdown/death/small droid5.png" />
+		<Unit filename="srcs/assets/enemy breakdown/death/small droid6.png" />
+		<Unit filename="srcs/assets/enemy breakdown/run/small droid1.png" />
+		<Unit filename="srcs/assets/enemy breakdown/run/small droid2.png" />
+		<Unit filename="srcs/assets/enemy breakdown/run/small droid3.png" />
+		<Unit filename="srcs/assets/enemy breakdown/run/small droid4.png" />
+		<Unit filename="srcs/assets/enemy breakdown/run/small droid5.png" />
+		<Unit filename="srcs/assets/enemy breakdown/run/small droid6.png" />
+		<Unit filename="srcs/assets/enemy breakdown/wake/small droid1.png" />
+		<Unit filename="srcs/assets/enemy breakdown/wake/small droid2.png" />
+		<Unit filename="srcs/assets/enemy breakdown/wake/small droid3.png" />
+		<Unit filename="srcs/assets/enemy breakdown/wake/small droid4.png" />
+		<Unit filename="srcs/assets/enemy breakdown/wake/small droid5.png" />
+		<Unit filename="srcs/assets/enemy breakdown/wake/small droid6.png" />
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
