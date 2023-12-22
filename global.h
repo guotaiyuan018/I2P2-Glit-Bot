@@ -23,6 +23,9 @@ extern char TowerClass[][20];
 extern int TowerWidth[];
 extern int TowerHeight[];
 extern bool key_state[ALLEGRO_KEY_MAX];
+extern bool mouse_down;
+extern bool fired;
+extern bool shooted;
 
 enum
 {

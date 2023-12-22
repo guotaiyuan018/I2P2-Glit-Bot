@@ -13,10 +13,12 @@
 
 enum class HeroState
 {
-    RIGHT_MOVE,
     LEFT_MOVE,
+    RIGHT_MOVE,
+    LEFT_IDLE,
     RIGHT_IDLE,
-    LEFT_IDLE
+    LEFT_ATTACK,
+    RIGHT_ATTACK
 };
 
 class Hero : public Object
@@ -32,7 +34,7 @@ private:
     int counter;
     int sprite_pos = 1;
     int speed = 5;
-    HeroState direction = HeroState::RIGHT_MOVE;
+    HeroState direction = HeroState::RIGHT_IDLE;
     std::map<HeroState, std::vector<ALLEGRO_BITMAP *>> imgData;
     // ALLEGRO_BITMAP *imgData;
     std::map<HeroState, int> imgCount;

@@ -139,17 +139,18 @@ int GameWindow::game_run()
 
 int GameWindow::game_update()
 {
-    unsigned int i, j;
     DC->get_Hero().front()->Update();
-    for (auto s : DC->get_Bullet())
+    for (int i = 0; i < bulletSet.size(); i++)
     {
-        s->Update();
-        /*
-        if (s->getX() > 1200 || s->getX() < 0 || s->getY() > 900 || s->getY() < 0)
-            DC->get_Bullet().erase(s);
-        */
-        }
+        bool isDestroyed = false, isReachEnd = false;
+        isReachEnd = bulletSet[i]->Update();
 
+        if (isReachEnd)
+        {
+            bulletSet.erase(bulletSet.begin() + i);
+            i--;
+        }
+    }
     return GAME_CONTINUE;
 }
 
@@ -233,11 +234,11 @@ int GameWindow::process_event()
     else if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN)
     {
         if (event.mouse.button == 1)
-        {
-        }
-        std::pair<int, int> position = DC->get_Hero().front()->Pos();
-        Bullet *t = GameWindow::create_bullet(mouse_x, mouse_y, position.first, position.second);
-        bulletSet.push_back(t);
+            mouse_down = true;
+    }
+    else if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP)
+    {
+        mouse_down = false;
     }
     else if (event.type == ALLEGRO_EVENT_MOUSE_AXES)
     {
@@ -252,6 +253,20 @@ int GameWindow::process_event()
     else if (event.type == ALLEGRO_EVENT_KEY_UP)
     {
         key_state[event.keyboard.keycode] = false;
+    }
+
+    if (mouse_down)
+    {
+        if (fired)
+        {
+            if (!shooted)
+            {
+                std::pair<int, int> position = DC->get_Hero().front()->Pos();
+                Bullet *t = GameWindow::create_bullet(mouse_x, mouse_y, position.first, position.second);
+                bulletSet.push_back(t);
+                shooted = true;
+            }
+        }
     }
 
     if (redraw)

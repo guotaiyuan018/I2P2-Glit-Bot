@@ -16,7 +16,7 @@ Bullet::Bullet(int mouse_x, int mouse_y, int init_x, int init_y)
         dx /= lenth, dy /= lenth;
     direction_x = dx, direction_y = dy;
 
-    std::cout << "direction_x: " << direction_x << " direction_y: " << direction_y << std::endl;
+    // std::cout << "direction_x: " << direction_x << " direction_y: " << direction_y << std::endl;
 }
 
 Bullet::~Bullet()
@@ -26,11 +26,15 @@ Bullet::~Bullet()
     al_destroy_bitmap(img);
 }
 
-void Bullet::Update()
+bool Bullet::Update()
 {
     circle->x += direction_x * speed;
     circle->y += direction_y * speed;
-    std::cout << "x: " << circle->x << " y: " << circle->y << std::endl;
+    // std::cout << "x: " << circle->x << " y: " << circle->y << std::endl;
+    bool OutOfRange = false;
+    if (circle->x > window_width || circle->x < 0 || circle->y > window_height || circle->y < 0)
+        OutOfRange = true;
+    return OutOfRange;
 }
 
 void Bullet::Draw()

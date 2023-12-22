@@ -18,8 +18,10 @@ public:
     Bullet(int, int, int, int);
     ~Bullet();
 
-    void Update();
+    bool Update();
     void Draw();
+    bool out(Bullet *);
+    bool attack();
 
 protected:
     int speed = 15;
