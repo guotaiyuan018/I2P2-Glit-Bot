@@ -1,7 +1,8 @@
 #ifndef RECT_H_INCLUDED
 #define RECT_H_INCLUDED
 
-class Circle{
+class Circle
+{
 public:
     Circle() {}
 
@@ -12,12 +13,10 @@ public:
         this->r = r;
     }
 
-    static bool isOverlap(Circle*, Circle*);
+    static bool isOverlap(Circle *, Circle *);
 
     int r;
     int x, y;
 };
-
-
 
 #endif // RECT_H_INCLUDED

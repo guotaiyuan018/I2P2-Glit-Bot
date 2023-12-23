@@ -20,7 +20,6 @@ public:
 
     bool Update();
     void Draw();
-    bool out(Bullet *);
     bool attack();
 
 protected:

@@ -31,7 +31,6 @@ public:
     void Draw();
 
 private:
-    int x, y;
     int sprite_pos = 1;
     int speed = 3;
     int hp = 10;

@@ -386,12 +386,12 @@
 	"Circle.h"
 	"global.h"
 
-1703322470 source:c:\users\guota\desktop\程設2 陳\final-project\glit_bot\i2p2-glit-bot\bullet.cpp
+1703341158 source:c:\users\guota\desktop\程設2 陳\final-project\glit_bot\i2p2-glit-bot\bullet.cpp
 	"Bullet.h"
 	<cmath>
 	<iostream>
 
-1703322438 c:\users\guota\desktop\程設2 陳\final-project\glit_bot\i2p2-glit-bot\bullet.h
+1703340584 c:\users\guota\desktop\程設2 陳\final-project\glit_bot\i2p2-glit-bot\bullet.h
 	<stdio.h>
 	<utility>
 	<allegro5/allegro.h>
@@ -700,15 +700,16 @@
 1702089840 c:\users\guota\desktop\程設2 陳\final-project\glit_bot\i2p2-glit-bot\object.h
 	"Circle.h"
 
-1702089840 c:\users\guota\desktop\程設2 陳\final-project\glit_bot\i2p2-glit-bot\circle.h
+1703338318 c:\users\guota\desktop\程設2 陳\final-project\glit_bot\i2p2-glit-bot\circle.h
 
 1703321260 c:\users\guota\desktop\程設2 陳\final-project\glit_bot\i2p2-glit-bot\global.h
 	<allegro5/allegro_font.h>
 	<allegro5/allegro_ttf.h>
 	<allegro5/allegro_image.h>
 
-1702812665 source:c:\users\guota\desktop\程設2 陳\final-project\glit_bot\i2p2-glit-bot\circle.cpp
+1703340928 source:c:\users\guota\desktop\程設2 陳\final-project\glit_bot\i2p2-glit-bot\circle.cpp
 	"Circle.h"
+	<iostream>
 
 1702795766 source:c:\users\guota\desktop\程設2 陳\final-project\glit_bot\i2p2-glit-bot\datacenter.cpp
 	"DataCenter.h"
@@ -731,7 +732,7 @@
 	"Circle.h"
 	"global.h"
 
-1703325895 source:c:\users\guota\desktop\程設2 陳\final-project\glit_bot\i2p2-glit-bot\gamewindow.cpp
+1703340539 source:c:\users\guota\desktop\程設2 陳\final-project\glit_bot\i2p2-glit-bot\gamewindow.cpp
 	"GameWindow.h"
 	"global.h"
 	<iostream>
@@ -775,7 +776,7 @@
 	"Hero.h"
 	<iostream>
 
-1703326354 c:\users\guota\desktop\程設2 陳\final-project\glit_bot\i2p2-glit-bot\monster.h
+1703341530 c:\users\guota\desktop\程設2 陳\final-project\glit_bot\i2p2-glit-bot\monster.h
 	<stdio.h>
 	<string.h>
 	<allegro5/allegro.h>
@@ -786,7 +787,7 @@
 	"Circle.h"
 	"global.h"
 
-1703326285 source:c:\users\guota\desktop\程設2 陳\final-project\glit_bot\i2p2-glit-bot\monster.cpp
+1703341158 source:c:\users\guota\desktop\程設2 陳\final-project\glit_bot\i2p2-glit-bot\monster.cpp
 	"Monster.h"
 	<iostream>
 	<cmath>

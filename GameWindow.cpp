@@ -165,7 +165,17 @@ int GameWindow::game_update()
     }
     for (int i = 0; i < monsterSet.size(); i++)
     {
+        bool isCollide = false;
         monsterSet[i]->Update();
+        for (int j = 0; j < bulletSet.size(); j++)
+        {
+            isCollide = monsterSet[i]->getCircle()->isOverlap(monsterSet[i]->getCircle(), bulletSet[j]->getCircle());
+            if (isCollide)
+            {
+                monsterSet.erase(monsterSet.begin() + i);
+                i--;
+            }
+        }
     }
     return GAME_CONTINUE;
 }
