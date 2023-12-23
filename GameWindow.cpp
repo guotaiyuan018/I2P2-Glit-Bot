@@ -39,13 +39,24 @@ void GameWindow::game_init()
     level = new LEVEL(1);
     Hero *h = new Hero();
     DC->get_Hero().emplace_front(h);
+    for (int i = window_width * 3 / 4; i < window_width; i += window_width / 4)
+    {
+        Monster *m = create_monster(i, window_height / 4);
+        monsterSet.emplace_back(m);
+    }
 }
 
-Bullet *GameWindow::create_bullet(int x, int y, int init_x, int init_y)
+Bullet *GameWindow::create_bullet(int x, int y)
 {
-    Bullet *b = new Bullet(x, y, init_x, init_y);
+    Bullet *b = new Bullet(x, y);
 
     return b;
+}
+
+Monster *GameWindow::create_monster(int x, int y)
+{
+    Monster *m = new Monster(x, y);
+    return m;
 }
 
 void GameWindow::game_play()
@@ -139,6 +150,7 @@ int GameWindow::game_run()
 
 int GameWindow::game_update()
 {
+
     DC->get_Hero().front()->Update();
     for (int i = 0; i < bulletSet.size(); i++)
     {
@@ -150,6 +162,10 @@ int GameWindow::game_update()
             bulletSet.erase(bulletSet.begin() + i);
             i--;
         }
+    }
+    for (int i = 0; i < monsterSet.size(); i++)
+    {
+        monsterSet[i]->Update();
     }
     return GAME_CONTINUE;
 }
@@ -261,8 +277,7 @@ int GameWindow::process_event()
         {
             if (!shooted)
             {
-                std::pair<int, int> position = DC->get_Hero().front()->Pos();
-                Bullet *t = GameWindow::create_bullet(mouse_x, mouse_y, position.first, position.second);
+                Bullet *t = GameWindow::create_bullet(mouse_x, mouse_y);
                 bulletSet.push_back(t);
                 shooted = true;
             }
@@ -292,6 +307,8 @@ void GameWindow::draw_running_map()
     al_draw_filled_rectangle(field_width, 0, window_width, window_height, al_map_rgb(100, 100, 100));
 
     for (std::vector<Bullet *>::iterator it = bulletSet.begin(); it != bulletSet.end(); it++)
+        (*it)->Draw();
+    for (std::vector<Monster *>::iterator it = monsterSet.begin(); it != monsterSet.end(); it++)
         (*it)->Draw();
     DC->get_Hero().front()->Draw();
 

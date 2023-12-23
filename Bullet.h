@@ -15,7 +15,7 @@
 class Bullet : public Object
 {
 public:
-    Bullet(int, int, int, int);
+    Bullet(int, int);
     ~Bullet();
 
     bool Update();

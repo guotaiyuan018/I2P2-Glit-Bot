@@ -1,8 +1,6 @@
 #include "Hero.h"
 #include <iostream>
 
-const int axis_x[] = {-1, 1, 0, 0};
-const int axis_y[] = {0, 0, -1, 1};
 const char direction_name[][100] = {"LEFT_MOVE", "RIGHT_MOVE", "LEFT_IDLE", "RIGHT_IDLE", "LEFT_ATTACK", "RIGHT_ATTACK"};
 
 // set counter frequency of drawing moving animation
@@ -110,6 +108,8 @@ void Hero::Update()
     }
     if (!mouse_down)
         fired = true, shooted = false;
+
+    hero_x = this->x, hero_y = this->y;
 }
 
 void Hero::Draw()
@@ -117,7 +117,6 @@ void Hero::Draw()
     sprite_pos = (sprite_pos >= imgCount[direction]) ? sprite_pos % imgCount[direction] : sprite_pos;
     if (direction == HeroState::LEFT_ATTACK || direction == HeroState::RIGHT_ATTACK)
     {
-
         if (sprite_pos == 0)
         {
             fired = true;
@@ -128,13 +127,5 @@ void Hero::Draw()
             shooted = false;
         }
     }
-
     al_draw_bitmap(imgData[direction][sprite_pos], x, y, 0);
-
-    // al_draw_bitmap(imgData, x, y, 0);
-}
-
-std::pair<int, int> Hero::Pos()
-{
-    return std::make_pair(x, y);
 }

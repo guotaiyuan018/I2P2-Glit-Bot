@@ -9,6 +9,7 @@
 #include "Level.h"
 #include "DataCenter.h"
 #include "Bullet.h"
+#include "Monster.h"
 
 #define GAME_INIT -1
 #define GAME_SETTING 0
@@ -41,6 +42,7 @@ public:
     void game_reset();
     void game_play();
     void game_begin();
+    // void stage_one_begin();
 
     int game_run();
     int game_update();
@@ -54,7 +56,8 @@ public:
     // process of updated event
     int process_event();
 
-    Bullet *create_bullet(int, int, int, int);
+    Bullet *create_bullet(int, int);
+    Monster *create_monster(int, int);
 
 private:
     ALLEGRO_BITMAP *icon;
@@ -85,6 +88,7 @@ private:
     int mouse_x, mouse_y;
 
     std::vector<Bullet *> &bulletSet = DC->get_Bullet();
+    std::vector<Monster *> &monsterSet = DC->get_Monster();
     std::list<Hero *> &heroSet = DC->get_Hero();
     bool redraw = false;
     bool mute = false;

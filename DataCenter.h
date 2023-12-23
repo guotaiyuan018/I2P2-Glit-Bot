@@ -4,6 +4,7 @@
 #include <list>
 #include "Hero.h"
 #include "Bullet.h"
+#include "Monster.h"
 
 class DataCenter
 {
@@ -17,10 +18,15 @@ public:
     {
         return bulletSet;
     }
+    std::vector<Monster *> &get_Monster()
+    {
+        return monsterSet;
+    }
 
 private:
     std::list<Hero *> heroSet;
     std::vector<Bullet *> bulletSet;
+    std::vector<Monster *> monsterSet;
 };
 extern DataCenter *const DC;
 

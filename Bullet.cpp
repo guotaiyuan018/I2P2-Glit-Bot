@@ -2,15 +2,15 @@
 #include <cmath>
 #include <iostream>
 
-Bullet::Bullet(int mouse_x, int mouse_y, int init_x, int init_y)
+Bullet::Bullet(int mouse_x, int mouse_y)
 {
-    this->circle = new Circle(init_x, init_y, 10);
+    this->circle = new Circle(hero_x, hero_y, 10);
 
     char filename[50];
     sprintf(filename, "./srcs/Bullet/bullet.png");
     img = al_load_bitmap(filename);
 
-    float dx = mouse_x - init_x, dy = mouse_y - init_y;
+    float dx = mouse_x - hero_x, dy = mouse_y - hero_y;
     float lenth = sqrt(dx * dx + dy * dy);
     if (lenth > 0)
         dx /= lenth, dy /= lenth;

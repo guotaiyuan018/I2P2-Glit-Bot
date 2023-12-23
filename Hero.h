@@ -27,7 +27,6 @@ public:
     Hero();
     void Update();
     void Draw();
-    std::pair<int, int> Pos();
 
 private:
     int x, y;
