@@ -25,7 +25,7 @@ Monster::Monster(int x, int y)
         for (int j = 0; j < imgCount[static_cast<MonsterState>(i)]; j++)
         {
             ALLEGRO_BITMAP *img;
-            sprintf(buffer, "./srcs/Monster/MONSTER_%s_%d.png", direction_name[i], j + 1);
+            sprintf(buffer, "./Monster/MONSTER_%s_%d.png", direction_name[i], j + 1);
             img = al_load_bitmap(buffer);
             if (img)
             {
