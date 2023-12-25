@@ -1,97 +1,83 @@
 #ifndef MAINWINDOW_H_INCLUDED
 #define MAINWINDOW_H_INCLUDED
 
-#include <allegro5/allegro_audio.h>
-#include <allegro5/allegro_acodec.h>
+#include <allegro5/allegro.h>
+#include <allegro5/allegro_image.h>
 #include <vector>
 #include <list>
 #include <time.h>
-#include "Level.h"
+#include "global.h"
 #include "DataCenter.h"
+#include "scene_manager.h"
 #include "Bullet.h"
 #include "Monster.h"
 
 #define GAME_INIT -1
-#define GAME_SETTING 0
-#define GAME_SELECT 1
-#define GAME_BEGIN 2
-#define GAME_CONTINUE 3
+#define GAME_LOADING 0
+#define GAME_BEGIN 1
+#define GAME_CONTINUE 2
+#define GAME_WIN 3
 #define GAME_FAIL 4
 #define GAME_TERMINATE 5
-#define GAME_NEXT_LEVEL 6
+#define GAME_NEXT_MAP 6
 #define GAME_EXIT 7
 
-// clock rate
+#define window_width 1200
+#define window_height 900
+
+using namespace std;
+
 const float FPS = 60;
 
-// total number of level
-const int LevelNum = 4;
-
-// 1 coin every 2 seconds
-const int CoinSpeed = FPS * 2;
-const int Coin_Time_Gain = 1;
-
-class GameWindow
-{
+class game_window{
 public:
-    // constructor
-    GameWindow();
+    game_window();
 
-    // each process of scene
     void game_init();
-    void game_reset();
+    void game_begin();//draw init scene
     void game_play();
-    void game_begin();
-    // void stage_one_begin();
 
     int game_run();
     int game_update();
+    int process_event();//now the only event is keydown to change scene
 
-    void show_err_msg(int msg);
+    void draw_scene();//flip display here
+
     void game_destroy();
+    void show_err_msg(int msg);
 
-    // each drawing scene function
-    void draw_running_map();
-
-    // process of updated event
-    int process_event();
+    int get_anime_counter() {return anime_counter;}
 
     Bullet *create_bullet(int, int);
     Monster *create_monster(int, int);
 
 private:
     ALLEGRO_BITMAP *icon;
-    ALLEGRO_BITMAP *tower[Num_TowerType];
-    ALLEGRO_BITMAP *background = NULL;
+    ALLEGRO_BITMAP *loading;
+    ALLEGRO_BITMAP *crosshair_cursor;
+    ALLEGRO_BITMAP *arrow_cursor;
+    ALLEGRO_MOUSE_CURSOR *crosshair;
+    ALLEGRO_MOUSE_CURSOR *cursor;
 
-    ALLEGRO_DISPLAY *display = NULL;
-    ALLEGRO_FONT *font = NULL;
-    ALLEGRO_FONT *Medium_font = NULL;
-    ALLEGRO_FONT *Large_font = NULL;
-
+    ALLEGRO_DISPLAY* display = NULL;
     ALLEGRO_EVENT_QUEUE *event_queue = NULL;
     ALLEGRO_EVENT event;
     ALLEGRO_TIMER *timer = NULL;
     ALLEGRO_TIMER *monster_pro = NULL;
 
-    ALLEGRO_SAMPLE *sample = NULL;
-    ALLEGRO_SAMPLE_INSTANCE *startSound = NULL;
-    ALLEGRO_SAMPLE_INSTANCE *clearSound = NULL;
-    ALLEGRO_SAMPLE_INSTANCE *failSound = NULL;
-    ALLEGRO_SAMPLE_INSTANCE *backgroundSound = NULL;
+    Scene_manager *scene_manager = NULL;
 
-    LEVEL *level = NULL;
+    int mouse_x, mouse_y;
 
     int Monster_Pro_Count = 0;
     int Bullet_Pro_Count = 0;
-    int Coin_Inc_Count = 0;
-    int mouse_x, mouse_y;
+    int anime_counter = 0;
 
-    std::vector<Bullet *> &bulletSet = DC->get_Bullet();
-    std::vector<Monster *> &monsterSet = DC->get_Monster();
-    std::list<Hero *> &heroSet = DC->get_Hero();
-    bool redraw = false;
-    bool mute = false;
+    vector<Bullet *> &bulletSet = DC->get_Bullet();
+    vector<Monster *> &monsterSet = DC->get_Monster();
+    list<Hero *> &heroSet = DC->get_Hero();
+
+    bool frame_update = false;
 };
 
 #endif // MAINWINDOW_H_INCLUDED
