@@ -1,12 +1,10 @@
-#include "GameWindow.h"
+#include "game_window.h"
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]){
+    game_window *GlitBot = new game_window();
 
-    GameWindow *TowerGame = new GameWindow();
+    GlitBot->game_play();
 
-    TowerGame->game_play();
-
-    delete TowerGame;
+    delete GlitBot;
     return 0;
 }
