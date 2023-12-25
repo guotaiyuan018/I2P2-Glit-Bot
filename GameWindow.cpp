@@ -1,44 +1,54 @@
-#include "GameWindow.h"
-#include "global.h"
+#include "game_window.h"
+#include "DataCenter.h"
 #include <iostream>
 
-#define WHITE al_map_rgb(255, 255, 255)
-#define BLACK al_map_rgb(0, 0, 0)
-#define ORANGE_LIGHT al_map_rgb(255, 196, 87)
-#define ORANGE_DARK al_map_rgb(255, 142, 71)
-#define PURPLE al_map_rgb(149, 128, 255)
-#define BLUE al_map_rgb(77, 129, 179)
+using namespace std;
 
-#define min(a, b) ((a) < (b) ? (a) : (b))
-#define max(a, b) ((a) > (b) ? (a) : (b))
+game_window::game_window(){
+    if(!al_init())show_err_msg(-1);
+    cout << "Game loading...\n";
 
-void GameWindow::game_init()
-{
-    char buffer[50];
+    display = al_create_display(window_width, window_height);
+    event_queue = al_create_event_queue();
+    timer = al_create_timer(1.0/FPS);
 
+    if(!timer)show_err_msg(-1);
+
+    al_init_image_addon();
+    al_init_acodec_addon();
+    al_install_keyboard();
+    al_install_mouse();
+    al_install_audio();
+
+    al_register_event_source(event_queue, al_get_display_event_source(display));//for what?
+    al_register_event_source(event_queue, al_get_keyboard_event_source());
+    al_register_event_source(event_queue, al_get_mouse_event_source());
+    al_register_event_source(event_queue, al_get_timer_event_source(timer));
+
+    al_set_window_title(display, "Glit-Bot");
+
+    game_init();
+}
+
+void game_window::game_init(){
     icon = al_load_bitmap("./icon.png");
-    if (!icon)
-        printf("icon\n");
-    background = al_load_bitmap("./StartBackground.png");
-    if (!background)
-        printf("background\n");
-
+    loading = al_load_bitmap("./loading.png");
     al_set_display_icon(display, icon);
-    al_reserve_samples(3);
+    al_draw_bitmap(loading, 0, 0, 0);
+    al_flip_display();//?
 
-    sample = al_load_sample("growl.wav");
-    startSound = al_create_sample_instance(sample);
-    al_set_sample_instance_playmode(startSound, ALLEGRO_PLAYMODE_ONCE);
-    al_attach_sample_instance_to_mixer(startSound, al_get_default_mixer());
+    crosshair_cursor = al_load_bitmap("./UI/crosshair.png");
+    arrow_cursor = al_load_bitmap("./UI/default.png");
+    crosshair = al_create_mouse_cursor(crosshair_cursor, 0, 0);
+    cursor = al_create_mouse_cursor(arrow_cursor, 0, 0);
+    al_set_mouse_cursor(display, cursor);
 
-    sample = al_load_sample("BackgroundMusic.ogg");
-    backgroundSound = al_create_sample_instance(sample);
-    al_set_sample_instance_playmode(backgroundSound, ALLEGRO_PLAYMODE_ONCE);
-    al_attach_sample_instance_to_mixer(backgroundSound, al_get_default_mixer());
+    scene_manager = new Scene_manager();
+    scene_manager->load_scenes();
 
-    level = new LEVEL(1);
     Hero *h = new Hero();
     DC->get_Hero().emplace_front(h);
+
     for (int i = window_width * 3 / 4; i < window_width; i += window_width / 4)
     {
         Monster *m = create_monster(i, window_height / 4);
@@ -46,232 +56,121 @@ void GameWindow::game_init()
     }
 }
 
-Bullet *GameWindow::create_bullet(int x, int y)
+Bullet *game_window::create_bullet(int x, int y)
 {
     Bullet *b = new Bullet(x, y);
 
     return b;
 }
 
-Monster *GameWindow::create_monster(int x, int y)
+Monster *game_window::create_monster(int x, int y)
 {
     Monster *m = new Monster(x, y);
     return m;
 }
 
-void GameWindow::game_play()
-{
+void game_window::game_begin(){
+    al_flip_display();//?
+    al_start_timer(timer);
+    draw_scene();
+}
+
+void game_window::game_play(){
     int msg;
 
     srand(time(NULL));
 
     msg = -1;
-    game_reset();
+
     game_begin();
 
-    while (msg != GAME_EXIT)
-    {
+    while(msg != GAME_EXIT){
         msg = game_run();
     }
 
     show_err_msg(msg);
+
 }
 
-void GameWindow::show_err_msg(int msg)
-{
-    if (msg == GAME_TERMINATE)
-        fprintf(stderr, "Game Terminated...");
-    else
-        fprintf(stderr, "unexpected msg: %d", msg);
+void game_window::show_err_msg(int msg){
+    if(msg == GAME_TERMINATE) fprintf(stderr, "Game Terminated...");
+    else fprintf(stderr, "unexpected msg: %d\n", msg);
 
     game_destroy();
     exit(9);
 }
 
-GameWindow::GameWindow()
-{
-    if (!al_init())
-        show_err_msg(-1);
-    printf("Game Initializing...\n");
-    display = al_create_display(window_width, window_height);
-    event_queue = al_create_event_queue();
-
-    timer = al_create_timer(1.0 / FPS);
-
-    if (timer == NULL || display == NULL || event_queue == NULL)
-        show_err_msg(-1);
-
-    al_init_primitives_addon();
-    al_init_font_addon();   // initialize the font addon
-    al_init_ttf_addon();    // initialize the ttf (True Type Font) addon
-    al_init_image_addon();  // initialize the image addon
-    al_init_acodec_addon(); // initialize acodec addon
-
-    al_install_keyboard(); // install keyboard event
-    al_install_mouse();    // install mouse event
-    al_install_audio();    // install audio event
-
-    font = al_load_ttf_font("Caviar_Dreams_Bold.ttf", 12, 0);        // load small font
-    Medium_font = al_load_ttf_font("Caviar_Dreams_Bold.ttf", 24, 0); // load medium font
-    Large_font = al_load_ttf_font("Caviar_Dreams_Bold.ttf", 36, 0);  // load large font
-
-    al_register_event_source(event_queue, al_get_display_event_source(display));
-    al_register_event_source(event_queue, al_get_keyboard_event_source());
-    al_register_event_source(event_queue, al_get_mouse_event_source());
-
-    al_register_event_source(event_queue, al_get_timer_event_source(timer));
-
-    game_init();
-}
-
-void GameWindow::game_begin()
-{
-    printf(">>> Start Level[%d]\n", level->getLevel());
-    draw_running_map();
-
-    al_play_sample_instance(startSound);
-    while (al_get_sample_instance_playing(startSound))
-        ;
-    al_play_sample_instance(backgroundSound);
-
-    al_start_timer(timer);
-}
-
-int GameWindow::game_run()
-{
+int game_window::game_run(){
     int error = GAME_CONTINUE;
 
-    if (!al_is_event_queue_empty(event_queue))
-    {
+    if (!al_is_event_queue_empty(event_queue)) {
         error = process_event();
     }
+
     return error;
 }
 
-int GameWindow::game_update()
+int game_window::game_update()
 {
-
-    DC->get_Hero().front()->Update();
-    for (int i = 0; i < bulletSet.size(); i++)
-    {
-        bool isDestroyed = false, isReachEnd = false;
-        isReachEnd = bulletSet[i]->Update();
-
-        if (isReachEnd)
+    if(scene_manager->get_current() == BATTLE_SCENE){
+        DC->get_Hero().front()->Update();
+        for (int i = 0; i < bulletSet.size(); i++)
         {
-            bulletSet.erase(bulletSet.begin() + i);
-            i--;
-        }
-    }
-    for (int i = 0; i < monsterSet.size(); i++)
-    {
-        bool isCollide = false;
-        monsterSet[i]->Update();
-        for (int j = 0; j < bulletSet.size(); j++)
-        {
-            isCollide = monsterSet[i]->getCircle()->isOverlap(monsterSet[i]->getCircle(), bulletSet[j]->getCircle());
-            if (isCollide)
+            bool isDestroyed = false, isReachEnd = false;
+            isReachEnd = bulletSet[i]->Update();
+
+            if (isReachEnd)
             {
-                monsterSet.erase(monsterSet.begin() + i);
+                bulletSet.erase(bulletSet.begin() + i);
                 i--;
+            }
+        }
+        for (int i = 0; i < monsterSet.size(); i++)
+        {
+            bool isCollide = false;
+            monsterSet[i]->Update();
+            for (int j = 0; j < bulletSet.size(); j++)
+            {
+                isCollide = monsterSet[i]->getCircle()->isOverlap(monsterSet[i]->getCircle(), bulletSet[j]->getCircle());
+                if (isCollide)
+                {
+                    monsterSet.erase(monsterSet.begin() + i);
+                    i--;
+                }
             }
         }
     }
     return GAME_CONTINUE;
 }
 
-void GameWindow::game_reset()
-{
-    mute = false;
-    redraw = false;
-
-    // stop sample instance
-    al_stop_sample_instance(backgroundSound);
-    al_stop_sample_instance(startSound);
-
-    // stop timer
-    al_stop_timer(timer);
-}
-
-void GameWindow::game_destroy()
-{
-    game_reset();
-
-    al_destroy_display(display);
-    al_destroy_event_queue(event_queue);
-    al_destroy_font(font);
-    al_destroy_font(Medium_font);
-    al_destroy_font(Large_font);
-
-    al_destroy_timer(timer);
-
-    al_destroy_bitmap(icon);
-    al_destroy_bitmap(background);
-
-    al_destroy_sample(sample);
-    al_destroy_sample_instance(startSound);
-    al_destroy_sample_instance(backgroundSound);
-
-    delete level;
-}
-
-int GameWindow::process_event()
-{
-    int i;
+int game_window::process_event(){
     int instruction = GAME_CONTINUE;
 
     al_wait_for_event(event_queue, &event);
-    redraw = false;
-    if (event.type == ALLEGRO_EVENT_TIMER)
-    {
-        if (event.timer.source == timer)
-        {
-            redraw = true;
-        }
+    frame_update = false;
+
+    if(event.type == ALLEGRO_EVENT_TIMER) {
+        frame_update = true;
+        anime_counter = (anime_counter + 1) % title_frames;
     }
-    else if (event.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
-    {
+    else if(event.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
         return GAME_EXIT;
     }
-    else if (event.type == ALLEGRO_EVENT_KEY_DOWN)
-    {
-        switch (event.keyboard.keycode)
-        {
-
-        case ALLEGRO_KEY_P:
-            if (al_get_timer_started(timer))
-            {
-                al_stop_timer(timer);
-            }
-            else
-            {
-                al_start_timer(timer);
-            }
-            break;
-        case ALLEGRO_KEY_M:
-            mute = !mute;
-            if (mute)
-                al_stop_sample_instance(backgroundSound);
-            else
-                al_play_sample_instance(backgroundSound);
-            break;
-        }
-    }
-    else if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN)
-    {
-        if (event.mouse.button == 1)
+    else if(event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN){
+        if(event.mouse.button == 1){
             mouse_down = true;
+            scene_manager->change_scene((scene_manager->get_change()));
+        }
     }
     else if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP)
     {
         mouse_down = false;
     }
-    else if (event.type == ALLEGRO_EVENT_MOUSE_AXES)
-    {
+    else if(event.type == ALLEGRO_EVENT_MOUSE_AXES){
         mouse_x = event.mouse.x;
         mouse_y = event.mouse.y;
+        scene_manager->mouse_in(mouse_x, mouse_y);
     }
-
     if (event.type == ALLEGRO_EVENT_KEY_DOWN)
     {
         key_state[event.keyboard.keycode] = true;
@@ -281,46 +180,66 @@ int GameWindow::process_event()
         key_state[event.keyboard.keycode] = false;
     }
 
-    if (mouse_down)
-    {
-        if (fired)
+    if(scene_manager->get_current() == BATTLE_SCENE){
+        if (mouse_down)
         {
-            if (!shooted)
+            if (fired)
             {
-                Bullet *t = GameWindow::create_bullet(mouse_x, mouse_y);
-                bulletSet.push_back(t);
-                shooted = true;
+                if (!shooted)
+                {
+                    Bullet *t = game_window::create_bullet(mouse_x, mouse_y);
+                    bulletSet.push_back(t);
+                    shooted = true;
+                }
             }
         }
     }
 
-    if (redraw)
-    {
-        // update each object in game
+    if(frame_update){
         instruction = game_update();
 
-        // Re-draw map
-        draw_running_map();
-        redraw = false;
+        draw_scene();
+        frame_update = false;
     }
 
     return instruction;
 }
 
-void GameWindow::draw_running_map()
-{
-    unsigned int i, j;
-
+void game_window::draw_scene(){
     al_clear_to_color(al_map_rgb(100, 100, 100));
-    al_draw_bitmap(background, 0, 0, 0);
 
-    al_draw_filled_rectangle(field_width, 0, window_width, window_height, al_map_rgb(100, 100, 100));
+    int current_scene = scene_manager->get_current();
+    scene_manager->draw_scene(current_scene, get_anime_counter());//will draw current active scene
 
-    for (std::vector<Bullet *>::iterator it = bulletSet.begin(); it != bulletSet.end(); it++)
-        (*it)->Draw();
-    for (std::vector<Monster *>::iterator it = monsterSet.begin(); it != monsterSet.end(); it++)
-        (*it)->Draw();
-    DC->get_Hero().front()->Draw();
+    if(current_scene == BATTLE_SCENE){
+        al_set_mouse_cursor(display, crosshair);
+
+        for (vector<Bullet*>::iterator it = bulletSet.begin(); it != bulletSet.end(); it++)
+            (*it)->Draw();
+
+        for (vector<Monster*>::iterator it = monsterSet.begin(); it != monsterSet.end(); it++)
+            (*it)->Draw();
+
+        DC->get_Hero().front()->Draw();
+    }
+    else al_set_mouse_cursor(display, cursor);
 
     al_flip_display();
 }
+
+void game_window::game_destroy(){
+    cout << "Destroy...\n";
+    al_destroy_display(display);
+    al_destroy_event_queue(event_queue);
+    al_destroy_timer(timer);
+
+    al_destroy_bitmap(crosshair_cursor);
+    al_destroy_bitmap(arrow_cursor);
+    al_destroy_mouse_cursor(crosshair);
+    al_destroy_mouse_cursor(cursor);
+
+    delete scene_manager;
+
+    cout << "Game Destroyed.\n";
+}
+
