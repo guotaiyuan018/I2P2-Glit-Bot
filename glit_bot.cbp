@@ -48,6 +48,8 @@
 		<Unit filename="Level.cpp" />
 		<Unit filename="Level.h" />
 		<Unit filename="Main.cpp" />
+		<Unit filename="Monster.cpp" />
+		<Unit filename="Monster.h" />
 		<Unit filename="Object.h" />
 		<Unit filename="allegro/include/allegro5/alcompat.h" />
 		<Unit filename="allegro/include/allegro5/allegro.h" />
