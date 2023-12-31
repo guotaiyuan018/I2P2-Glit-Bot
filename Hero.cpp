@@ -22,7 +22,7 @@ Hero::Hero()
         for (int j = 0; j < imgCount[static_cast<HeroState>(i)]; j++)
         {
             ALLEGRO_BITMAP *img;
-            sprintf(buffer, "./srcs/Hero/HERO_%s_%d.png", direction_name[i], j + 1);
+            sprintf(buffer, "./Hero/bullet/HERO_%s_%d.png", direction_name[i], j + 1);
             img = al_load_bitmap(buffer);
             if (img)
             {
@@ -32,9 +32,6 @@ Hero::Hero()
                 std::cout << buffer << std::endl;
         }
     }
-
-    // sprintf(buffer, "./Bullet/bullet.png");
-    // imgData = al_load_bitmap(buffer);
 
     x = window_width / 2;
     y = window_height / 2;
