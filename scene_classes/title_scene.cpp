@@ -29,8 +29,11 @@ void Title_scene::load_scene(){
 
 }
 
-void Title_scene::draw_scene(int counter){
+void Title_scene::draw_background(int counter){
     al_draw_bitmap(title_animation[counter], 0, 0, 0);
+}
+
+void Title_scene::draw_ui(){
     al_draw_bitmap(title_ui[cur_menu], 0, 0, 0);
 }
 
