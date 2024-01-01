@@ -35,7 +35,7 @@ void game_window::game_init(){
     loading = al_load_bitmap("./loading.png");
     al_set_display_icon(display, icon);
     al_draw_bitmap(loading, 0, 0, 0);
-    al_flip_display();//?
+    al_flip_display();
 
     crosshair_cursor = al_load_bitmap("./UI/crosshair.png");
     arrow_cursor = al_load_bitmap("./UI/default.png");
@@ -59,7 +59,6 @@ void game_window::game_init(){
 Bullet *game_window::create_bullet(int x, int y)
 {
     Bullet *b = new Bullet(x, y);
-
     return b;
 }
 
@@ -70,7 +69,7 @@ Monster *game_window::create_monster(int x, int y)
 }
 
 void game_window::game_begin(){
-    al_flip_display();//?
+    al_flip_display();
     al_start_timer(timer);
     draw_scene();
 }
@@ -159,7 +158,8 @@ int game_window::process_event(){
     else if(event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN){
         if(event.mouse.button == 1){
             mouse_down = true;
-            scene_manager->change_scene((scene_manager->get_change()));
+            scene_manager->change_scene();
+            if(exit_game)game_destroy();
         }
     }
     else if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP)
@@ -174,10 +174,12 @@ int game_window::process_event(){
     if (event.type == ALLEGRO_EVENT_KEY_DOWN)
     {
         key_state[event.keyboard.keycode] = true;
+        scene_manager->key_in();
     }
     else if (event.type == ALLEGRO_EVENT_KEY_UP)
     {
         key_state[event.keyboard.keycode] = false;
+        scene_manager->key_in();
     }
 
     if(scene_manager->get_current() == BATTLE_SCENE){
@@ -190,6 +192,7 @@ int game_window::process_event(){
                     Bullet *t = game_window::create_bullet(mouse_x, mouse_y);
                     bulletSet.push_back(t);
                     shooted = true;
+
                 }
             }
         }
@@ -209,7 +212,8 @@ void game_window::draw_scene(){
     al_clear_to_color(al_map_rgb(100, 100, 100));
 
     int current_scene = scene_manager->get_current();
-    scene_manager->draw_scene(current_scene, get_anime_counter());//will draw current active scene
+
+    scene_manager->draw_background(get_anime_counter());
 
     if(current_scene == BATTLE_SCENE){
         al_set_mouse_cursor(display, crosshair);
@@ -223,6 +227,8 @@ void game_window::draw_scene(){
         DC->get_Hero().front()->Draw();
     }
     else al_set_mouse_cursor(display, cursor);
+
+    scene_manager->draw_ui();
 
     al_flip_display();
 }
