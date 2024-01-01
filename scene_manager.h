@@ -20,11 +20,12 @@ public:
     Scene_manager();
     ~Scene_manager();
 
-    void load_scenes();//see monster.h for animated background
-    void draw_scene(int scene, int counter);
+    void load_scenes();
+    void draw_background(int anime_counter);
+    void draw_ui();
     void mouse_in(int x, int y);
-    void change_scene(int scene);
-    int get_change();
+    void key_in();
+    void change_scene();
     int get_current(){return current_scene;}
 
 private:
@@ -39,6 +40,7 @@ private:
 
     ALLEGRO_BITMAP* credit_scene = NULL;
     ALLEGRO_BITMAP *crosshair = NULL;
+
     ALLEGRO_SAMPLE *sample = NULL;
     ALLEGRO_SAMPLE_INSTANCE *title_bgm = NULL;
     ALLEGRO_SAMPLE_INSTANCE *game_bgm = NULL;
