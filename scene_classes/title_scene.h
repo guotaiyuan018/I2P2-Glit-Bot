@@ -24,7 +24,8 @@ public:
     ~Title_scene();
 
     void load_scene();
-    void draw_scene(int counter);
+    void draw_background(int counter);
+    void draw_ui();
     int mouse_act(int x, int y);
 
 private:
