@@ -15,7 +15,7 @@ Scene_manager::Scene_manager(){
 }
 
 void Scene_manager::load_scenes(){
-    al_reserve_samples(15);
+    al_reserve_samples(10);
     title_scene->load_scene();
     game_scene->load_scene();
     setting_scene->load_scene();
@@ -35,18 +35,22 @@ void Scene_manager::load_scenes(){
     al_attach_sample_instance_to_mixer(game_bgm, al_get_default_mixer());
 }
 
-void Scene_manager::draw_scene(int scene, int counter){
+void Scene_manager::draw_background(int anime_counter){
     //cout << "start to draw scene: " << scene << endl;
-    switch(scene){
+    switch(current_scene){
     case TITLE_SCENE:
         //audio
         if(al_get_sample_instance_playing(game_bgm))
             al_stop_sample_instance(game_bgm);
 
-        if(!game_mute)al_play_sample_instance(title_bgm);
+        if(!game_mute){
+            al_set_sample_instance_gain(title_bgm, 1);
+            al_play_sample_instance(title_bgm);
+        }
         else al_stop_sample_instance(title_bgm);
+
         //visual
-        title_scene->draw_scene(counter);
+        title_scene->draw_background(anime_counter);
         break;
 
     case BATTLE_SCENE:
@@ -54,11 +58,14 @@ void Scene_manager::draw_scene(int scene, int counter){
         if(al_get_sample_instance_playing(title_bgm))
             al_stop_sample_instance(title_bgm);
 
-        if(!game_mute)al_play_sample_instance(game_bgm);
+        if(!game_mute){
+            al_set_sample_instance_gain(game_bgm, 1);
+            al_play_sample_instance(game_bgm);
+        }
         else al_stop_sample_instance(game_bgm);
 
         //visual
-        game_scene->draw_scene();
+        game_scene->draw_background();
         break;
 
     case SET_SCENE:
@@ -77,8 +84,9 @@ void Scene_manager::draw_scene(int scene, int counter){
                 break;
             }
         }
+
         //visual
-        setting_scene->draw_scene();
+        setting_scene->draw_background();
         break;
 
     case CREDIT_SCENE:
@@ -88,8 +96,18 @@ void Scene_manager::draw_scene(int scene, int counter){
     //cout << "draw scene finish\n";
 }
 
-void Scene_manager::change_scene(int change){
-    current_scene = change;
+void Scene_manager::draw_ui(){
+    switch(current_scene){
+    case TITLE_SCENE:
+        title_scene->draw_ui();
+        break;
+    case BATTLE_SCENE:
+        game_scene->draw_ui();
+        break;
+    case SET_SCENE:
+        setting_scene->draw_ui();
+        break;
+    }
 }
 
 //get mouse position, return hovered button index
@@ -107,45 +125,53 @@ void Scene_manager::mouse_in(int x, int y){
     }
 }
 
+void Scene_manager::key_in(){
+    game_scene->keyboard_act();
+}
+
 //define the button-pressed-based change scene logic
-int Scene_manager::get_change(){
+void Scene_manager::change_scene(){
     if(current_scene == TITLE_SCENE){
         switch(mouse_on){
         case START_BUTTON:
-            return BATTLE_SCENE;
+            current_scene = BATTLE_SCENE;
+            break;
         case CREDIT_BUTTON:
-            return CREDIT_SCENE;
+            current_scene = CREDIT_SCENE;
+            break;
         case SET_BUTTON:
             prev_scene = TITLE_SCENE;//for game scene set button: prev = game scene
-            return SET_SCENE;
-        default:
-            return current_scene;
+            current_scene = SET_SCENE;
+            break;
         }
     }
     else if(current_scene == CREDIT_SCENE){
-        return TITLE_SCENE;
+        current_scene = TITLE_SCENE;
     }
     else if(current_scene == SET_SCENE){
         switch(mouse_on){
         case RESUME_BUTTON:
-            return prev_scene;
+            current_scene = prev_scene;
+            break;
         case RESTART_BUTTON:
-            return BATTLE_SCENE;
+            current_scene = TITLE_SCENE;
+            break;
         case EXIT_BUTTON:
-            return TITLE_SCENE;
+            exit_game = true;
+            break;
         case AUDIO_BUTTON:
             game_mute = !game_mute;
-            return current_scene;
+            break;
         }
     }
     else if(current_scene == BATTLE_SCENE){
         switch(mouse_on){
         case PAUSE_BUTTON:
             prev_scene = BATTLE_SCENE;
-            return SET_SCENE;
+            current_scene = SET_SCENE;
+            break;
         }
     }
-    return current_scene;
 }
 
 Scene_manager::~Scene_manager(){

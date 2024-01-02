@@ -33,8 +33,8 @@ Hero::Hero()
         }
     }
 
-    x = window_width / 2;
-    y = window_height / 2;
+    x = window_width / 2 - HERO_WIDTH / 2;
+    y = window_height / 2 - HERO_HEIGHT / 2;
 }
 
 void Hero::Update()
@@ -106,7 +106,7 @@ void Hero::Update()
     if (!mouse_down)
         fired = true, shooted = false;
 
-    hero_x = this->x, hero_y = this->y;
+    hero_x = this->x + HERO_WIDTH / 2, hero_y = this->y + HERO_HEIGHT / 2;
 }
 
 void Hero::Draw()
@@ -126,3 +126,4 @@ void Hero::Draw()
     }
     al_draw_bitmap(imgData[direction][sprite_pos], x, y, 0);
 }
+
