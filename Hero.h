@@ -21,6 +21,12 @@ enum class HeroState
     RIGHT_ATTACK
 };
 
+enum class HeroName
+{
+    BULLET,
+    BLADE
+};
+
 class Hero : public Object
 {
 public:
