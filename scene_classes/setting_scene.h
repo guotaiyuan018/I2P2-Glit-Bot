@@ -29,7 +29,7 @@ public:
     int mouse_act(int x, int y);
 
 private:
-    ALLEGRO_BITMAP* set_background = NULL;
+    ALLEGRO_BITMAP* set_background[2];
     ALLEGRO_BITMAP* cur_set_ui[set_ui_num];
     ALLEGRO_BITMAP* set_ui[set_ui_num + 1][2];
 

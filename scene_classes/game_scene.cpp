@@ -35,7 +35,7 @@ void Game_scene::load_scene(){
 }
 
 void Game_scene::draw_background(){
-    al_draw_bitmap(maps[0], 0, 0, 0);
+    al_draw_bitmap(maps[cur_stage], 0, 0, 0);
 }
 
 void Game_scene::draw_ui(){

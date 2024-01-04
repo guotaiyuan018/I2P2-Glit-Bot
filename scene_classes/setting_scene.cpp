@@ -26,11 +26,17 @@ void Setting_scene::load_scene(){
         }
         if(i < 4)cur_set_ui[i] = set_ui[i][0];
     }
-    set_background = al_load_bitmap("./Scenes/settings/background.png");
+
+    for(int i = 0; i < 2; i++){
+        sprintf(buffer, "./Scenes/settings/background%d.png", i);
+        ALLEGRO_BITMAP *img = al_load_bitmap(buffer);
+        if(img) set_background[i] = img;
+    }
 }
 
 void Setting_scene::draw_background(){
-    al_draw_bitmap(set_background, 0, 0, 0);
+    int index = (prev_scene == 0 ? 0 : 1); // prev_scene == TITLE_SCENE ?
+    al_draw_bitmap(set_background[index], 0, 0, 0);
 }
 
 void Setting_scene::draw_ui(){
@@ -87,5 +93,7 @@ Setting_scene::~Setting_scene(){
         }
         if(i < 4) al_destroy_bitmap(cur_set_ui[i]);
     }
-    al_destroy_bitmap(set_background);
+    for(int i = 0; i < 2; i++){
+        al_destroy_bitmap(set_background[i]);
+    }
 }
