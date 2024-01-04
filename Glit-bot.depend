@@ -336,7 +336,11 @@
 	"Bullet.h"
 	"Monster.h"
 
+<<<<<<< Updated upstream
 1704379699 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\hero.h
+=======
+1704379612 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\hero.h
+>>>>>>> Stashed changes
 	<stdio.h>
 	<string.h>
 	<allegro5/allegro.h>
