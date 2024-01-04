@@ -2,6 +2,7 @@
 #include <iostream>
 
 const char direction_name[][100] = {"LEFT_MOVE", "RIGHT_MOVE", "LEFT_IDLE", "RIGHT_IDLE", "LEFT_ATTACK", "RIGHT_ATTACK"};
+const char hero_name[][100] = {"BULLET", "BLADE"};
 
 // set counter frequency of drawing moving animation
 const int draw_frequency = 10;
@@ -19,17 +20,20 @@ Hero::Hero()
 
     for (int i = 0; i < sizeof(direction_name) / sizeof(direction_name[0]); i++)
     {
-        for (int j = 0; j < imgCount[static_cast<HeroState>(i)]; j++)
+        for (int k = 0; k < hero_count; k++)
         {
-            ALLEGRO_BITMAP *img;
-            sprintf(buffer, "./Hero/bullet/HERO_%s_%d.png", direction_name[i], j + 1);
-            img = al_load_bitmap(buffer);
-            if (img)
+            for (int j = 0; j < imgCount[static_cast<HeroState>(i)]; j++)
             {
-                imgData[static_cast<HeroState>(i)].push_back(img);
+                ALLEGRO_BITMAP *img;
+                sprintf(buffer, "./Hero/%s/HERO_%s_%d.png", hero_name[k], direction_name[i], j + 1);
+                img = al_load_bitmap(buffer);
+                if (img)
+                {
+                    imgData[static_cast<HeroName>(k)][static_cast<HeroState>(i)].push_back(img);
+                }
+                else
+                    std::cout << buffer << std::endl;
             }
-            else
-                std::cout << buffer << std::endl;
         }
     }
 
@@ -124,6 +128,5 @@ void Hero::Draw()
             shooted = false;
         }
     }
-    al_draw_bitmap(imgData[direction][sprite_pos], x, y, 0);
+    al_draw_bitmap(imgData[my_name][direction][sprite_pos], x, y, 0);
 }
-
