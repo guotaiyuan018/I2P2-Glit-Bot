@@ -12,6 +12,8 @@
 #include "Bullet.h"
 #include "Monster.h"
 
+#define STAGE_NUM 1
+
 #define GAME_INIT -1
 #define GAME_LOADING 0
 #define GAME_BEGIN 1
@@ -34,8 +36,11 @@ public:
     game_window();
 
     void game_init();
+    void game_reset();
     void game_begin();//draw init scene
     void game_play();
+
+    void set_enemy();
 
     int game_run();
     int game_update();
