@@ -336,7 +336,7 @@
 	"Bullet.h"
 	"Monster.h"
 
-1704379055 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\hero.h
+1704379699 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\hero.h
 	<stdio.h>
 	<string.h>
 	<allegro5/allegro.h>
@@ -371,7 +371,7 @@
 
 1704261053 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\scene_classes\end_scene.cpp
 
-1704202053 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\scene_classes\game_scene.cpp
+1704379701 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\scene_classes\game_scene.cpp
 	"game_scene.h"
 	<iostream>
 	<map>
@@ -388,13 +388,13 @@
 1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\allegro_audio.h
 	"allegro5/allegro.h"
 
-1704202053 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\scene_classes\setting_scene.cpp
+1704379701 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\scene_classes\setting_scene.cpp
 	"setting_scene.h"
 	<iostream>
 	<string>
 	<map>
 
-1704202164 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\scene_classes\setting_scene.h
+1704379701 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\scene_classes\setting_scene.h
 	<allegro5/allegro.h>
 	<allegro5/allegro_image.h>
 	<allegro5/allegro_audio.h>
@@ -402,11 +402,11 @@
 	<map>
 	<string>
 
-1704202164 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\hero.cpp
+1704379699 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\hero.cpp
 	"Hero.h"
 	<iostream>
 
-1704202643 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\scene_manager.cpp
+1704379023 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\scene_manager.cpp
 	"scene_manager.h"
 	<stdio.h>
 	<vector>
@@ -453,7 +453,7 @@
 	"Bullet.h"
 	"Monster.h"
 
-1704214688 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\game_window.cpp
+1704378605 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\game_window.cpp
 	"game_window.h"
 	"DataCenter.h"
 	<iostream>
