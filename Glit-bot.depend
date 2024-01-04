@@ -336,11 +336,20 @@
 	"Bullet.h"
 	"Monster.h"
 
-<<<<<<< Updated upstream
-1704379699 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\hero.h
-=======
-1704379612 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\hero.h
->>>>>>> Stashed changes
+1703324048 ated upstream
+
+1704379847 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\hero.h
+	<stdio.h>
+	<string.h>
+	<allegro5/allegro.h>
+	<allegro5/allegro_primitives.h>
+	<vector>
+	<map>
+	"Object.h"
+	"Circle.h"
+	"global.h"
+
+1704379612 shed changes
 	<stdio.h>
 	<string.h>
 	<allegro5/allegro.h>

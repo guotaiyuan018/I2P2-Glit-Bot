@@ -1,1 +1,13 @@
 *.depend
+*.log
+*.depend
+*.exe
+*.o
+obj/Debug/scene_classes/title_scene.o
+obj/Debug/Main.o
+obj/Debug/Hero.o
+obj/Debug/game_window.o
+obj/Debug/DataCenter.o
+Glit-bot.depend
+bin/Debug/TowerGame.exe
+allegro.log
