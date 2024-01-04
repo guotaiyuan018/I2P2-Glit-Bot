@@ -22,6 +22,7 @@ extern bool shooted;
 extern bool game_mute;
 extern int hero_x;
 extern int hero_y;
+extern bool game_mute;
 
 
 #endif // GLOBAL_H_INCLUDED
