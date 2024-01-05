@@ -11,16 +11,18 @@
 #include "Circle.h"
 #include "global.h"
 
+enum class MonsterDirection
+{
+    LEFT,
+    RIGHT
+};
+
 enum class MonsterState
 {
-    LEFT_ATTACK,
-    RIGHT_ATTACK,
-    LEFT_DEAD,
-    RIGHT_DEAD,
-    LEFT_DAMAGED,
-    RIGHT_DAMAGED,
-    LEFT_MOVE,
-    RIGHT_MOVE
+    ATTACK,
+    DEAD,
+    DAMAGED,
+    MOVE
 };
 
 class Monster : public Object
@@ -35,9 +37,10 @@ private:
     int speed = 3;
     int hp = 10;
     int attack_range = 10;
-    MonsterState direction = MonsterState::RIGHT_MOVE;
-    std::map<MonsterState, std::vector<ALLEGRO_BITMAP *>> imgData;
-    std::map<MonsterState, int> imgCount;
+    MonsterState state = MonsterState::MOVE;
+    MonsterDirection direction = MonsterDirection::RIGHT;
+    std::map<MonsterDirection, std::map<MonsterState, std::vector<ALLEGRO_BITMAP *>>> imgData;
+    std::map<MonsterDirection, std::map<MonsterState, int>> imgCount;
 };
 
 #endif

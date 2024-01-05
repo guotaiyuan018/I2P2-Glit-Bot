@@ -11,14 +11,18 @@
 #include "Circle.h"
 #include "global.h"
 
+enum class HeroDirection
+{
+    LEFT,
+    RIGHT
+};
+
 enum class HeroState
 {
-    LEFT_MOVE,
-    RIGHT_MOVE,
-    LEFT_IDLE,
-    RIGHT_IDLE,
-    LEFT_ATTACK,
-    RIGHT_ATTACK
+    MOVE,
+    IDLE,
+    ATTACK,
+    GLITCH,
 };
 
 enum class HeroName
@@ -35,17 +39,17 @@ public:
     void Draw();
 
 private:
-    int hero_count = 2;
     int HERO_WIDTH = 256, HERO_HEIGHT = 256;
     int x, y;
     int counter;
     int sprite_pos = 1;
     int speed = 5;
-    HeroState direction = HeroState::RIGHT_IDLE;
-    HeroName my_name = HeroName::BLADE;
-    std::map<HeroName, std::map<HeroState, std::vector<ALLEGRO_BITMAP *>>> imgData;
+    HeroDirection direction = HeroDirection::RIGHT;
+    HeroState state = HeroState::IDLE;
+    HeroName my_name = HeroName::BULLET;
+    std::map<HeroName, std::map<HeroDirection, std::map<HeroState, std::vector<ALLEGRO_BITMAP *>>>> imgData;
     // ALLEGRO_BITMAP *imgData;
-    std::map<HeroState, int> imgCount;
+    std::map<HeroDirection, std::map<HeroState, int>> imgCount;
 };
 
 #endif

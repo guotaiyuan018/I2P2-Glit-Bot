@@ -28,5 +28,6 @@ extern int hero_y;
 extern int cur_scene;
 extern int prev_scene;
 extern int cur_stage;
+extern int mouse_x, mouse_y;
 
 #endif // GLOBAL_H_INCLUDED

@@ -315,7 +315,7 @@
 
 1703347025 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\circle.h
 
-1704378948 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\global.h
+1704391271 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\global.h
 	<allegro5/allegro_audio.h>
 	<allegro5/allegro_acodec.h>
 	<allegro5/allegro_font.h>
@@ -338,7 +338,7 @@
 
 1703324048 ated upstream
 
-1704379847 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\hero.h
+1704391906 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\hero.h
 	<stdio.h>
 	<string.h>
 	<allegro5/allegro.h>
@@ -360,7 +360,7 @@
 	"Circle.h"
 	"global.h"
 
-1703341530 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\monster.h
+1704388559 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\monster.h
 	<stdio.h>
 	<string.h>
 	<allegro5/allegro.h>
@@ -371,13 +371,13 @@
 	"Circle.h"
 	"global.h"
 
-1704378948 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\global.cpp
+1704391322 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\global.cpp
 	"global.h"
 
 1704035730 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\main.cpp
 	"game_window.h"
 
-1703588235 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\monster.cpp
+1704388818 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\monster.cpp
 	"Monster.h"
 	<iostream>
 	<cmath>
@@ -415,7 +415,7 @@
 	<map>
 	<string>
 
-1704379847 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\hero.cpp
+1704391416 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\hero.cpp
 	"Hero.h"
 	<iostream>
 
@@ -454,7 +454,7 @@
 	<vector>
 	<map>
 
-1704378605 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\game_window.h
+1704391330 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\game_window.h
 	<allegro5/allegro.h>
 	<allegro5/allegro_image.h>
 	<vector>

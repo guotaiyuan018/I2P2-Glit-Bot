@@ -31,27 +31,28 @@ using namespace std;
 
 const float FPS = 60;
 
-class game_window{
+class game_window
+{
 public:
     game_window();
 
     void game_init();
     void game_reset();
-    void game_begin();//draw init scene
+    void game_begin(); // draw init scene
     void game_play();
 
     void set_enemy();
 
     int game_run();
     int game_update();
-    int process_event();//now the only event is keydown to change scene
+    int process_event(); // now the only event is keydown to change scene
 
-    void draw_scene();//flip display here
+    void draw_scene(); // flip display here
 
     void game_destroy();
     void show_err_msg(int msg);
 
-    int get_anime_counter() {return anime_counter;}
+    int get_anime_counter() { return anime_counter; }
 
     Bullet *create_bullet(int, int);
     Monster *create_monster(int, int);
@@ -64,15 +65,13 @@ private:
     ALLEGRO_MOUSE_CURSOR *crosshair;
     ALLEGRO_MOUSE_CURSOR *cursor;
 
-    ALLEGRO_DISPLAY* display = NULL;
+    ALLEGRO_DISPLAY *display = NULL;
     ALLEGRO_EVENT_QUEUE *event_queue = NULL;
     ALLEGRO_EVENT event;
     ALLEGRO_TIMER *timer = NULL;
     ALLEGRO_TIMER *monster_pro = NULL;
 
     Scene_manager *scene_manager = NULL;
-
-    int mouse_x, mouse_y;
 
     int Monster_Pro_Count = 0;
     int Bullet_Pro_Count = 0;
