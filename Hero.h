@@ -39,7 +39,7 @@ public:
     void Draw();
 
 private:
-    int HERO_WIDTH = 256, HERO_HEIGHT = 256;
+    int HERO_WIDTH = 448, HERO_HEIGHT = 448;
     int x, y;
     int counter;
     int sprite_pos = 1;

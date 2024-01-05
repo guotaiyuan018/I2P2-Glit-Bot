@@ -247,13 +247,12 @@ void game_window::draw_scene(){
 }
 
 void game_window::game_reset(){
-    reset_game = false;
     monsterSet.clear();
-    frame_update = false;
-
     scene_manager->reset();
 
     al_stop_timer(timer);
+    frame_update = false;
+    reset_game = false;
 
     game_begin();
 }
@@ -262,6 +261,8 @@ void game_window::game_destroy(){
     cout << "Destroy...\n";
 
     game_reset();
+    al_clear_to_color(al_map_rgb(0, 0, 0));
+    al_flip_display();
 
     al_destroy_display(display);
     al_destroy_event_queue(event_queue);
