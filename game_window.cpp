@@ -258,7 +258,7 @@ void game_window::game_reset(){
 }
 
 void game_window::game_destroy(){
-    cout << "Destroy...\n";
+    cout << "Exit game...\n";
 
     game_reset();
     al_clear_to_color(al_map_rgb(0, 0, 0));

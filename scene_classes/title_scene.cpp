@@ -9,9 +9,9 @@ using namespace std;
 
 Title_scene::Title_scene(){
     //create ui interface
-    title_interface[START_BUTTON] = {90, 780, 200, 820};
-    title_interface[SET_BUTTON] = {280, 780, 430, 820};
-    title_interface[CREDIT_BUTTON] = {500, 780, 660, 820};
+    title_interface[START_BUTTON] = {90, 750, 240, 850};
+    title_interface[SET_BUTTON] = {241, 750, 465, 850};
+    title_interface[CREDIT_BUTTON] = {466, 750, 660, 850};
 }
 
 void Title_scene::load_scene(){
