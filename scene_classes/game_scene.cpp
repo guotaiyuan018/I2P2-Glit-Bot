@@ -49,11 +49,16 @@ void Game_scene::load_scene(){
 
     pause[0] = al_load_bitmap("./Scenes/battle/pause/0.png");
     pause[1] = al_load_bitmap("./Scenes/battle/pause/1.png");
+
+    text = al_load_bitmap("./Scenes/battle/heal.png");
 }
 
 void Game_scene::draw_background(int counter){
     if(cur_stage == 2){
         al_draw_bitmap(bonus[counter], 0, 0, 0);
+    }
+    else if(cur_stage == 3){
+        al_draw_bitmap(maps[2], 0, 0, 0); // for boss stage
     }
     else al_draw_bitmap(maps[cur_stage], 0, 0, 0);
 }
@@ -67,6 +72,17 @@ void Game_scene::draw_ui(){
 
     al_draw_bitmap(hp_bar[DC->get_Hero().front()->getHP()-1], 0, 0, 0);
     al_draw_bitmap(bot_info[DC->get_Hero().front()->getNAME()], 0, 0, 0);
+
+    if(cur_stage == 2)
+    {
+        if(hero_x <= 800 && hero_x >= 400 && hero_y <= 650 && hero_y >= 250)
+        {
+            healing = true;
+            al_draw_bitmap(text, hero_x - 66, hero_y - 90, 0);
+        }
+        else healing = false;
+    }
+    else healing = false;
 }
 
 void Game_scene::keyboard_act(){
@@ -97,7 +113,7 @@ int Game_scene::mouse_act(int x, int y){
 
 Game_scene::~Game_scene(){
     for(int i = 0; i < map_num; i++)al_destroy_bitmap(maps[i]);
-    for(int i = 0; i < 20; i++)al_destroy_bitmap(bonus[i]);
+    for(int i = 0; i < bonus_frames; i++)al_destroy_bitmap(bonus[i]);
     for(int i = 0; i < 2; i++)al_destroy_bitmap(pause[i]);
     for(int i = 0; i < 4; i++){
         for(int j = 0;j < 2; j++)al_destroy_bitmap(controller[i][j]);

@@ -12,7 +12,7 @@
 #include <string>
 
 #define bonus_frames 20
-#define map_num 2
+#define map_num 3
 
 #define DEFAULT_BUTTON 0
 #define PAUSE_BUTTON 1
@@ -43,6 +43,7 @@ private:
     ALLEGRO_BITMAP* cur_controller[4];
     ALLEGRO_BITMAP* controller[4][2];
     ALLEGRO_BITMAP* pause[2];
+    ALLEGRO_BITMAP* text = NULL;
 
     int cur_menu = 0;
     int cur_bot = 0;

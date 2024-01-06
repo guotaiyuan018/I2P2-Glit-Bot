@@ -54,6 +54,14 @@ public:
         start_damaged = true;
     }
 
+    void heal(int counter)
+    {
+        if(!(counter%150))
+        {
+            if(hero_hp < 10) hero_hp++;
+        }
+    }
+
     int getHP() { return hero_hp; }
     int getNAME() { return static_cast<int>(my_name); }
 

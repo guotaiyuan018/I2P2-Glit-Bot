@@ -69,6 +69,8 @@ Monster *game_window::create_monster(int x, int y, int monster_type)
 
 void game_window::set_enemy(int stage_num)
 {
+    portal = new Portal();
+
     for (int i = 0; i < (stage_num) * 2 + 2; i++)
     {
         int monster_type = (stage_num == 0) ? 2 : rand() % 2;
@@ -89,8 +91,6 @@ void game_window::game_begin()
     DC->get_Hero().emplace_front(h);
 
     set_enemy(cur_stage);
-
-    portal = new Portal();
 
     al_flip_display();
     al_start_timer(timer);
@@ -146,6 +146,8 @@ int game_window::game_update()
 
         DC->get_Hero().front()->Update();
 
+        if(healing) DC->get_Hero().front()->heal(counter);
+
         for (int i = 0; i < bulletSet.size(); i++)
         {
             bool isReachEnd = false;
@@ -196,19 +198,22 @@ int game_window::game_update()
             }
         }
 
-        if (monsterSet.empty())
+        if (monsterSet.empty() && cur_stage != 2)
             stage_clear = true;
         else
             stage_clear = false;
 
-        if (stage_clear && cur_stage < STAGE_NUM)
+        if (cur_stage < STAGE_NUM)
         {
-            if (enter_portal)
+            if(cur_stage == 2 || stage_clear)
             {
-                cur_stage++;
-                if (cur_stage != 2)
-                    set_enemy(cur_stage);
-                enter_portal = false;
+                if (enter_portal)
+                {
+                    cur_stage++;
+                    if (cur_stage != 2)
+                        set_enemy(cur_stage);
+                    enter_portal = false;
+                }
             }
         }
     }
@@ -227,7 +232,7 @@ int game_window::process_event()
         if (event.timer.source == timer)
         {
             frame_update = true;
-            anime_counter = (anime_counter + 1);
+            counter = (counter + 1);
             if (cur_scene == BATTLE_SCENE && !al_get_timer_started(glitch_timer))
             {
                 al_start_timer(glitch_timer);
@@ -304,14 +309,17 @@ void game_window::draw_scene()
 {
     al_clear_to_color(al_map_rgb(100, 100, 100));
 
-    scene_manager->draw_background(get_anime_counter());
+    scene_manager->draw_background(counter);
 
     if (cur_scene == BATTLE_SCENE)
     {
         al_set_mouse_cursor(display, crosshair);
 
-        if (stage_clear)
+        if (stage_clear || cur_stage == 2)
+        {
             portal->Draw();
+        }
+
 
         for (vector<Bullet *>::iterator it = bulletSet.begin(); it != bulletSet.end(); it++)
             (*it)->Draw();

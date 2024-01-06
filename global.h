@@ -22,6 +22,7 @@ extern bool key_state[ALLEGRO_KEY_MAX];
 extern bool mouse_down;
 extern bool start_atk;
 extern bool game_mute;
+extern bool healing;
 extern int hero_x;
 extern int hero_y;
 extern int cur_scene;

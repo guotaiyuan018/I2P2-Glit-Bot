@@ -13,7 +13,7 @@
 #include "Monster.h"
 #include "Portal.h"
 
-#define STAGE_NUM 2
+#define STAGE_NUM 3
 
 #define GAME_INIT -1
 #define GAME_LOADING 0
@@ -53,8 +53,6 @@ public:
     void game_destroy();
     void show_err_msg(int msg);
 
-    int get_anime_counter() { return anime_counter; }
-
     Bullet *create_bullet(int, int, int);
     Monster *create_monster(int, int, int);
 
@@ -77,7 +75,7 @@ private:
 
     int Monster_Pro_Count = 0;
     int Bullet_Pro_Count = 0;
-    int anime_counter = 0;
+    int counter = 0;
 
     vector<Bullet *> &bulletSet = DC->get_Bullet();
     vector<Monster *> &monsterSet = DC->get_Monster();
