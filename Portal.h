@@ -9,6 +9,9 @@
 #include "Circle.h"
 #include "global.h"
 
+#define PORTAL_WIDTH 171
+#define PORTAL_HEIGHT 193
+
 class Portal : public Object
 {
 public:

@@ -10,7 +10,7 @@ const int draw_frequency = 10;
 
 Hero::Hero()
 {
-    this->circle = new Circle(window_width / 2 - HERO_WIDTH / 2, window_height / 2 - HERO_HEIGHT / 2, 80);
+    this->circle = new Circle(window_width / 2, window_height / 2, 40);
 
     imgCount[HeroDirection::LEFT][HeroState::MOVE] = 8;
     imgCount[HeroDirection::LEFT][HeroState::IDLE] = 2;
@@ -104,7 +104,7 @@ void Hero::Update()
     if (!mouse_down)
         fired = true, shooted = false;
 
-    hero_x = x + HERO_WIDTH / 2, hero_y = y + HERO_HEIGHT / 2;
+    hero_x = x, hero_y = y;
     // hero_x = x, hero_y = y;
 }
 
@@ -128,5 +128,5 @@ void Hero::Draw()
             shooted = false;
         }
     }
-    al_draw_bitmap(imgData[my_name][direction][state][sprite_pos], x, y, 0);
+    al_draw_bitmap(imgData[my_name][direction][state][sprite_pos], x - HERO_WIDTH/2, y - HERO_HEIGHT/2, 0);
 }
