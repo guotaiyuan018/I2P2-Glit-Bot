@@ -294,7 +294,6 @@ void game_window::draw_scene()
         for (vector<Monster *>::iterator it = monsterSet.begin(); it != monsterSet.end(); it++)
             (*it)->Draw();
 
-        DC->get_Hero().front()->Draw();
 
     }
     else
