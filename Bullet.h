@@ -34,6 +34,7 @@ protected:
     int speed = 15;
     float direction_x, direction_y;
     int bullet_num = 3;
+    float bulletAngle = 0;
     BulletType my_type = BulletType::ROUND;
     ALLEGRO_BITMAP *imgData;
 };

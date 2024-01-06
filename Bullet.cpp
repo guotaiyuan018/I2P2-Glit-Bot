@@ -24,6 +24,7 @@ Bullet::Bullet(int mouse_x, int mouse_y, int type)
     if (lenth > 0)
         dx /= lenth, dy /= lenth;
     direction_x = dx, direction_y = dy;
+    bulletAngle = atan2(direction_y, direction_x);
 
     // std::cout << "direction_x: " << direction_x << " direction_y: " << direction_y << std::endl;
 }
@@ -47,15 +48,13 @@ bool Bullet::Update()
 
 void Bullet::Draw()
 {
-    bool flip = (direction_x > 0) ? true : false;
+    /*
     if (my_type != BulletType::BEAM)
     {
         al_draw_bitmap(imgData, circle->x, circle->y, flip);
     }
-    else
-    {
-        float bulletAngle = ;
-        al_draw_rotated_bitmap(imgData, al_get_bitmap_width(imgData) / 2, al_get_bitmap_height(imgData) / 2,
-                               circle->x, circle->y, ALLEGRO_DEGREES_TO_RADIANS(bulletAngle), flip);
-    }
+    */
+
+    al_draw_rotated_bitmap(imgData, al_get_bitmap_width(imgData) / 2, al_get_bitmap_height(imgData) / 2,
+                           circle->x, circle->y, bulletAngle, 1);
 }

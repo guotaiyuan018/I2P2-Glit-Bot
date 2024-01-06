@@ -4,7 +4,7 @@
 	<cmath>
 	<iostream>
 
-1704558705 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\bullet.h
+1704559751 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\bullet.h
 	<stdio.h>
 	<utility>
 	<map>
@@ -387,12 +387,12 @@
 
 1704261053 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\scene_classes\end_scene.cpp
 
-1704553168 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\scene_classes\game_scene.cpp
+1704559343 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\scene_classes\game_scene.cpp
 	"game_scene.h"
 	<iostream>
 	<map>
 
-1704553168 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\scene_classes\game_scene.h
+1704559343 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\scene_classes\game_scene.h
 	<allegro5/allegro.h>
 	<allegro5/allegro_image.h>
 	<allegro5/allegro_audio.h>
@@ -420,11 +420,11 @@
 	<map>
 	<string>
 
-1704558693 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\hero.cpp
+1704559005 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\hero.cpp
 	"Hero.h"
 	<iostream>
 
-1704379023 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\scene_manager.cpp
+1704559343 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\scene_manager.cpp
 	"scene_manager.h"
 	<stdio.h>
 	<vector>
@@ -459,7 +459,7 @@
 	<vector>
 	<map>
 
-1704555068 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\game_window.h
+1704559343 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\game_window.h
 	<allegro5/allegro.h>
 	<allegro5/allegro_image.h>
 	<vector>
@@ -472,7 +472,7 @@
 	"Monster.h"
 	"Portal.h"
 
-1704557991 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\game_window.cpp
+1704559674 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\game_window.cpp
 	"game_window.h"
 	"DataCenter.h"
 	<iostream>
