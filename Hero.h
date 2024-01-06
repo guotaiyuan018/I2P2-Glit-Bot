@@ -54,6 +54,9 @@ public:
         start_damaged = true;
     }
 
+    int getHP() { return hero_hp; }
+    int getNAME() { return static_cast<int>(my_name); }
+
 private:
     int HERO_WIDTH = 448, HERO_HEIGHT = 448;
     int x, y;

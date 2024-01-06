@@ -214,6 +214,7 @@ int game_window::game_update()
                 cur_stage++;
                 set_enemy(cur_stage);
                 enter_portal = false;
+                cout << enter_portal << endl;
             }
         }
     }

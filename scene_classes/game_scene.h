@@ -5,6 +5,8 @@
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_audio.h>
 #include "../global.h"
+#include "../Hero.h"
+#include "../DataCenter.h"
 #include <vector>
 #include <map>
 #include <string>
