@@ -13,8 +13,11 @@ game_window::game_window()
     display = al_create_display(window_width, window_height);
     event_queue = al_create_event_queue();
     timer = al_create_timer(1.0 / FPS);
+    glitch_timer = al_create_timer(5);
 
     if (!timer)
+        show_err_msg(-1);
+    if (!glitch_timer)
         show_err_msg(-1);
 
     al_init_image_addon();
@@ -27,6 +30,7 @@ game_window::game_window()
     al_register_event_source(event_queue, al_get_keyboard_event_source());
     al_register_event_source(event_queue, al_get_mouse_event_source());
     al_register_event_source(event_queue, al_get_timer_event_source(timer));
+    al_register_event_source(event_queue, al_get_timer_event_source(glitch_timer));
 
     al_set_window_title(display, "Glit-Bot");
 
@@ -205,8 +209,20 @@ int game_window::process_event()
 
     if (event.type == ALLEGRO_EVENT_TIMER)
     {
-        frame_update = true;
-        anime_counter = (anime_counter + 1) % title_frames;
+        if (event.timer.source == timer)
+        {
+            frame_update = true;
+            anime_counter = (anime_counter + 1) % title_frames;
+            if (cur_scene == BATTLE_SCENE && !al_get_timer_started(glitch_timer))
+            {
+                al_start_timer(glitch_timer);
+            }
+        }
+        else if (event.timer.source == glitch_timer)
+        {
+            if (rand() % 10)
+                heroSet.front()->Glitch(rand() % 3);
+        }
     }
     else if (event.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
     {
@@ -217,7 +233,6 @@ int game_window::process_event()
         if (event.mouse.button == 1)
         {
             mouse_down = true;
-            heroSet.front()->Glitch();
             scene_manager->change_scene();
             if (exit_game)
                 game_destroy();
@@ -293,8 +308,6 @@ void game_window::draw_scene()
 
         for (vector<Monster *>::iterator it = monsterSet.begin(); it != monsterSet.end(); it++)
             (*it)->Draw();
-
-
     }
     else
         al_set_mouse_cursor(display, cursor);

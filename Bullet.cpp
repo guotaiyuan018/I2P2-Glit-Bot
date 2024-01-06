@@ -4,7 +4,7 @@
 
 Bullet::Bullet(int mouse_x, int mouse_y)
 {
-    this->circle = new Circle(hero_x, hero_y, 28);
+    this->circle = new Circle(hero_x, hero_y, 15);
 
     char filename[50];
     sprintf(filename, "./Bullet/bullet.png");

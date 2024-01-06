@@ -59,7 +59,7 @@ void Hero::Update()
     {
         if (key_state[ALLEGRO_KEY_W])
         {
-            if (y > -100)
+            if (y > 0)
             {
                 this->circle->y -= speed;
                 state = HeroState::MOVE;
@@ -67,7 +67,7 @@ void Hero::Update()
         }
         if (key_state[ALLEGRO_KEY_S])
         {
-            if (y < 700)
+            if (y < window_height)
             {
                 this->circle->y += speed;
                 state = HeroState::MOVE;
@@ -75,7 +75,7 @@ void Hero::Update()
         }
         if (key_state[ALLEGRO_KEY_A])
         {
-            if (x > -100)
+            if (x > 0)
             {
                 this->circle->x -= speed;
                 state = HeroState::MOVE;
@@ -83,7 +83,7 @@ void Hero::Update()
         }
         if (key_state[ALLEGRO_KEY_D])
         {
-            if (x < 1000)
+            if (x < window_width)
             {
                 this->circle->x += speed;
                 state = HeroState::MOVE;
@@ -111,10 +111,13 @@ void Hero::Update()
     // hero_x = x, hero_y = y;
 }
 
-void Hero::Glitch()
+void Hero::Glitch(int name)
 {
-    my_name = static_cast<HeroName>(hero_x % sizeof(hero_name) / sizeof(hero_name[0]));
-    state = HeroState::GLITCH;
+    if (my_name != static_cast<HeroName>(name))
+    {
+        my_name = static_cast<HeroName>(name);
+        state = HeroState::GLITCH;
+    }
 }
 
 void Hero::Draw()
@@ -131,7 +134,7 @@ void Hero::Draw()
             shooted = false;
         }
     }
-    if (state == HeroState::GLITCH && sprite_pos == 0)
+    if (state == HeroState::GLITCH && sprite_pos == imgCount[direction][state] - 1)
         state = HeroState::IDLE;
 
     sprite_pos = (sprite_pos >= imgCount[direction][state]) ? sprite_pos % imgCount[direction][state] : sprite_pos;
