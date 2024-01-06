@@ -10,7 +10,7 @@ Bullet::Bullet(int mouse_x, int mouse_y, int type)
     my_type = static_cast<BulletType>(type);
 
     if (my_type == BulletType::BEAM)
-        speed = 90;
+        speed = 30;
 
     char filename[50];
     sprintf(filename, "./Bullet/%s.png", bullet_name[type]);
