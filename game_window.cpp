@@ -55,9 +55,9 @@ void game_window::game_init()
     scene_manager->load_scenes();
 }
 
-Bullet *game_window::create_bullet(int x, int y)
+Bullet *game_window::create_bullet(int x, int y, int type)
 {
-    Bullet *b = new Bullet(x, y);
+    Bullet *b = new Bullet(x, y, type);
     return b;
 }
 
@@ -69,19 +69,18 @@ Monster *game_window::create_monster(int x, int y, int monster_type)
 
 void game_window::set_enemy(int stage_num)
 {
-    for (int i = 0; i < (stage_num + 1) * 2 + 2; i++)
+    for (int i = 0; i < (stage_num) * 2 + 1; i++)
     {
+
         int monster_type = (stage_num == 0) ? 2 : rand() % 2;
         int loc_x = rand() % window_width;
-        /*while (loc_x < 800 || loc_x > 400)
-        {
-            loc_x = rand() % window_width;
-        }*/
+        /*
+        while (loc_x > 400 && loc_x < 800)
+        int loc_x = rand() % window_width;
+        while (loc_y > 300 && loc_y < 600)
+        int loc_y = rand() % window_height;
+        */
 
-        /*while (loc_y < 600 || loc_y > 300)
-        {
-            loc_y = rand() % window_width;
-        }*/
         int loc_y = rand() % window_height;
 
         Monster *m = create_monster(loc_x, loc_y, monster_type);
@@ -241,7 +240,7 @@ int game_window::process_event()
         }
         else if (event.timer.source == glitch_timer)
         {
-            if (rand() % 10)
+            if (rand() % 100)
                 heroSet.front()->Glitch(rand() % 3);
         }
     }
@@ -289,7 +288,7 @@ int game_window::process_event()
             if (!start_atk)
             {
                 heroSet.front()->Attack();
-                Bullet *t = game_window::create_bullet(mouse_x, mouse_y);
+                Bullet *t = game_window::create_bullet(mouse_x, mouse_y, 0);
                 bulletSet.push_back(t);
             }
         }

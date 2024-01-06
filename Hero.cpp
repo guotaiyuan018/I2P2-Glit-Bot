@@ -61,6 +61,10 @@ void Hero::Update()
     {
         if (start_atk || start_damaged)
         {
+            if (key_state[ALLEGRO_KEY_LSHIFT])
+                speed = 7;
+            else
+                speed = 5;
             if (key_state[ALLEGRO_KEY_W])
             {
                 if (y > 0)
@@ -152,16 +156,19 @@ void Hero::Glitch(int name)
         state = HeroState::GLITCH;
         sprite_pos = 0;
         start_glitch = true;
-        start_glitch = false;
+        start_damaged = false;
         start_atk = false;
     }
 }
 
 void Hero::Attack()
 {
-    state = HeroState::ATTACK;
-    sprite_pos = 0;
-    start_atk = true;
+    if (!start_glitch)
+    {
+        state = HeroState::ATTACK;
+        sprite_pos = 0;
+        start_atk = true;
+    }
 }
 
 void Hero::Draw()

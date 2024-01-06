@@ -24,30 +24,28 @@ Monster::Monster(int x, int y, int name)
     imgCount[MonsterName::EYEBALL][MonsterDirection::LEFT][MonsterState::DAMAGED] = imgCount[MonsterName::EYEBALL][MonsterDirection::RIGHT][MonsterState::DAMAGED] = 6;
     imgCount[MonsterName::EYEBALL][MonsterDirection::LEFT][MonsterState::MOVE] = imgCount[MonsterName::EYEBALL][MonsterDirection::RIGHT][MonsterState::MOVE] = 8;
 
-    imgCount[MonsterName::EXPLODER][MonsterDirection::LEFT][MonsterState::ATTACK] = imgCount[MonsterName::EXPLODER][MonsterDirection::RIGHT][MonsterState::ATTACK] = 14;
-    imgCount[MonsterName::EXPLODER][MonsterDirection::LEFT][MonsterState::DEAD] = imgCount[MonsterName::EXPLODER][MonsterDirection::RIGHT][MonsterState::DEAD] = 12;
+    imgCount[MonsterName::EXPLODER][MonsterDirection::LEFT][MonsterState::ATTACK] = imgCount[MonsterName::EXPLODER][MonsterDirection::RIGHT][MonsterState::ATTACK] = 0;
+    imgCount[MonsterName::EXPLODER][MonsterDirection::LEFT][MonsterState::DEAD] = imgCount[MonsterName::EXPLODER][MonsterDirection::RIGHT][MonsterState::DEAD] = 16;
     imgCount[MonsterName::EXPLODER][MonsterDirection::LEFT][MonsterState::DAMAGED] = imgCount[MonsterName::EXPLODER][MonsterDirection::RIGHT][MonsterState::DAMAGED] = 6;
     imgCount[MonsterName::EXPLODER][MonsterDirection::LEFT][MonsterState::MOVE] = imgCount[MonsterName::EXPLODER][MonsterDirection::RIGHT][MonsterState::MOVE] = 6;
 
     char buffer[50];
-    for (int l = 0; l < sizeof(mon_name) / sizeof(mon_name[0]); l++)
+
+    for (int i = 0; i < sizeof(state_name) / sizeof(state_name[0]); i++)
     {
-        for (int i = 0; i < sizeof(state_name) / sizeof(state_name[0]); i++)
+        for (int k = 0; k < 2; k++)
         {
-            for (int k = 0; k < 2; k++)
+            for (int j = 0; j < imgCount[my_name][static_cast<MonsterDirection>(k)][static_cast<MonsterState>(i)]; j++)
             {
-                for (int j = 0; j < imgCount[static_cast<MonsterName>(l)][static_cast<MonsterDirection>(k)][static_cast<MonsterState>(i)]; j++)
+                ALLEGRO_BITMAP *img;
+                sprintf(buffer, "./Monster/%s/MONSTER_%s_%s_%d.png", mon_name[static_cast<int>(my_name)], dir_name[k], state_name[i], j + 1);
+                img = al_load_bitmap(buffer);
+                if (img)
                 {
-                    ALLEGRO_BITMAP *img;
-                    sprintf(buffer, "./Monster/%s/MONSTER_%s_%s_%d.png", mon_name[l], dir_name[k], state_name[i], j + 1);
-                    img = al_load_bitmap(buffer);
-                    if (img)
-                    {
-                        imgData[static_cast<MonsterName>(l)][static_cast<MonsterDirection>(k)][static_cast<MonsterState>(i)].push_back(img);
-                    }
-                    else
-                        std::cout << buffer << std::endl;
+                    imgData[my_name][static_cast<MonsterDirection>(k)][static_cast<MonsterState>(i)].push_back(img);
                 }
+                else
+                    std::cout << buffer << std::endl;
             }
         }
     }
@@ -89,7 +87,8 @@ void Monster::Update()
     {
         if (lenth < 300)
         {
-            state = MonsterState::ATTACK;
+            if (my_name != MonsterName::EXPLODER)
+                state = MonsterState::ATTACK;
             if (my_name == MonsterName::EYEBALL)
                 speed = 4;
         }

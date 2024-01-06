@@ -55,7 +55,7 @@ public:
 
     int get_anime_counter() { return anime_counter; }
 
-    Bullet *create_bullet(int, int);
+    Bullet *create_bullet(int, int, int);
     Monster *create_monster(int, int, int);
 
 private:
