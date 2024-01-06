@@ -74,7 +74,6 @@ void game_window::set_enemy()
 
 void game_window::game_begin()
 {
-
     cur_stage = 0;
 
     Hero *h = new Hero();
@@ -180,15 +179,15 @@ int game_window::game_update()
 
         if (stage_clear && cur_stage < STAGE_NUM)
         {
-            cout << "next stage\n";
-            Portal* p = new Portal();
-            bool enter_portal = p->getCircle()->isOverlap(p->getCircle(), heroSet.front()->getCircle());
+
+            portal = new Portal();
+            bool enter_portal = portal->getCircle()->isOverlap(portal->getCircle(), heroSet.front()->getCircle());
 
             if(enter_portal)
             {
                 cur_stage++;
                 set_enemy();
-                delete p;
+                //delete portal;
                 enter_portal = false;
             }
         }
@@ -275,7 +274,6 @@ int game_window::process_event()
 
 void game_window::draw_scene()
 {
-    cout << "d\n";
     al_clear_to_color(al_map_rgb(100, 100, 100));
 
     scene_manager->draw_background(get_anime_counter());
@@ -284,6 +282,8 @@ void game_window::draw_scene()
     {
         al_set_mouse_cursor(display, crosshair);
 
+        if(stage_clear) portal->Draw();
+
         for (vector<Bullet *>::iterator it = bulletSet.begin(); it != bulletSet.end(); it++)
             (*it)->Draw();
 
@@ -291,6 +291,7 @@ void game_window::draw_scene()
             (*it)->Draw();
 
         DC->get_Hero().front()->Draw();
+
     }
     else
         al_set_mouse_cursor(display, cursor);

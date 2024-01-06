@@ -10,9 +10,7 @@ const int draw_frequency = 10;
 
 Hero::Hero()
 {
-    x = window_width / 2 - HERO_WIDTH / 2;
-    y = window_height / 2 - HERO_HEIGHT / 2;
-    this->circle = new Circle(x, y, 128);
+    this->circle = new Circle(window_width / 2 - HERO_WIDTH / 2, window_height / 2 - HERO_HEIGHT / 2, 80);
 
     imgCount[HeroDirection::LEFT][HeroState::MOVE] = 8;
     imgCount[HeroDirection::LEFT][HeroState::IDLE] = 2;
@@ -50,6 +48,9 @@ Hero::Hero()
 
 void Hero::Update()
 {
+    x = this->circle->x;
+    y = this->circle->y;
+
     counter = (counter + 1) % draw_frequency;
     if (counter == 0)
         sprite_pos = (sprite_pos + 1) % imgCount[direction][state];
@@ -58,7 +59,7 @@ void Hero::Update()
     {
         if (y > -100)
         {
-            y -= speed;
+            this->circle->y -= speed;
             state = HeroState::MOVE;
         }
     }
@@ -66,7 +67,7 @@ void Hero::Update()
     {
         if (y < 700)
         {
-            y += speed;
+            this->circle->y += speed;
             state = HeroState::MOVE;
         }
     }
@@ -74,7 +75,7 @@ void Hero::Update()
     {
         if (x > -100)
         {
-            x -= speed;
+            this->circle->x -= speed;
             state = HeroState::MOVE;
         }
     }
@@ -82,7 +83,7 @@ void Hero::Update()
     {
         if (x < 1000)
         {
-            x += speed;
+            this->circle->x += speed;
             state = HeroState::MOVE;
         }
     }

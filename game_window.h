@@ -82,6 +82,8 @@ private:
     vector<Monster *> &monsterSet = DC->get_Monster();
     list<Hero *> &heroSet = DC->get_Hero();
 
+    Portal* portal = NULL;
+
     bool frame_update = false;
 };
 
