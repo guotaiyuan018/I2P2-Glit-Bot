@@ -16,17 +16,17 @@ Monster::Monster(int x, int y, int name)
 
     imgCount[MonsterName::ZAPPER][MonsterDirection::LEFT][MonsterState::ATTACK] = imgCount[MonsterName::ZAPPER][MonsterDirection::RIGHT][MonsterState::ATTACK] = 10;
     imgCount[MonsterName::ZAPPER][MonsterDirection::LEFT][MonsterState::DEAD] = imgCount[MonsterName::ZAPPER][MonsterDirection::RIGHT][MonsterState::DEAD] = 16;
-    imgCount[MonsterName::ZAPPER][MonsterDirection::LEFT][MonsterState::DAMAGED] = imgCount[MonsterName::ZAPPER][MonsterDirection::RIGHT][MonsterState::DAMAGED] = 2;
+    imgCount[MonsterName::ZAPPER][MonsterDirection::LEFT][MonsterState::DAMAGED] = imgCount[MonsterName::ZAPPER][MonsterDirection::RIGHT][MonsterState::DAMAGED] = 6;
     imgCount[MonsterName::ZAPPER][MonsterDirection::LEFT][MonsterState::MOVE] = imgCount[MonsterName::ZAPPER][MonsterDirection::RIGHT][MonsterState::MOVE] = 6;
 
     imgCount[MonsterName::EYEBALL][MonsterDirection::LEFT][MonsterState::ATTACK] = imgCount[MonsterName::EYEBALL][MonsterDirection::RIGHT][MonsterState::ATTACK] = 11;
     imgCount[MonsterName::EYEBALL][MonsterDirection::LEFT][MonsterState::DEAD] = imgCount[MonsterName::EYEBALL][MonsterDirection::RIGHT][MonsterState::DEAD] = 12;
-    imgCount[MonsterName::EYEBALL][MonsterDirection::LEFT][MonsterState::DAMAGED] = imgCount[MonsterName::EYEBALL][MonsterDirection::RIGHT][MonsterState::DAMAGED] = 2;
+    imgCount[MonsterName::EYEBALL][MonsterDirection::LEFT][MonsterState::DAMAGED] = imgCount[MonsterName::EYEBALL][MonsterDirection::RIGHT][MonsterState::DAMAGED] = 6;
     imgCount[MonsterName::EYEBALL][MonsterDirection::LEFT][MonsterState::MOVE] = imgCount[MonsterName::EYEBALL][MonsterDirection::RIGHT][MonsterState::MOVE] = 8;
 
     imgCount[MonsterName::EXPLODER][MonsterDirection::LEFT][MonsterState::ATTACK] = imgCount[MonsterName::EXPLODER][MonsterDirection::RIGHT][MonsterState::ATTACK] = 14;
     imgCount[MonsterName::EXPLODER][MonsterDirection::LEFT][MonsterState::DEAD] = imgCount[MonsterName::EXPLODER][MonsterDirection::RIGHT][MonsterState::DEAD] = 12;
-    imgCount[MonsterName::EXPLODER][MonsterDirection::LEFT][MonsterState::DAMAGED] = imgCount[MonsterName::EXPLODER][MonsterDirection::RIGHT][MonsterState::DAMAGED] = 2;
+    imgCount[MonsterName::EXPLODER][MonsterDirection::LEFT][MonsterState::DAMAGED] = imgCount[MonsterName::EXPLODER][MonsterDirection::RIGHT][MonsterState::DAMAGED] = 6;
     imgCount[MonsterName::EXPLODER][MonsterDirection::LEFT][MonsterState::MOVE] = imgCount[MonsterName::EXPLODER][MonsterDirection::RIGHT][MonsterState::MOVE] = 6;
 
     char buffer[50];
@@ -77,29 +77,36 @@ void Monster::Update()
     this->circle->x += dx * speed;
     this->circle->y += dy * speed;
 
-    if (lenth < 300)
-    {
-        state = MonsterState::ATTACK;
-        if (my_name == MonsterName::EYEBALL)
-            speed = 4;
-    }
-
-    else
-    {
-        state = MonsterState::MOVE;
-        speed = 2;
-    }
-
     if (hp < 0)
     {
+        if (!start_death)
+            sprite_pos = 0;
+        start_death = true;
         state = MonsterState::DEAD;
         speed = 0;
+    }
+    else if (!start_damaged)
+    {
+        if (lenth < 300)
+        {
+            state = MonsterState::ATTACK;
+            if (my_name == MonsterName::EYEBALL)
+                speed = 4;
+        }
+
+        else
+        {
+            state = MonsterState::MOVE;
+            speed = 2;
+        }
     }
 }
 void Monster::Draw()
 {
     if (sprite_pos == imgCount[my_name][direction][state] - 1 && state == MonsterState::DEAD)
         is_dead = true;
+    if (sprite_pos == imgCount[my_name][direction][state] - 1 && state == MonsterState::DAMAGED)
+        start_damaged = false;
 
     sprite_pos = (sprite_pos >= imgCount[my_name][direction][state]) ? sprite_pos % imgCount[my_name][direction][state] : sprite_pos;
 

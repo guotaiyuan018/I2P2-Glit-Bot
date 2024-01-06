@@ -38,14 +38,19 @@ class Monster : public Object
 public:
     Monster(int, int, int);
     void Update();
-    void Damaged()
+    void Damaged(int damage_val)
     {
-        hp -= 1;
-        std::cout << "hp: " << hp << std::endl;
-        std::cout << "isdead: " << is_dead << std::endl;
+        hp -= damage_val;
+        if (hp > 0)
+        {
+            state = MonsterState::DAMAGED;
+            sprite_pos = 0;
+            start_damaged = true;
+        }
     }
     void Draw();
     int getHP() { return this->hp; }
+    bool getDying() { return start_death; }
     bool getDead() { return is_dead; }
 
 private:
@@ -56,6 +61,8 @@ private:
     int hp = 10;
     int attack_range = 10;
     bool is_dead = false;
+    bool start_death = false;
+    bool start_damaged = false;
     MonsterName my_name = MonsterName::EXPLODER;
     MonsterState state = MonsterState::MOVE;
     MonsterDirection direction = MonsterDirection::RIGHT;

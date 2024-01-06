@@ -7,8 +7,7 @@ bool stage_clear = false;
 bool key_state[ALLEGRO_KEY_MAX];
 bool mouse_down = false;
 
-bool fired = true;
-bool shooted = false;
+bool start_atk = false;
 
 bool game_mute = false;
 

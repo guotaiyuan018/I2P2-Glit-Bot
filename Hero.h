@@ -1,6 +1,7 @@
 #ifndef HERO_H_INCLUDED
 #define HERO_H_INCLUDED
 
+#include <iostream>
 #include <stdio.h>
 #include <string.h>
 #include <allegro5/allegro.h>
@@ -22,7 +23,8 @@ enum class HeroState
     MOVE,
     IDLE,
     ATTACK,
-    GLITCH
+    GLITCH,
+    DAMAGED
 };
 
 enum class HeroName
@@ -38,8 +40,19 @@ public:
     Hero();
     void Update();
     void Draw();
+    void Attack();
     void Glitch(int);
-    void Damaged(int damage) { hero_hp -= damage; }
+    void Damaged(int damage)
+    {
+        if (!start_damaged)
+        {
+            std::cout << hero_hp << std::endl;
+            hero_hp -= damage;
+            sprite_pos = 0;
+            state = HeroState::DAMAGED;
+        }
+        start_damaged = true;
+    }
 
 private:
     int HERO_WIDTH = 448, HERO_HEIGHT = 448;
@@ -48,6 +61,8 @@ private:
     int sprite_pos = 1;
     int speed = 5;
     int hero_hp = 10;
+    bool start_glitch = false;
+    bool start_damaged = false;
     HeroDirection direction = HeroDirection::RIGHT;
     HeroState state = HeroState::IDLE;
     HeroName my_name = HeroName::BEAM;

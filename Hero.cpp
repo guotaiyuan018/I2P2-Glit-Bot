@@ -2,7 +2,7 @@
 #include <iostream>
 
 const char dir_name[][100] = {"LEFT", "RIGHT"};
-const char state_name[][100] = {"MOVE", "IDLE", "ATTACK", "GLITCH"};
+const char state_name[][100] = {"MOVE", "IDLE", "ATTACK", "GLITCH", "DAMAGED"};
 const char hero_name[][100] = {"BULLET", "BLADE", "BEAM"};
 
 // set counter frequency of drawing moving animation
@@ -10,16 +10,18 @@ const int draw_frequency = 10;
 
 Hero::Hero()
 {
-    this->circle = new Circle(window_width / 2, window_height / 2, 40);
+    this->circle = new Circle(window_width / 2, window_height / 2, 20);
 
     imgCount[HeroDirection::LEFT][HeroState::MOVE] = 8;
     imgCount[HeroDirection::LEFT][HeroState::IDLE] = 2;
     imgCount[HeroDirection::LEFT][HeroState::ATTACK] = 4;
     imgCount[HeroDirection::LEFT][HeroState::GLITCH] = 5;
+    imgCount[HeroDirection::LEFT][HeroState::DAMAGED] = 6;
     imgCount[HeroDirection::RIGHT][HeroState::MOVE] = 8;
     imgCount[HeroDirection::RIGHT][HeroState::IDLE] = 2;
     imgCount[HeroDirection::RIGHT][HeroState::ATTACK] = 4;
     imgCount[HeroDirection::RIGHT][HeroState::GLITCH] = 5;
+    imgCount[HeroDirection::RIGHT][HeroState::DAMAGED] = 6;
 
     char buffer[50];
 
@@ -55,56 +57,87 @@ void Hero::Update()
     if (counter == 0)
         sprite_pos = (sprite_pos + 1) % imgCount[direction][state];
 
-    if (state != HeroState::GLITCH)
+    if (!start_glitch)
     {
-        if (key_state[ALLEGRO_KEY_W])
+        if (start_atk || start_damaged)
         {
-            if (y > 0)
+            if (key_state[ALLEGRO_KEY_W])
             {
-                this->circle->y -= speed;
-                state = HeroState::MOVE;
+                if (y > 0)
+                {
+                    this->circle->y -= speed;
+                }
+            }
+            if (key_state[ALLEGRO_KEY_S])
+            {
+                if (y < window_height)
+                {
+                    this->circle->y += speed;
+                }
+            }
+            if (key_state[ALLEGRO_KEY_A])
+            {
+                if (x > 0)
+                {
+                    this->circle->x -= speed;
+                }
+            }
+            if (key_state[ALLEGRO_KEY_D])
+            {
+                if (x < window_width)
+                {
+                    this->circle->x += speed;
+                }
             }
         }
-        if (key_state[ALLEGRO_KEY_S])
+        else
         {
-            if (y < window_height)
-            {
-                this->circle->y += speed;
-                state = HeroState::MOVE;
-            }
-        }
-        if (key_state[ALLEGRO_KEY_A])
-        {
-            if (x > 0)
-            {
-                this->circle->x -= speed;
-                state = HeroState::MOVE;
-            }
-        }
-        if (key_state[ALLEGRO_KEY_D])
-        {
-            if (x < window_width)
-            {
-                this->circle->x += speed;
-                state = HeroState::MOVE;
-            }
-        }
+            if (key_state[ALLEGRO_KEY_LSHIFT])
+                speed = 7;
+            else
+                speed = 5;
 
-        if (mouse_down)
-        {
-            state = HeroState::ATTACK;
-        }
+            if (key_state[ALLEGRO_KEY_W])
+            {
+                if (y > 0)
+                {
+                    this->circle->y -= speed;
+                }
+            }
+            if (key_state[ALLEGRO_KEY_S])
+            {
+                if (y < window_height)
+                {
+                    this->circle->y += speed;
+                }
+            }
+            if (key_state[ALLEGRO_KEY_A])
+            {
+                if (x > 0)
+                {
+                    this->circle->x -= speed;
+                    if (!start_damaged)
+                        state = HeroState::MOVE;
+                }
+            }
+            if (key_state[ALLEGRO_KEY_D])
+            {
+                if (x < window_width)
+                {
+                    this->circle->x += speed;
+                    if (!start_damaged)
+                        state = HeroState::MOVE;
+                }
+            }
 
-        if (!key_state[ALLEGRO_KEY_W] && !key_state[ALLEGRO_KEY_A] && !key_state[ALLEGRO_KEY_S] && !key_state[ALLEGRO_KEY_D] && !mouse_down)
-            state = HeroState::IDLE;
+            if (!key_state[ALLEGRO_KEY_W] && !key_state[ALLEGRO_KEY_A] && !key_state[ALLEGRO_KEY_S] && !key_state[ALLEGRO_KEY_D] && !mouse_down)
+                state = HeroState::IDLE;
+        }
 
         if (x > mouse_x)
             direction = HeroDirection::LEFT;
         else
             direction = HeroDirection::RIGHT;
-
-        if (!mouse_down)
-            fired = true, shooted = false;
     }
 
     hero_x = x, hero_y = y;
@@ -117,25 +150,39 @@ void Hero::Glitch(int name)
     {
         my_name = static_cast<HeroName>(name);
         state = HeroState::GLITCH;
+        sprite_pos = 0;
+        start_glitch = true;
     }
+}
+
+void Hero::Attack()
+{
+    state = HeroState::ATTACK;
+    sprite_pos = 0;
+    start_atk = true;
 }
 
 void Hero::Draw()
 {
-    if (state == HeroState::ATTACK)
+
+    if (sprite_pos == imgCount[direction][state] - 1)
     {
-        if (sprite_pos == 0)
+        if (state == HeroState::GLITCH && start_glitch)
         {
-            fired = true;
+            state = HeroState::IDLE;
+            start_glitch = false;
         }
-        else
+        if (state == HeroState::ATTACK && start_atk)
         {
-            fired = false;
-            shooted = false;
+            state = HeroState::IDLE;
+            start_atk = false;
+        }
+        if (state == HeroState::DAMAGED && start_damaged)
+        {
+            state = HeroState::IDLE;
+            start_damaged = false;
         }
     }
-    if (state == HeroState::GLITCH && sprite_pos == imgCount[direction][state] - 1)
-        state = HeroState::IDLE;
 
     sprite_pos = (sprite_pos >= imgCount[direction][state]) ? sprite_pos % imgCount[direction][state] : sprite_pos;
 

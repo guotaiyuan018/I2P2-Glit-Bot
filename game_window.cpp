@@ -154,26 +154,39 @@ int game_window::game_update()
         }
         for (int i = 0; i < monsterSet.size(); i++)
         {
-            bool isCollide = false;
             monsterSet[i]->Update();
-            bool isDead = monsterSet[i]->getDead();
 
-            if (isDead)
-            {
-                monsterSet.erase(monsterSet.begin() + i);
-                i--;
-            }
-
+            bool isCollide = false;
             for (int j = 0; j < bulletSet.size(); j++)
             {
                 isCollide = monsterSet[i]->getCircle()->isOverlap(monsterSet[i]->getCircle(), bulletSet[j]->getCircle());
                 if (isCollide)
                 {
-                    monsterSet[i]->Damaged();
+                    monsterSet[i]->Damaged(3);
 
                     bulletSet.erase(bulletSet.begin() + j);
                     j--;
                 }
+            }
+
+            bool isDamage = false;
+            if (!isCollide)
+            {
+                bool isDying = monsterSet[i]->getDying();
+                if (!isDying)
+                    isDamage = monsterSet[i]->getCircle()->isOverlap(monsterSet[i]->getCircle(), heroSet.front()->getCircle());
+                if (isDamage)
+                {
+                    monsterSet[i]->Damaged(100);
+                    heroSet.front()->Damaged(1);
+                }
+            }
+
+            bool isDead = monsterSet[i]->getDead();
+            if (isDead)
+            {
+                monsterSet.erase(monsterSet.begin() + i);
+                i--;
             }
         }
 
@@ -265,14 +278,11 @@ int game_window::process_event()
     {
         if (mouse_down)
         {
-            if (fired)
+            if (!start_atk)
             {
-                if (!shooted)
-                {
-                    Bullet *t = game_window::create_bullet(mouse_x, mouse_y);
-                    bulletSet.push_back(t);
-                    shooted = true;
-                }
+                heroSet.front()->Attack();
+                Bullet *t = game_window::create_bullet(mouse_x, mouse_y);
+                bulletSet.push_back(t);
             }
         }
     }
