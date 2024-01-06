@@ -15,7 +15,7 @@ Monster::Monster(int x, int y, int name)
     my_name = static_cast<MonsterName>(name);
 
     imgCount[MonsterName::ZAPPER][MonsterDirection::LEFT][MonsterState::ATTACK] = imgCount[MonsterName::ZAPPER][MonsterDirection::RIGHT][MonsterState::ATTACK] = 10;
-    imgCount[MonsterName::ZAPPER][MonsterDirection::LEFT][MonsterState::DEAD] = imgCount[MonsterName::ZAPPER][MonsterDirection::RIGHT][MonsterState::DEAD] = 6;
+    imgCount[MonsterName::ZAPPER][MonsterDirection::LEFT][MonsterState::DEAD] = imgCount[MonsterName::ZAPPER][MonsterDirection::RIGHT][MonsterState::DEAD] = 16;
     imgCount[MonsterName::ZAPPER][MonsterDirection::LEFT][MonsterState::DAMAGED] = imgCount[MonsterName::ZAPPER][MonsterDirection::RIGHT][MonsterState::DAMAGED] = 2;
     imgCount[MonsterName::ZAPPER][MonsterDirection::LEFT][MonsterState::MOVE] = imgCount[MonsterName::ZAPPER][MonsterDirection::RIGHT][MonsterState::MOVE] = 6;
 
@@ -25,7 +25,7 @@ Monster::Monster(int x, int y, int name)
     imgCount[MonsterName::EYEBALL][MonsterDirection::LEFT][MonsterState::MOVE] = imgCount[MonsterName::EYEBALL][MonsterDirection::RIGHT][MonsterState::MOVE] = 8;
 
     imgCount[MonsterName::EXPLODER][MonsterDirection::LEFT][MonsterState::ATTACK] = imgCount[MonsterName::EXPLODER][MonsterDirection::RIGHT][MonsterState::ATTACK] = 14;
-    imgCount[MonsterName::EXPLODER][MonsterDirection::LEFT][MonsterState::DEAD] = imgCount[MonsterName::EXPLODER][MonsterDirection::RIGHT][MonsterState::DEAD] = 6;
+    imgCount[MonsterName::EXPLODER][MonsterDirection::LEFT][MonsterState::DEAD] = imgCount[MonsterName::EXPLODER][MonsterDirection::RIGHT][MonsterState::DEAD] = 12;
     imgCount[MonsterName::EXPLODER][MonsterDirection::LEFT][MonsterState::DAMAGED] = imgCount[MonsterName::EXPLODER][MonsterDirection::RIGHT][MonsterState::DAMAGED] = 2;
     imgCount[MonsterName::EXPLODER][MonsterDirection::LEFT][MonsterState::MOVE] = imgCount[MonsterName::EXPLODER][MonsterDirection::RIGHT][MonsterState::MOVE] = 6;
 
