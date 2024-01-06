@@ -11,8 +11,8 @@ Portal::Portal()
     x = hero_x + (add ? rx : -rx);
     y = hero_y + (add ? ry : -ry);
 
-    if(x >= 1000) x /= 2;
-    else if(x <= 200) x *= 2;
+    if(x >= 800) x /= 2;
+    else if(x <= 400) x *= 2;
     if(y >= 700) y /= 2;
     else if(x <= 200) y *= 2;
 
