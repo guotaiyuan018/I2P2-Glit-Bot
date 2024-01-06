@@ -52,7 +52,7 @@ private:
     int MONSTER_WIDTH = 192, MONSTER_HEIGHT = 192;
     int sprite_pos = 1;
     int counter = 0;
-    int speed = 3;
+    int speed = 0;
     int hp = 10;
     int attack_range = 10;
     bool is_dead = false;

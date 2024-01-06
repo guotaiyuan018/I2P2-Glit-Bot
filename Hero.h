@@ -38,7 +38,8 @@ public:
     Hero();
     void Update();
     void Draw();
-    void Glitch();
+    void Glitch(int);
+    void Damaged(int damage) { hero_hp -= damage; }
 
 private:
     int HERO_WIDTH = 448, HERO_HEIGHT = 448;
@@ -46,6 +47,7 @@ private:
     int counter = 0;
     int sprite_pos = 1;
     int speed = 5;
+    int hero_hp = 10;
     HeroDirection direction = HeroDirection::RIGHT;
     HeroState state = HeroState::IDLE;
     HeroName my_name = HeroName::BEAM;

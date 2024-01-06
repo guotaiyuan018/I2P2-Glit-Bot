@@ -10,7 +10,7 @@ const int draw_frequency = 10;
 
 Monster::Monster(int x, int y, int name)
 {
-    this->circle = new Circle(x - MONSTER_WIDTH / 2, y - MONSTER_HEIGHT / 2, 90);
+    this->circle = new Circle(x, y, 60);
 
     my_name = static_cast<MonsterName>(name);
 
@@ -77,10 +77,18 @@ void Monster::Update()
     this->circle->x += dx * speed;
     this->circle->y += dy * speed;
 
-    if (lenth < 200)
+    if (lenth < 300)
+    {
         state = MonsterState::ATTACK;
+        if (my_name == MonsterName::EYEBALL)
+            speed = 4;
+    }
+
     else
+    {
         state = MonsterState::MOVE;
+        speed = 2;
+    }
 
     if (hp < 0)
     {

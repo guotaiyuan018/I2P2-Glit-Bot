@@ -70,6 +70,7 @@ private:
     ALLEGRO_EVENT_QUEUE *event_queue = NULL;
     ALLEGRO_EVENT event;
     ALLEGRO_TIMER *timer = NULL;
+    ALLEGRO_TIMER *glitch_timer = NULL;
     ALLEGRO_TIMER *monster_pro = NULL;
 
     Scene_manager *scene_manager = NULL;
@@ -82,7 +83,7 @@ private:
     vector<Monster *> &monsterSet = DC->get_Monster();
     list<Hero *> &heroSet = DC->get_Hero();
 
-    Portal* portal = NULL;
+    Portal *portal = NULL;
 
     bool frame_update = false;
 };
