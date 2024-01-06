@@ -817,7 +817,7 @@
 	"Bullet.h"
 	"Monster.h"
 
-1704524363 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\hero.h
+1704532472 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\hero.h
 	<stdio.h>
 	<string.h>
 	<allegro5/allegro.h>
@@ -828,9 +828,10 @@
 	"Circle.h"
 	"global.h"
 
-1704524363 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\monster.h
+1704532472 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\monster.h
 	<stdio.h>
 	<string.h>
+	<iostream>
 	<allegro5/allegro.h>
 	<allegro5/allegro_primitives.h>
 	<vector>
@@ -844,7 +845,7 @@
 	"DataCenter.h"
 	<iostream>
 
-1704528364 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\game_window.h
+1704532472 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\game_window.h
 	<allegro5/allegro.h>
 	<allegro5/allegro_image.h>
 	<vector>
@@ -902,7 +903,7 @@
 1704378059 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\main.cpp
 	"game_window.h"
 
-1704524363 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\monster.cpp
+1704532472 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\monster.cpp
 	"Monster.h"
 	<iostream>
 	<cmath>
@@ -944,7 +945,7 @@
 	"Circle.h"
 	"global.h"
 
-1704531216 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\portal.cpp
+1704531810 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\portal.cpp
 	"Portal.h"
 	<iostream>
 
