@@ -188,7 +188,6 @@ int game_window::game_update()
             {
                 cur_stage++;
                 set_enemy();
-                // delete portal;
                 enter_portal = false;
             }
         }
