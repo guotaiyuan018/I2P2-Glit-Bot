@@ -11,6 +11,7 @@
 #include "scene_manager.h"
 #include "Bullet.h"
 #include "Monster.h"
+#include "Portal.h"
 
 #define STAGE_NUM 1
 

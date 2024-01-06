@@ -180,8 +180,17 @@ int game_window::game_update()
 
         if (stage_clear && cur_stage < STAGE_NUM)
         {
-            cur_stage++;
-            set_enemy();
+            cout << "next stage\n";
+            Portal* p = new Portal();
+            bool enter_portal = p->getCircle()->isOverlap(p->getCircle(), heroSet.front()->getCircle());
+
+            if(enter_portal)
+            {
+                cur_stage++;
+                set_enemy();
+                delete p;
+                enter_portal = false;
+            }
         }
     }
     return GAME_CONTINUE;
@@ -266,6 +275,7 @@ int game_window::process_event()
 
 void game_window::draw_scene()
 {
+    cout << "d\n";
     al_clear_to_color(al_map_rgb(100, 100, 100));
 
     scene_manager->draw_background(get_anime_counter());
