@@ -16,7 +16,8 @@
 enum class BulletType
 {
     ROUND,
-    AURABLADE
+    AURABLADE,
+    BEAM
 };
 
 class Bullet : public Object
@@ -32,9 +33,9 @@ public:
 protected:
     int speed = 15;
     float direction_x, direction_y;
-    int bullet_num = 2;
+    int bullet_num = 3;
     BulletType my_type = BulletType::ROUND;
-    std::map<BulletType, ALLEGRO_BITMAP *> imgData;
+    ALLEGRO_BITMAP *imgData;
 };
 
 #endif

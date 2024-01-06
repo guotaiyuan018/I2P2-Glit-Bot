@@ -69,19 +69,17 @@ Monster *game_window::create_monster(int x, int y, int monster_type)
 
 void game_window::set_enemy(int stage_num)
 {
-    for (int i = 0; i < (stage_num) * 2 + 1; i++)
+    for (int i = 0; i < (stage_num) * 2 + 2; i++)
     {
 
         int monster_type = (stage_num == 0) ? 2 : rand() % 2;
         int loc_x = rand() % window_width;
-        /*
-        while (loc_x > 400 && loc_x < 800)
-        int loc_x = rand() % window_width;
-        while (loc_y > 300 && loc_y < 600)
         int loc_y = rand() % window_height;
-        */
 
-        int loc_y = rand() % window_height;
+        while (loc_x > 400 && loc_x < 800)
+            loc_x = rand() % window_width;
+        while (loc_y > 300 && loc_y < 600)
+            loc_y = rand() % window_height;
 
         Monster *m = create_monster(loc_x, loc_y, monster_type);
         monsterSet.emplace_back(m);
@@ -288,7 +286,7 @@ int game_window::process_event()
             if (!start_atk)
             {
                 heroSet.front()->Attack();
-                Bullet *t = game_window::create_bullet(mouse_x, mouse_y, 0);
+                Bullet *t = game_window::create_bullet(mouse_x, mouse_y, heroSet.front()->getNAME());
                 bulletSet.push_back(t);
             }
         }

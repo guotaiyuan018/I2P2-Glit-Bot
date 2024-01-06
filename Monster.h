@@ -66,8 +66,8 @@ private:
     MonsterName my_name = MonsterName::EXPLODER;
     MonsterState state = MonsterState::MOVE;
     MonsterDirection direction = MonsterDirection::RIGHT;
-    std::map<MonsterName, std::map<MonsterDirection, std::map<MonsterState, std::vector<ALLEGRO_BITMAP *>>>> imgData;
-    std::map<MonsterName, std::map<MonsterDirection, std::map<MonsterState, int>>> imgCount;
+    std::map<MonsterName, std::map<MonsterState, std::vector<ALLEGRO_BITMAP *>>> imgData;
+    std::map<MonsterName, std::map<MonsterState, int>> imgCount;
 };
 
 #endif

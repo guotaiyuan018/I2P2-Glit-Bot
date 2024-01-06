@@ -2,18 +2,22 @@
 #include <cmath>
 #include <iostream>
 
-const char bullet_name[][100] = {"ROUND", "AURABLADE"};
+const char bullet_name[][100] = {"ROUND", "AURABLADE", "BEAM"};
 
 Bullet::Bullet(int mouse_x, int mouse_y, int type)
 {
     this->circle = new Circle(hero_x, hero_y, 15);
     my_type = static_cast<BulletType>(type);
-    for (int i = 0; i < bullet_num; i++)
-    {
-        char filename[50];
-        sprintf(filename, "./Bullet/%s.png", bullet_name[i]);
-        imgData[static_cast<BulletType>(i)] = al_load_bitmap(filename);
-    }
+
+    if (my_type == BulletType::BEAM)
+        speed = 90;
+
+    char filename[50];
+    sprintf(filename, "./Bullet/%s.png", bullet_name[type]);
+    imgData = al_load_bitmap(filename);
+
+    if (!imgData)
+        std::cout << filename << std::endl;
 
     float dx = mouse_x - hero_x, dy = mouse_y - hero_y;
     float lenth = sqrt(dx * dx + dy * dy);
@@ -27,8 +31,7 @@ Bullet::Bullet(int mouse_x, int mouse_y, int type)
 Bullet::~Bullet()
 {
     delete circle;
-    for (auto s : imgData)
-        al_destroy_bitmap(s.second);
+    al_destroy_bitmap(imgData);
 }
 
 bool Bullet::Update()
@@ -44,5 +47,15 @@ bool Bullet::Update()
 
 void Bullet::Draw()
 {
-    al_draw_bitmap(imgData[my_type], circle->x, circle->y, 0);
+    bool flip = (direction_x > 0) ? true : false;
+    if (my_type != BulletType::BEAM)
+    {
+        al_draw_bitmap(imgData, circle->x, circle->y, flip);
+    }
+    else
+    {
+        float bulletAngle = ;
+        al_draw_rotated_bitmap(imgData, al_get_bitmap_width(imgData) / 2, al_get_bitmap_height(imgData) / 2,
+                               circle->x, circle->y, ALLEGRO_DEGREES_TO_RADIANS(bulletAngle), flip);
+    }
 }
