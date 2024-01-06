@@ -28,7 +28,8 @@ enum class HeroState
 enum class HeroName
 {
     BULLET,
-    BLADE
+    BLADE,
+    BEAM
 };
 
 class Hero : public Object
@@ -37,16 +38,17 @@ public:
     Hero();
     void Update();
     void Draw();
+    void Glitch();
 
 private:
     int HERO_WIDTH = 448, HERO_HEIGHT = 448;
     int x, y;
-    int counter;
+    int counter = 0;
     int sprite_pos = 1;
     int speed = 5;
     HeroDirection direction = HeroDirection::RIGHT;
     HeroState state = HeroState::IDLE;
-    HeroName my_name = HeroName::BULLET;
+    HeroName my_name = HeroName::BEAM;
     std::map<HeroName, std::map<HeroDirection, std::map<HeroState, std::vector<ALLEGRO_BITMAP *>>>> imgData;
     // ALLEGRO_BITMAP *imgData;
     std::map<HeroDirection, std::map<HeroState, int>> imgCount;

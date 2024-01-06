@@ -30,10 +30,14 @@ class Monster : public Object
 public:
     Monster(int, int);
     void Update();
+    void Damaged();
     void Draw();
+    int getHP() { return this->hp; }
 
 private:
+    int MONSTER_WIDTH = 192, MONSTER_HEIGHT = 192;
     int sprite_pos = 1;
+    int counter = 0;
     int speed = 3;
     int hp = 10;
     int attack_range = 10;
