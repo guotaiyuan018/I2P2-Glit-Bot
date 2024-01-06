@@ -3,14 +3,16 @@
 
 const char dir_name[][100] = {"LEFT", "RIGHT"};
 const char state_name[][100] = {"MOVE", "IDLE", "ATTACK", "GLITCH"};
-const char hero_name[][100] = {"BULLET", "BLADE"};
+const char hero_name[][100] = {"BULLET", "BLADE", "BEAM"};
 
 // set counter frequency of drawing moving animation
 const int draw_frequency = 10;
 
 Hero::Hero()
 {
-    this->circle = new Circle(window_width / 2, window_height / 2, 128);
+    x = window_width / 2 - HERO_WIDTH / 2;
+    y = window_height / 2 - HERO_HEIGHT / 2;
+    this->circle = new Circle(x, y, 128);
 
     imgCount[HeroDirection::LEFT][HeroState::MOVE] = 8;
     imgCount[HeroDirection::LEFT][HeroState::IDLE] = 2;
@@ -54,33 +56,33 @@ void Hero::Update()
 
     if (key_state[ALLEGRO_KEY_W])
     {
-        if (circle->y > -100)
+        if (y > -100)
         {
-            circle->y -= speed;
+            y -= speed;
             state = HeroState::MOVE;
         }
     }
     if (key_state[ALLEGRO_KEY_S])
     {
-        if (circle->y < 700)
+        if (y < 700)
         {
-            circle->y += speed;
+            y += speed;
             state = HeroState::MOVE;
         }
     }
     if (key_state[ALLEGRO_KEY_A])
     {
-        if (circle->x > -100)
+        if (x > -100)
         {
-            circle->x -= speed;
+            x -= speed;
             state = HeroState::MOVE;
         }
     }
     if (key_state[ALLEGRO_KEY_D])
     {
-        if (circle->x < 1000)
+        if (x < 1000)
         {
-            circle->x += speed;
+            x += speed;
             state = HeroState::MOVE;
         }
     }
@@ -93,7 +95,7 @@ void Hero::Update()
     if (!key_state[ALLEGRO_KEY_W] && !key_state[ALLEGRO_KEY_A] && !key_state[ALLEGRO_KEY_S] && !key_state[ALLEGRO_KEY_D] && !mouse_down)
         state = HeroState::IDLE;
 
-    if (circle->x > mouse_x)
+    if (x > mouse_x)
         direction = HeroDirection::LEFT;
     else
         direction = HeroDirection::RIGHT;
@@ -101,7 +103,13 @@ void Hero::Update()
     if (!mouse_down)
         fired = true, shooted = false;
 
-    hero_x = circle->x, hero_y = circle->y;
+    hero_x = x + HERO_WIDTH / 2, hero_y = y + HERO_HEIGHT / 2;
+    // hero_x = x, hero_y = y;
+}
+
+void Hero::Glitch()
+{
+    my_name = static_cast<HeroName>(hero_x % sizeof(hero_name) / sizeof(hero_name[0]));
 }
 
 void Hero::Draw()
@@ -119,5 +127,5 @@ void Hero::Draw()
             shooted = false;
         }
     }
-    al_draw_bitmap(imgData[my_name][direction][state][sprite_pos], circle->x, circle->y, 0);
+    al_draw_bitmap(imgData[my_name][direction][state][sprite_pos], x, y, 0);
 }

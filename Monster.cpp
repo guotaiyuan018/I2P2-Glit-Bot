@@ -9,7 +9,7 @@ const int draw_frequency = 10;
 
 Monster::Monster(int x, int y)
 {
-    this->circle = new Circle(x, y, 100);
+    this->circle = new Circle(x - MONSTER_WIDTH / 2, y - MONSTER_HEIGHT / 2, 90);
 
     imgCount[MonsterDirection::LEFT][MonsterState::ATTACK] = 4;
     imgCount[MonsterDirection::LEFT][MonsterState::DEAD] = 6;
@@ -43,9 +43,18 @@ Monster::Monster(int x, int y)
 
 void Monster::Update()
 {
+    counter = (counter + 1) % draw_frequency;
+    if (counter == 0)
+        sprite_pos = (sprite_pos + 1) % imgCount[direction][state];
+
     float dx = hero_x - this->circle->x;
     float dy = hero_y - this->circle->y;
     float lenth = sqrt(dx * dx + dy * dy);
+
+    if (dx > 0)
+        direction = MonsterDirection::RIGHT;
+    else
+        direction = MonsterDirection::LEFT;
 
     if (lenth > 0)
     {
@@ -55,6 +64,17 @@ void Monster::Update()
 
     this->circle->x += dx * speed;
     this->circle->y += dy * speed;
+
+    if (lenth < 200)
+        state = MonsterState::ATTACK;
+    else
+        state = MonsterState::MOVE;
+}
+
+void Monster::Damaged()
+{
+    hp -= 1;
+    std::cout << "hp: " << hp << "\n";
 }
 
 void Monster::Draw()
