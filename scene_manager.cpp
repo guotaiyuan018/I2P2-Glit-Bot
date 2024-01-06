@@ -36,7 +36,7 @@ void Scene_manager::load_scenes(){
 }
 
 void Scene_manager::draw_background(int anime_counter){
-    //cout << "start to draw scene: " << scene << endl;
+    //cout << "sc man, start draw bg\n";
     switch(cur_scene){
     case TITLE_SCENE:
         //audio
@@ -50,7 +50,7 @@ void Scene_manager::draw_background(int anime_counter){
         else al_stop_sample_instance(title_bgm);
 
         //visual
-        title_scene->draw_background(anime_counter);
+        title_scene->draw_background(anime_counter % title_frames);
         break;
 
     case BATTLE_SCENE:
@@ -65,7 +65,7 @@ void Scene_manager::draw_background(int anime_counter){
         else al_stop_sample_instance(game_bgm);
 
         //visual
-        game_scene->draw_background();
+        game_scene->draw_background((anime_counter/5) % bonus_frames);
         break;
 
     case SET_SCENE:
@@ -93,7 +93,7 @@ void Scene_manager::draw_background(int anime_counter){
         al_draw_bitmap(credit_scene, 0, 0, 0);
         break;
     }
-    //cout << "draw scene finish\n";
+    //cout << "sc man, draw bg finish\n";
 }
 
 void Scene_manager::draw_ui(){
@@ -108,6 +108,7 @@ void Scene_manager::draw_ui(){
         setting_scene->draw_ui();
         break;
     }
+    //cout << "sc_man, draw ui finish\n";
 }
 
 //get mouse position, return hovered button index

@@ -13,7 +13,7 @@
 #include "Monster.h"
 #include "Portal.h"
 
-#define STAGE_NUM 1
+#define STAGE_NUM 2
 
 #define GAME_INIT -1
 #define GAME_LOADING 0
@@ -86,6 +86,7 @@ private:
     Portal *portal = NULL;
 
     bool frame_update = false;
+    bool enter_portal = false;
 };
 
 #endif // MAINWINDOW_H_INCLUDED

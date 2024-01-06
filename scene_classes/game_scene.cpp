@@ -40,12 +40,22 @@ void Game_scene::load_scene(){
         if(img) bot_info.push_back(img);
     }
 
+    //load bonus stage
+    for(int i = 0; i < 20; i++){
+        sprintf(buffer, "./Scenes/bonus/bonus_%d.png", i+1);
+        ALLEGRO_BITMAP *img = al_load_bitmap(buffer);
+        if(img) bonus.push_back(img);
+    }
+
     pause[0] = al_load_bitmap("./Scenes/battle/pause/0.png");
     pause[1] = al_load_bitmap("./Scenes/battle/pause/1.png");
 }
 
-void Game_scene::draw_background(){
-    al_draw_bitmap(maps[cur_stage], 0, 0, 0);
+void Game_scene::draw_background(int counter){
+    if(cur_stage == 2){
+        al_draw_bitmap(bonus[counter], 0, 0, 0);
+    }
+    else al_draw_bitmap(maps[cur_stage], 0, 0, 0);
 }
 
 void Game_scene::draw_ui(){
@@ -87,6 +97,7 @@ int Game_scene::mouse_act(int x, int y){
 
 Game_scene::~Game_scene(){
     for(int i = 0; i < map_num; i++)al_destroy_bitmap(maps[i]);
+    for(int i = 0; i < 20; i++)al_destroy_bitmap(bonus[i]);
     for(int i = 0; i < 2; i++)al_destroy_bitmap(pause[i]);
     for(int i = 0; i < 4; i++){
         for(int j = 0;j < 2; j++)al_destroy_bitmap(controller[i][j]);

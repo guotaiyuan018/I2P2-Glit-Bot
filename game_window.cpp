@@ -71,15 +71,10 @@ void game_window::set_enemy(int stage_num)
 {
     for (int i = 0; i < (stage_num) * 2 + 2; i++)
     {
-
         int monster_type = (stage_num == 0) ? 2 : rand() % 2;
         int loc_x = rand() % window_width;
-        int loc_y = rand() % window_height;
 
-        while (loc_x > 400 && loc_x < 800)
-            loc_x = rand() % window_width;
-        while (loc_y > 300 && loc_y < 600)
-            loc_y = rand() % window_height;
+        int loc_y = rand() % window_height;
 
         Monster *m = create_monster(loc_x, loc_y, monster_type);
         monsterSet.emplace_back(m);
@@ -94,6 +89,8 @@ void game_window::game_begin()
     DC->get_Hero().emplace_front(h);
 
     set_enemy(cur_stage);
+
+    portal = new Portal();
 
     al_flip_display();
     al_start_timer(timer);
@@ -145,7 +142,10 @@ int game_window::game_update()
 {
     if (cur_scene == BATTLE_SCENE)
     {
+        enter_portal = portal->getCircle()->isOverlap(portal->getCircle(), heroSet.front()->getCircle());
+
         DC->get_Hero().front()->Update();
+
         for (int i = 0; i < bulletSet.size(); i++)
         {
             bool isReachEnd = false;
@@ -157,6 +157,7 @@ int game_window::game_update()
                 i--;
             }
         }
+
         for (int i = 0; i < monsterSet.size(); i++)
         {
             monsterSet[i]->Update();
@@ -202,16 +203,12 @@ int game_window::game_update()
 
         if (stage_clear && cur_stage < STAGE_NUM)
         {
-
-            portal = new Portal();
-            bool enter_portal = portal->getCircle()->isOverlap(portal->getCircle(), heroSet.front()->getCircle());
-
             if (enter_portal)
             {
                 cur_stage++;
-                set_enemy(cur_stage);
+                if (cur_stage != 2)
+                    set_enemy(cur_stage);
                 enter_portal = false;
-                cout << enter_portal << endl;
             }
         }
     }
@@ -230,7 +227,7 @@ int game_window::process_event()
         if (event.timer.source == timer)
         {
             frame_update = true;
-            anime_counter = (anime_counter + 1) % title_frames;
+            anime_counter = (anime_counter + 1);
             if (cur_scene == BATTLE_SCENE && !al_get_timer_started(glitch_timer))
             {
                 al_start_timer(glitch_timer);
