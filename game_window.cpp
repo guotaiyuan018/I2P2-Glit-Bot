@@ -73,7 +73,7 @@ void game_window::set_enemy()
         monsterSet.emplace_back(m);
     }
     */
-    Monster *m = create_monster(window_width / 3, window_height / 4, 2);
+    Monster *m = create_monster(window_width / 3, window_height / 4, 1);
     monsterSet.emplace_back(m);
 }
 
@@ -184,11 +184,11 @@ int game_window::game_update()
             portal = new Portal();
             bool enter_portal = portal->getCircle()->isOverlap(portal->getCircle(), heroSet.front()->getCircle());
 
-            if(enter_portal)
+            if (enter_portal)
             {
                 cur_stage++;
                 set_enemy();
-                //delete portal;
+                // delete portal;
                 enter_portal = false;
             }
         }
@@ -283,7 +283,8 @@ void game_window::draw_scene()
     {
         al_set_mouse_cursor(display, crosshair);
 
-        if(stage_clear) portal->Draw();
+        if (stage_clear)
+            portal->Draw();
 
         for (vector<Bullet *>::iterator it = bulletSet.begin(); it != bulletSet.end(); it++)
             (*it)->Draw();
@@ -292,7 +293,6 @@ void game_window::draw_scene()
             (*it)->Draw();
 
         DC->get_Hero().front()->Draw();
-
     }
     else
         al_set_mouse_cursor(display, cursor);
