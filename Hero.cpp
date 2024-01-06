@@ -152,6 +152,8 @@ void Hero::Glitch(int name)
         state = HeroState::GLITCH;
         sprite_pos = 0;
         start_glitch = true;
+        start_glitch = false;
+        start_atk = false;
     }
 }
 

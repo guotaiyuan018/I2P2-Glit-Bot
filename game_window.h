@@ -42,7 +42,7 @@ public:
     void game_begin(); // draw init scene
     void game_play();
 
-    void set_enemy();
+    void set_enemy(int);
 
     int game_run();
     int game_update();

@@ -14,9 +14,9 @@
 
 enum class MonsterName
 {
-    EXPLODER,
     EYEBALL,
-    ZAPPER
+    ZAPPER,
+    EXPLODER
 };
 
 enum class MonsterDirection

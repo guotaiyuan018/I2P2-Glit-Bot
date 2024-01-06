@@ -4,7 +4,7 @@
 
 const char state_name[][100] = {"ATTACK", "DEAD", "DAMAGED", "MOVE"};
 const char dir_name[][100] = {"LEFT", "RIGHT"};
-const char mon_name[][100] = {"exploder", "eyeball", "zapper"};
+const char mon_name[][100] = {"EYEBALL", "ZAPPER", "EXPLODER"};
 
 const int draw_frequency = 10;
 

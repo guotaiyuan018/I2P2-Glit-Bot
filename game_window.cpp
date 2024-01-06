@@ -67,18 +67,26 @@ Monster *game_window::create_monster(int x, int y, int monster_type)
     return m;
 }
 
-void game_window::set_enemy()
+void game_window::set_enemy(int stage_num)
 {
-    /*
-    for (int i = window_width * 1 / 4; i < window_width; i += window_width / 4)
+    for (int i = 0; i < (stage_num + 1) * 2 + 2; i++)
     {
+        int monster_type = (stage_num == 0) ? 2 : rand() % 2;
+        int loc_x = rand() % window_width;
+        /*while (loc_x < 800 || loc_x > 400)
+        {
+            loc_x = rand() % window_width;
+        }*/
 
-        Monster *m = create_monster(i, window_height / 4, 2 );
+        /*while (loc_y < 600 || loc_y > 300)
+        {
+            loc_y = rand() % window_width;
+        }*/
+        int loc_y = rand() % window_height;
+
+        Monster *m = create_monster(loc_x, loc_y, monster_type);
         monsterSet.emplace_back(m);
     }
-    */
-    Monster *m = create_monster(window_width / 3, window_height / 4, 1);
-    monsterSet.emplace_back(m);
 }
 
 void game_window::game_begin()
@@ -88,7 +96,7 @@ void game_window::game_begin()
     Hero *h = new Hero();
     DC->get_Hero().emplace_front(h);
 
-    set_enemy();
+    set_enemy(cur_stage);
 
     al_flip_display();
     al_start_timer(timer);
@@ -204,7 +212,7 @@ int game_window::game_update()
             if (enter_portal)
             {
                 cur_stage++;
-                set_enemy();
+                set_enemy(cur_stage);
                 enter_portal = false;
             }
         }
