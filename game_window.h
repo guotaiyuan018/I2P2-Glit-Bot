@@ -56,7 +56,7 @@ public:
     int get_anime_counter() { return anime_counter; }
 
     Bullet *create_bullet(int, int);
-    Monster *create_monster(int, int);
+    Monster *create_monster(int, int, int);
 
 private:
     ALLEGRO_BITMAP *icon;

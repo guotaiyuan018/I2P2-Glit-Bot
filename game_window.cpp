@@ -57,19 +57,24 @@ Bullet *game_window::create_bullet(int x, int y)
     return b;
 }
 
-Monster *game_window::create_monster(int x, int y)
+Monster *game_window::create_monster(int x, int y, int monster_type)
 {
-    Monster *m = new Monster(x, y);
+    Monster *m = new Monster(x, y, monster_type);
     return m;
 }
 
 void game_window::set_enemy()
 {
-    for (int i = window_width * 3 / 4; i < window_width; i += window_width / 4)
+    /*
+    for (int i = window_width * 1 / 4; i < window_width; i += window_width / 4)
     {
-        Monster *m = create_monster(i, window_height / 4);
+
+        Monster *m = create_monster(i, window_height / 4, 2 );
         monsterSet.emplace_back(m);
     }
+    */
+    Monster *m = create_monster(window_width / 3, window_height / 4, 2);
+    monsterSet.emplace_back(m);
 }
 
 void game_window::game_begin()
@@ -134,7 +139,7 @@ int game_window::game_update()
         DC->get_Hero().front()->Update();
         for (int i = 0; i < bulletSet.size(); i++)
         {
-            bool isDestroyed = false, isReachEnd = false;
+            bool isReachEnd = false;
             isReachEnd = bulletSet[i]->Update();
 
             if (isReachEnd)
@@ -147,31 +152,27 @@ int game_window::game_update()
         {
             bool isCollide = false;
             monsterSet[i]->Update();
+            bool isDead = monsterSet[i]->getDead();
+
+            if (isDead)
+            {
+                monsterSet.erase(monsterSet.begin() + i);
+                i--;
+            }
+
             for (int j = 0; j < bulletSet.size(); j++)
             {
                 isCollide = monsterSet[i]->getCircle()->isOverlap(monsterSet[i]->getCircle(), bulletSet[j]->getCircle());
                 if (isCollide)
                 {
-                    std::cout << "m_x: " << monsterSet[i]->getCircle()->x << " m_y: " << monsterSet[i]->getCircle()->y << std::endl;
-                    std::cout << "b_x: " << bulletSet[j]->getCircle()->x << " b_y: " << bulletSet[j]->getCircle()->y << std::endl;
-                    bool isDead = false;
-
                     monsterSet[i]->Damaged();
-
-                    if (monsterSet[i]->getHP() < 0)
-                        isDead = true;
-
-                    if (isDead)
-                    {
-                        monsterSet.erase(monsterSet.begin() + i);
-                        i--;
-                    }
 
                     bulletSet.erase(bulletSet.begin() + j);
                     j--;
                 }
             }
         }
+
         if (monsterSet.empty())
             stage_clear = true;
         else

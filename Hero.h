@@ -22,7 +22,7 @@ enum class HeroState
     MOVE,
     IDLE,
     ATTACK,
-    GLITCH,
+    GLITCH
 };
 
 enum class HeroName

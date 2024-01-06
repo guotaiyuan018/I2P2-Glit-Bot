@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <iostream>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_primitives.h>
 #include <vector>
@@ -10,6 +11,13 @@
 #include "Object.h"
 #include "Circle.h"
 #include "global.h"
+
+enum class MonsterName
+{
+    EXPLODER,
+    EYEBALL,
+    ZAPPER
+};
 
 enum class MonsterDirection
 {
@@ -28,11 +36,17 @@ enum class MonsterState
 class Monster : public Object
 {
 public:
-    Monster(int, int);
+    Monster(int, int, int);
     void Update();
-    void Damaged();
+    void Damaged()
+    {
+        hp -= 1;
+        std::cout << "hp: " << hp << std::endl;
+        std::cout << "isdead: " << is_dead << std::endl;
+    }
     void Draw();
     int getHP() { return this->hp; }
+    bool getDead() { return is_dead; }
 
 private:
     int MONSTER_WIDTH = 192, MONSTER_HEIGHT = 192;
@@ -41,10 +55,12 @@ private:
     int speed = 3;
     int hp = 10;
     int attack_range = 10;
+    bool is_dead = false;
+    MonsterName my_name = MonsterName::EXPLODER;
     MonsterState state = MonsterState::MOVE;
     MonsterDirection direction = MonsterDirection::RIGHT;
-    std::map<MonsterDirection, std::map<MonsterState, std::vector<ALLEGRO_BITMAP *>>> imgData;
-    std::map<MonsterDirection, std::map<MonsterState, int>> imgCount;
+    std::map<MonsterName, std::map<MonsterDirection, std::map<MonsterState, std::vector<ALLEGRO_BITMAP *>>>> imgData;
+    std::map<MonsterName, std::map<MonsterDirection, std::map<MonsterState, int>>> imgCount;
 };
 
 #endif
