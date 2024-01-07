@@ -58,7 +58,7 @@ public:
 
 private:
     ALLEGRO_BITMAP *icon;
-    ALLEGRO_BITMAP *loading;
+    ALLEGRO_BITMAP *load_page;
     ALLEGRO_BITMAP *crosshair_cursor;
     ALLEGRO_BITMAP *arrow_cursor;
     ALLEGRO_MOUSE_CURSOR *crosshair;
@@ -85,6 +85,7 @@ private:
 
     bool frame_update = false;
     bool enter_portal = false;
+    bool load_next = false;
 };
 
 #endif // MAINWINDOW_H_INCLUDED

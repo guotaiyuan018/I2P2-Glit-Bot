@@ -794,7 +794,7 @@
 
 1704378059 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\circle.h
 
-1704584012 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\global.h
+1704655474 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\global.h
 	<allegro5/allegro_audio.h>
 	<allegro5/allegro_acodec.h>
 	<allegro5/allegro_font.h>
@@ -822,7 +822,7 @@
 	"Bullet.h"
 	"Monster.h"
 
-1704585096 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\hero.h
+1704663697 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\hero.h
 	<iostream>
 	<stdio.h>
 	<string.h>
@@ -846,12 +846,12 @@
 	"Circle.h"
 	"global.h"
 
-1704586136 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\game_window.cpp
+1704662543 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\game_window.cpp
 	"game_window.h"
 	"DataCenter.h"
 	<iostream>
 
-1704584493 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\game_window.h
+1704658229 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\game_window.h
 	<allegro5/allegro.h>
 	<allegro5/allegro_image.h>
 	<vector>
@@ -901,7 +901,7 @@
 	<map>
 	<string>
 
-1704583997 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\global.cpp
+1704655469 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\global.cpp
 	"global.h"
 
 1704560055 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\hero.cpp
@@ -918,7 +918,7 @@
 
 1704378063 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\scene_classes\end_scene.cpp
 
-1704584084 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\scene_classes\game_scene.cpp
+1704586387 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\scene_classes\game_scene.cpp
 	"game_scene.h"
 	<iostream>
 	<map>
@@ -954,7 +954,7 @@
 	"Circle.h"
 	"global.h"
 
-1704585411 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\portal.cpp
+1704662388 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\portal.cpp
 	"Portal.h"
 	<iostream>
 

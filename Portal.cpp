@@ -13,7 +13,7 @@ Portal::Portal()
 
     if(x >= 800) x /= 2;
     else if(x <= 400) x *= 2;
-    if(y >= 700) y /= 2;
+    if(y >= 500) y /= 2;
     else if(x <= 200) y *= 2;
 
     this->circle = new Circle(x, y + 20, 30);
@@ -26,6 +26,7 @@ Portal::~Portal()
     delete circle;
 
     al_destroy_bitmap(port);
+
 }
 
 void Portal::Draw()

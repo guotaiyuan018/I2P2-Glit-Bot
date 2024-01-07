@@ -70,7 +70,7 @@ private:
     int x, y;
     int counter = 0;
     int sprite_pos = 1;
-    int speed = 5;
+    int speed = 2;
     int hero_hp = 10;
     bool start_glitch = false;
     bool start_damaged = false;

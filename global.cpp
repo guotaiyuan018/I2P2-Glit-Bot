@@ -11,6 +11,8 @@ bool start_atk = false;
 
 bool game_mute = false;
 
+bool loading = false;
+
 bool healing = false;
 
 int hero_x = window_width / 2;

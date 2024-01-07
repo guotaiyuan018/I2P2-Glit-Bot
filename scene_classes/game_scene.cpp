@@ -75,7 +75,7 @@ void Game_scene::draw_ui(){
 
     if(cur_stage == 2)
     {
-        if(hero_x <= 700 && hero_x >= 500 && hero_y <= 550 && hero_y >= 350)
+        if(hero_x <= 750 && hero_x >= 450 && hero_y <= 600 && hero_y >= 300)
         {
             healing = true;
             al_draw_bitmap(text, hero_x - 66, hero_y - 90, 0);

@@ -40,9 +40,9 @@ game_window::game_window()
 void game_window::game_init()
 {
     icon = al_load_bitmap("./icon.png");
-    loading = al_load_bitmap("./loading.png");
+    load_page = al_load_bitmap("./loading.png");
     al_set_display_icon(display, icon);
-    al_draw_bitmap(loading, 0, 0, 0);
+    al_draw_bitmap(load_page, 0, 0, 0);
     al_flip_display();
 
     crosshair_cursor = al_load_bitmap("./UI/crosshair.png");
@@ -69,13 +69,11 @@ Monster *game_window::create_monster(int x, int y, int monster_type)
 
 void game_window::set_enemy(int stage_num)
 {
-    portal = new Portal();
-
-    for (int i = 0; i < (stage_num) * 2 + 2; i++)
+    for (int i = 0; i < (stage_num) * 3 + 3; i++)
     {
         int monster_type = (stage_num == 0) ? 2 : rand() % 2;
-        int loc_x = rand() % window_width;
 
+        int loc_x = rand() % window_width;
         int loc_y = rand() % window_height;
 
         Monster *m = create_monster(loc_x, loc_y, monster_type);
@@ -142,8 +140,6 @@ int game_window::game_update()
 {
     if (cur_scene == BATTLE_SCENE)
     {
-        enter_portal = portal->getCircle()->isOverlap(portal->getCircle(), heroSet.front()->getCircle());
-
         DC->get_Hero().front()->Update();
 
         if(healing) DC->get_Hero().front()->heal(counter);
@@ -198,21 +194,28 @@ int game_window::game_update()
             }
         }
 
-        if (monsterSet.empty() && cur_stage != 2)
-            stage_clear = true;
-        else
-            stage_clear = false;
+        if (cur_stage < 2)
+        {
+            if(monsterSet.empty()) stage_clear = true;
+            else stage_clear = false;
+        }
+        else stage_clear = false; // implement the boss stage clear logic here
 
         if (cur_stage < STAGE_NUM)
         {
             if(cur_stage == 2 || stage_clear)
             {
+                if(!portal) portal = new Portal();
+                enter_portal = portal->getCircle()->isOverlap(portal->getCircle(), heroSet.front()->getCircle());
+
                 if (enter_portal)
                 {
-                    cur_stage++;
-                    if (cur_stage != 2)
-                        set_enemy(cur_stage);
                     enter_portal = false;
+                    loading = true;
+                    load_next = true;
+                    cur_stage++;
+                    delete portal;
+                    portal = NULL;
                 }
             }
         }
@@ -232,6 +235,13 @@ int game_window::process_event()
         if (event.timer.source == timer)
         {
             frame_update = true;
+            if(load_next)
+            {
+                if(cur_stage < 2) set_enemy(cur_stage);
+                loading = false;
+                load_next = false;
+            }
+
             counter = (counter + 1);
             if (cur_scene == BATTLE_SCENE && !al_get_timer_started(glitch_timer))
             {
@@ -309,30 +319,37 @@ void game_window::draw_scene()
 {
     al_clear_to_color(al_map_rgb(100, 100, 100));
 
-    scene_manager->draw_background(counter);
-
-    if (cur_scene == BATTLE_SCENE)
+    if(loading)
     {
-        al_set_mouse_cursor(display, crosshair);
-
-        if (stage_clear || cur_stage == 2)
-        {
-            portal->Draw();
-        }
-
-
-        for (vector<Bullet *>::iterator it = bulletSet.begin(); it != bulletSet.end(); it++)
-            (*it)->Draw();
-
-        DC->get_Hero().front()->Draw();
-
-        for (vector<Monster *>::iterator it = monsterSet.begin(); it != monsterSet.end(); it++)
-            (*it)->Draw();
+        al_draw_bitmap(load_page, 0, 0, 0);
     }
     else
-        al_set_mouse_cursor(display, cursor);
+    {
+        scene_manager->draw_background(counter);
 
-    scene_manager->draw_ui();
+        if (cur_scene == BATTLE_SCENE)
+        {
+            al_set_mouse_cursor(display, crosshair);
+
+            if (stage_clear || cur_stage == 2)
+            {
+                portal->Draw();
+            }
+
+            for (vector<Bullet *>::iterator it = bulletSet.begin(); it != bulletSet.end(); it++)
+                (*it)->Draw();
+
+            DC->get_Hero().front()->Draw();
+
+            for (vector<Monster *>::iterator it = monsterSet.begin(); it != monsterSet.end(); it++)
+                (*it)->Draw();
+
+        }
+        else
+            al_set_mouse_cursor(display, cursor);
+
+        scene_manager->draw_ui();
+    }
 
     al_flip_display();
 }
