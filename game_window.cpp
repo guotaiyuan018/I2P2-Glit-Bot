@@ -368,6 +368,7 @@ void game_window::game_destroy()
     al_destroy_mouse_cursor(cursor);
 
     delete scene_manager;
+    delete portal;
 
     cout << "Game Destroyed.\n";
 }
