@@ -62,7 +62,6 @@ public:
 
 private:
     ALLEGRO_BITMAP *icon;
-    ALLEGRO_BITMAP *load_page;
     ALLEGRO_BITMAP *crosshair_cursor;
     ALLEGRO_BITMAP *arrow_cursor;
     ALLEGRO_MOUSE_CURSOR *crosshair;

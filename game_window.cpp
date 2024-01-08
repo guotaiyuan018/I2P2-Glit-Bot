@@ -48,9 +48,18 @@ game_window::game_window()
 void game_window::game_init()
 {
     icon = al_load_bitmap("./icon.png");
-    load_page = al_load_bitmap("./loading.png");
+
+    char buffer[50];
+    for(int i = 0; i < 4; i++)
+    {
+        sprintf(buffer, "./loading/%d.png", i);
+        ALLEGRO_BITMAP* img = al_load_bitmap(buffer);
+        if(img) load_page[i] = img;
+    }
+
     al_set_display_icon(display, icon);
-    al_draw_bitmap(load_page, 0, 0, 0);
+
+    al_draw_bitmap(load_page[0], 0, 0, 0);
     al_flip_display();
 
     crosshair_cursor = al_load_bitmap("./UI/crosshair.png");
@@ -120,7 +129,9 @@ void game_window::game_begin()
 
     set_enemy(cur_stage);
 
+    al_draw_bitmap(load_page[3], 0, 0, 0);
     al_flip_display();
+
     al_start_timer(timer);
     draw_scene();
 }
@@ -388,7 +399,6 @@ int game_window::process_event()
 
             if (exit_game)
             {
-                game_mute = true;
                 game_destroy();
             }
             if (reset_game)
@@ -446,7 +456,7 @@ void game_window::draw_scene()
 
     if (loading)
     {
-        al_draw_bitmap(load_page, 0, 0, 0);
+        al_draw_bitmap(load_page[2], 0, 0, 0);
     }
     else
     {
@@ -515,6 +525,8 @@ void game_window::game_destroy()
     al_destroy_bitmap(arrow_cursor);
     al_destroy_mouse_cursor(crosshair);
     al_destroy_mouse_cursor(cursor);
+
+    for(int i = 0; i < 4; i++) al_destroy_bitmap(load_page[i]);
 
     delete scene_manager;
     delete portal;

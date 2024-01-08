@@ -7,7 +7,7 @@ const char dir_name[][100] = {"LEFT", "RIGHT"};
 
 Boss::Boss(int x, int y)
 {
-    draw_frequency = 30;
+    draw_frequency = 60;
     speed = 0;
     state = BossState::WAKE;
 

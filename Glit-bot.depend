@@ -803,7 +803,7 @@
 
 1704378059 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\circle.h
 
-1704704442 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\global.h
+1704750150 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\global.h
 	<allegro5/allegro_audio.h>
 	<allegro5/allegro_acodec.h>
 	<allegro5/allegro_font.h>
@@ -857,12 +857,12 @@
 	"Circle.h"
 	"global.h"
 
-1704743242 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\game_window.cpp
+1704750425 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\game_window.cpp
 	"game_window.h"
 	"DataCenter.h"
 	<iostream>
 
-1704739181 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\game_window.h
+1704750183 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\game_window.h
 	<allegro5/allegro.h>
 	<allegro5/allegro_image.h>
 	<vector>
@@ -915,7 +915,7 @@
 	<map>
 	<string>
 
-1704704411 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\global.cpp
+1704750166 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\global.cpp
 	"global.h"
 
 1704694126 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\hero.cpp
@@ -954,7 +954,7 @@
 	<vector>
 	<map>
 
-1704737708 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\scene_manager.cpp
+1704748800 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\scene_manager.cpp
 	"scene_manager.h"
 	<stdio.h>
 	<vector>
@@ -972,7 +972,7 @@
 	"Circle.h"
 	"global.h"
 
-1704732909 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\portal.cpp
+1704744136 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\portal.cpp
 	"Portal.h"
 	<iostream>
 
@@ -1023,7 +1023,7 @@
 	"Circle.h"
 	"global.h"
 
-1704739181 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\boss.cpp
+1704743960 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\boss.cpp
 	"Boss.h"
 	<iostream>
 	<cmath>

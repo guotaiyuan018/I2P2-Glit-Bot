@@ -18,8 +18,17 @@ Scene_manager::Scene_manager()
 void Scene_manager::load_scenes()
 {
     al_reserve_samples(15);
+
     title_scene->load_scene();
+
+    al_draw_bitmap(load_page[1], 0, 0, 0);
+    al_flip_display();
+
     game_scene->load_scene();
+
+    al_draw_bitmap(load_page[2], 0, 0, 0);
+    al_flip_display();
+
     setting_scene->load_scene();
     end_scene->load_scene();
 
@@ -103,7 +112,7 @@ void Scene_manager::draw_background(int anime_counter)
                     if(al_get_sample_instance_playing(game_bgm))
                         al_stop_sample_instance(game_bgm);
 
-                    al_set_sample_instance_gain(fire_sfx, healing ? 1 : 0.2);
+                    al_set_sample_instance_gain(fire_sfx, healing ? 0.5 : 0.1);
                     al_set_sample_instance_gain(bonus_bgm, 1);
                     al_play_sample_instance(fire_sfx);
                     al_play_sample_instance(bonus_bgm);
@@ -120,6 +129,13 @@ void Scene_manager::draw_background(int anime_counter)
 
                     al_set_sample_instance_gain(boss_bgm, 1);
                     al_play_sample_instance(boss_bgm);
+
+                    if(stage_clear)
+                    {
+                        if(al_get_sample_instance_playing(boss_bgm))
+                            al_stop_sample_instance(boss_bgm);
+                        al_play_sample_instance(game_bgm);
+                    }
 
                     break;
                 }
@@ -173,7 +189,7 @@ void Scene_manager::draw_background(int anime_counter)
                         switch(cur_stage)
                         {
                         case 2:
-                            al_set_sample_instance_gain(fire_sfx, healing ? 1 : 0.2);
+                            al_set_sample_instance_gain(fire_sfx, healing ? 0.5 : 0.1);
                             al_set_sample_instance_gain(bonus_bgm, 1);
                             break;
                         case 3:
@@ -280,6 +296,7 @@ void Scene_manager::change_scene()
                 reset_game = true;
                 break;
             case EXIT_BUTTON:
+                game_mute = true;
                 exit_game = true;
                 break;
             case AUDIO_BUTTON:
@@ -316,6 +333,7 @@ void Scene_manager::change_scene()
             cur_scene = CREDIT_SCENE;
             break;
         case EXIT_BUTTON:
+            game_mute = true;
             exit_game = true;
             break;
         }
