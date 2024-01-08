@@ -31,6 +31,7 @@ class Boss : public Object
 {
 public:
     Boss(int, int);
+    void Attack(int, int);
     void Update();
     void Damaged(int damage_val)
     {
@@ -48,8 +49,10 @@ public:
     bool getDead() { return is_dead; }
 
 private:
-    int Boss_WIDTH = 192, Boss_HEIGHT = 192;
-    int sprite_pos = 1;
+    int draw_frequency = 10;
+    int atk_x = 0, atk_y = 0;
+    int Boss_WIDTH = 384, Boss_HEIGHT = 384;
+    int sprite_pos = 0;
     int counter = 0;
     int speed = 0;
     int hp = 50;
@@ -57,7 +60,8 @@ private:
     bool is_dead = false;
     bool start_death = false;
     bool start_damaged = false;
-    BossState state = BossState::MOVE;
+    bool start_atk = false;
+    BossState state = BossState::WAKE;
     BossDirection direction = BossDirection::RIGHT;
     std::map<BossState, std::vector<ALLEGRO_BITMAP *>> imgData;
     std::map<BossState, int> imgCount;

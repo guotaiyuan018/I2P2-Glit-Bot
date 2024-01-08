@@ -5,15 +5,17 @@
 const char state_name[][100] = {"ATTACK", "DEAD", "DAMAGED", "MOVE", "WAKE"};
 const char dir_name[][100] = {"LEFT", "RIGHT"};
 
-const int draw_frequency = 10;
-
 Boss::Boss(int x, int y)
 {
-    this->circle = new Circle(x, y, 60);
-    std::cout << "boss\n";
+    draw_frequency = 30;
+    speed = 0;
+    state = BossState::WAKE;
+
+    this->circle = new Circle(x, y, 192);
+    // std::cout << "boss\n";
     imgCount[BossState::ATTACK] = 10;
     imgCount[BossState::DEAD] = 11;
-    imgCount[BossState::DAMAGED] = 2;
+    imgCount[BossState::DAMAGED] = 6;
     imgCount[BossState::MOVE] = 6;
     imgCount[BossState::WAKE] = 5;
 
@@ -58,7 +60,6 @@ void Boss::Update()
 
     this->circle->x += dx * speed;
     this->circle->y += dy * speed;
-
     if (hp < 0)
     {
         if (!start_death)
@@ -67,26 +68,50 @@ void Boss::Update()
         state = BossState::DEAD;
         speed = 0;
     }
-    else if (!start_damaged)
-    {
-        if (lenth < 300)
-        {
-            state = BossState::ATTACK;
-        }
+}
 
-        else
+void Boss::Attack(int x, int y)
+{
+    if (!is_dead)
+    {
+        if (!start_atk)
         {
             state = BossState::MOVE;
-            speed = 2;
+            sprite_pos = 0;
+            speed = 0;
+            start_atk = true;
+            atk_x = x, atk_y = y;
+        }
+        else
+        {
+            state = BossState::ATTACK;
+            sprite_pos = 0;
         }
     }
 }
+
 void Boss::Draw()
 {
+
     if (sprite_pos == imgCount[state] - 1 && state == BossState::DEAD)
         is_dead = true;
     if (sprite_pos == imgCount[state] - 1 && state == BossState::DAMAGED)
-        start_damaged = false;
+        start_damaged = false, state = BossState::MOVE;
+    if (sprite_pos == imgCount[state] - 1 && state == BossState::WAKE)
+    {
+        state = BossState::MOVE;
+        draw_frequency = 10;
+        speed = 3;
+    }
+    if (sprite_pos == imgCount[state] - 1 && state == BossState::ATTACK)
+    {
+        state = BossState::MOVE;
+        start_atk = false;
+        speed = 3;
+    }
+
+    if (sprite_pos == 4 && state == BossState::ATTACK)
+        this->circle->x = atk_x, this->circle->y = atk_y;
 
     sprite_pos = (sprite_pos >= imgCount[state]) ? sprite_pos % imgCount[state] : sprite_pos;
     bool flip_not = (direction == BossDirection::RIGHT) ? false : true;
