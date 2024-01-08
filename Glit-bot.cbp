@@ -14,9 +14,10 @@
 				<Compiler>
 					<Add option="-std=c++11" />
 					<Add option="-g" />
+					<Add directory="allegro/include" />
 				</Compiler>
 				<Linker>
-					<Add library="../allegro/lib/liballegro_monolith-debug.dll.a" />
+					<Add library="allegro/lib/liballegro_monolith-debug.dll.a" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -40,20 +41,24 @@
 		</Compiler>
 		<Unit filename="Bullet.cpp" />
 		<Unit filename="Bullet.h" />
+		<Unit filename="Button.cpp" />
+		<Unit filename="Button.h" />
 		<Unit filename="Circle.cpp" />
 		<Unit filename="Circle.h" />
 		<Unit filename="DataCenter.cpp" />
 		<Unit filename="DataCenter.h" />
 		<Unit filename="Hero.cpp" />
 		<Unit filename="Hero.h" />
+		<Unit filename="Main.cpp" />
 		<Unit filename="Monster.cpp" />
 		<Unit filename="Monster.h" />
 		<Unit filename="Object.h" />
+		<Unit filename="Portal.cpp" />
+		<Unit filename="Portal.h" />
 		<Unit filename="game_window.cpp" />
 		<Unit filename="game_window.h" />
 		<Unit filename="global.cpp" />
 		<Unit filename="global.h" />
-		<Unit filename="main.cpp" />
 		<Unit filename="scene_classes/end_scene.cpp" />
 		<Unit filename="scene_classes/end_scene.h" />
 		<Unit filename="scene_classes/game_scene.cpp" />

@@ -1,0 +1,979 @@
+# depslib dependency file v1.0
+1704560191 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\bullet.cpp
+	"Bullet.h"
+	<cmath>
+	<iostream>
+
+1704559992 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\bullet.h
+	<stdio.h>
+	<utility>
+	<map>
+	<allegro5/allegro.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_font.h>
+	<allegro5/allegro_ttf.h>
+	<allegro5/allegro_primitives.h>
+	"Object.h"
+	"Circle.h"
+	"global.h"
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\allegro.h
+	"allegro5/base.h"
+	"allegro5/altime.h"
+	"allegro5/bitmap.h"
+	"allegro5/bitmap_draw.h"
+	"allegro5/bitmap_io.h"
+	"allegro5/bitmap_lock.h"
+	"allegro5/blender.h"
+	"allegro5/clipboard.h"
+	"allegro5/color.h"
+	"allegro5/config.h"
+	"allegro5/cpu.h"
+	"allegro5/debug.h"
+	"allegro5/display.h"
+	"allegro5/drawing.h"
+	"allegro5/error.h"
+	"allegro5/events.h"
+	"allegro5/file.h"
+	"allegro5/fixed.h"
+	"allegro5/fmaths.h"
+	"allegro5/fshook.h"
+	"allegro5/fullscreen_mode.h"
+	"allegro5/haptic.h"
+	"allegro5/joystick.h"
+	"allegro5/keyboard.h"
+	"allegro5/memory.h"
+	"allegro5/monitor.h"
+	"allegro5/mouse.h"
+	"allegro5/mouse_cursor.h"
+	"allegro5/path.h"
+	"allegro5/render_state.h"
+	"allegro5/shader.h"
+	"allegro5/system.h"
+	"allegro5/threads.h"
+	"allegro5/timer.h"
+	"allegro5/tls.h"
+	"allegro5/touch_input.h"
+	"allegro5/transformations.h"
+	"allegro5/utf8.h"
+	"allegro5/alcompat.h"
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\base.h
+	<errno.h>
+	<limits.h>
+	<limits.h>
+	<stdarg.h>
+	<stddef.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	<sys/types.h>
+	<fortify/fortify.h>
+	<dmalloc.h>
+	"allegro5/internal/alconfig.h"
+
+1702089573 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\internal\alconfig.h
+	"allegro5/platform/alplatf.h"
+	"allegro5/platform/alwatcom.h"
+	"allegro5/platform/almngw32.h"
+	"allegro5/platform/albcc32.h"
+	"allegro5/platform/almsvc.h"
+	"allegro5/platform/aliphonecfg.h"
+	"allegro5/platform/alosxcfg.h"
+	"allegro5/platform/alandroidcfg.h"
+	"allegro5/platform/alraspberrypicfg.h"
+	"allegro5/platform/alucfg.h"
+	"allegro5/platform/allegro_sdl_config.h"
+	"allegro5/platform/astdint.h"
+	"allegro5/platform/astdbool.h"
+
+1702089573 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\platform\alplatf.h
+
+1702089573 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\platform\alwatcom.h
+	<io.h>
+	<i86.h>
+	<conio.h>
+	<fcntl.h>
+	<direct.h>
+	<malloc.h>
+
+1702089573 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\platform\almngw32.h
+	<io.h>
+	<fcntl.h>
+	<direct.h>
+	<malloc.h>
+	"allegro5/platform/alplatf.h"
+
+1702089573 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\platform\albcc32.h
+	<io.h>
+	<fcntl.h>
+	<direct.h>
+	<malloc.h>
+
+1702089573 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\platform\almsvc.h
+	<io.h>
+	<fcntl.h>
+	<direct.h>
+	<malloc.h>
+	"allegro5/platform/alplatf.h"
+
+1702089573 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\platform\aliphonecfg.h
+	<fcntl.h>
+	<unistd.h>
+
+1702089573 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\platform\alosxcfg.h
+	"allegro5/platform/alplatf.h"
+
+1702089573 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\platform\alandroidcfg.h
+
+1702089573 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\platform\alraspberrypicfg.h
+	<fcntl.h>
+	<unistd.h>
+	<sys/types.h>
+
+1702089573 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\platform\alucfg.h
+	<fcntl.h>
+	<unistd.h>
+	"alunix.h"
+	"allegro5/platform/alplatf.h"
+
+1702089573 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\platform\alunix.h
+
+1702089573 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\platform\allegro_sdl_config.h
+	<fcntl.h>
+	<unistd.h>
+
+1702089573 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\platform\astdint.h
+	<inttypes.h>
+	<stdint.h>
+	<limits.h>
+
+1702089573 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\platform\astdbool.h
+	<stdbool.h>
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\altime.h
+	"allegro5/base.h"
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\bitmap.h
+	"allegro5/color.h"
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\color.h
+	"allegro5/base.h"
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\bitmap_draw.h
+	"allegro5/bitmap.h"
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\bitmap_io.h
+	"allegro5/bitmap.h"
+	"allegro5/file.h"
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\file.h
+	"allegro5/base.h"
+	"allegro5/path.h"
+	"allegro5/utf8.h"
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\path.h
+	"allegro5/base.h"
+	"allegro5/utf8.h"
+
+1702089573 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\utf8.h
+	"allegro5/base.h"
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\bitmap_lock.h
+	"allegro5/bitmap.h"
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\blender.h
+	"allegro5/base.h"
+	"allegro5/color.h"
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\clipboard.h
+	"allegro5/base.h"
+	"allegro5/display.h"
+	"allegro5/utf8.h"
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\display.h
+	"allegro5/bitmap.h"
+	"allegro5/color.h"
+	"allegro5/events.h"
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\events.h
+	"allegro5/altime.h"
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\config.h
+	"allegro5/file.h"
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\cpu.h
+	"allegro5/base.h"
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\debug.h
+	<assert.h>
+	"allegro5/base.h"
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\drawing.h
+	"allegro5/color.h"
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\error.h
+	"allegro5/base.h"
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\fixed.h
+	"allegro5/base.h"
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\fmaths.h
+	"allegro5/base.h"
+	"allegro5/fixed.h"
+	"allegro5/inline/fmaths.inl"
+
+1702089573 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\inline\fmaths.inl
+	"allegro5/error.h"
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\fshook.h
+	"allegro5/base.h"
+	"allegro5/file.h"
+	"allegro5/path.h"
+	<sys/types.h>
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\fullscreen_mode.h
+	"allegro5/base.h"
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\haptic.h
+	"allegro5/base.h"
+	"allegro5/display.h"
+	"allegro5/events.h"
+	"allegro5/joystick.h"
+	"allegro5/keyboard.h"
+	"allegro5/mouse.h"
+	"allegro5/touch_input.h"
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\joystick.h
+	"allegro5/base.h"
+	"allegro5/events.h"
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\keyboard.h
+	"allegro5/base.h"
+	"allegro5/events.h"
+	"allegro5/keycodes.h"
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\keycodes.h
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\mouse.h
+	"allegro5/base.h"
+	"allegro5/events.h"
+
+1702089573 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\touch_input.h
+	"allegro5/base.h"
+	"allegro5/events.h"
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\memory.h
+	"allegro5/base.h"
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\monitor.h
+	"allegro5/base.h"
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\mouse_cursor.h
+	"allegro5/base.h"
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\render_state.h
+	"allegro5/base.h"
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\shader.h
+	"allegro5/base.h"
+	"allegro5/transformations.h"
+
+1702089573 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\transformations.h
+	"allegro5/display.h"
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\system.h
+	"allegro5/config.h"
+	"allegro5/path.h"
+
+1702089573 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\threads.h
+	"allegro5/altime.h"
+
+1702089573 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\timer.h
+	"allegro5/base.h"
+	"allegro5/events.h"
+
+1702089573 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\tls.h
+	"allegro5/base.h"
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\alcompat.h
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\allegro_image.h
+	"allegro5/base.h"
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\allegro_font.h
+	"allegro5/allegro.h"
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\allegro_ttf.h
+	"allegro5/allegro.h"
+	"allegro5/allegro_font.h"
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\allegro_primitives.h
+	<allegro5/allegro.h>
+
+1702089840 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\object.h
+	"Circle.h"
+
+1703347025 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\circle.h
+
+1704624492 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\global.h
+	<allegro5/allegro_audio.h>
+	<allegro5/allegro_acodec.h>
+	<allegro5/allegro_font.h>
+	<allegro5/allegro_ttf.h>
+	<allegro5/allegro_image.h>
+
+1703347001 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\circle.cpp
+	"Circle.h"
+	<iostream>
+
+1702795766 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\datacenter.cpp
+	"DataCenter.h"
+
+1703324048 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\datacenter.h
+	<vector>
+	<list>
+	"Hero.h"
+	"Bullet.h"
+	"Monster.h"
+
+1703324048 ated upstream
+
+1704652142 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\hero.h
+	<iostream>
+	<stdio.h>
+	<string.h>
+	<allegro5/allegro.h>
+	<allegro5/allegro_primitives.h>
+	<vector>
+	<map>
+	"Object.h"
+	"Circle.h"
+	"global.h"
+
+1704379612 shed changes
+	<stdio.h>
+	<string.h>
+	<allegro5/allegro.h>
+	<allegro5/allegro_primitives.h>
+	<vector>
+	<map>
+	"Object.h"
+	"Circle.h"
+	"global.h"
+
+1704556886 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\monster.h
+	<stdio.h>
+	<string.h>
+	<iostream>
+	<allegro5/allegro.h>
+	<allegro5/allegro_primitives.h>
+	<vector>
+	<map>
+	"Object.h"
+	"Circle.h"
+	"global.h"
+
+1704624492 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\global.cpp
+	"global.h"
+
+1704035730 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\main.cpp
+	"game_window.h"
+
+1704557205 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\monster.cpp
+	"Monster.h"
+	<iostream>
+	<cmath>
+
+1704261053 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\scene_classes\end_scene.cpp
+
+1704624492 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\scene_classes\game_scene.cpp
+	"game_scene.h"
+	<iostream>
+	<map>
+
+1704624492 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\scene_classes\game_scene.h
+	<allegro5/allegro.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_audio.h>
+	"../global.h"
+	"../Hero.h"
+	"../DataCenter.h"
+	<vector>
+	<map>
+	<string>
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\allegro_audio.h
+	"allegro5/allegro.h"
+
+1704379701 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\scene_classes\setting_scene.cpp
+	"setting_scene.h"
+	<iostream>
+	<string>
+	<map>
+
+1704379701 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\scene_classes\setting_scene.h
+	<allegro5/allegro.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_audio.h>
+	"../global.h"
+	<map>
+	<string>
+
+1704559005 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\hero.cpp
+	"Hero.h"
+	<iostream>
+
+1704559343 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\scene_manager.cpp
+	"scene_manager.h"
+	<stdio.h>
+	<vector>
+	<iostream>
+
+1704379023 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\scene_manager.h
+	<allegro5/allegro.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_audio.h>
+	<allegro5/allegro_acodec.h>
+	"scene_classes/title_scene.h"
+	"scene_classes/game_scene.h"
+	"scene_classes/setting_scene.h"
+	<vector>
+
+1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\allegro_acodec.h
+	"allegro5/allegro.h"
+	"allegro5/allegro_audio.h"
+
+1704202164 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\scene_classes\title_scene.h
+	<allegro5/allegro.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_audio.h>
+	<allegro5/allegro_acodec.h>
+	<vector>
+	<map>
+
+1704521641 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\scene_classes\title_scene.cpp
+	"title_scene.h"
+	"../DataCenter.h"
+	<iostream>
+	<vector>
+	<map>
+
+1704624492 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\game_window.h
+	<allegro5/allegro.h>
+	<allegro5/allegro_image.h>
+	<vector>
+	<list>
+	<time.h>
+	"global.h"
+	"DataCenter.h"
+	"scene_manager.h"
+	"Bullet.h"
+	"Monster.h"
+	"Portal.h"
+
+1704651349 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\game_window.cpp
+	"game_window.h"
+	"DataCenter.h"
+	<iostream>
+	<cmath>
+
+1704560994 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\bullet.cpp
+	"Bullet.h"
+	<cmath>
+	<iostream>
+
+1704560055 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\bullet.h
+	<stdio.h>
+	<utility>
+	<map>
+	<allegro5/allegro.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_font.h>
+	<allegro5/allegro_ttf.h>
+	<allegro5/allegro_primitives.h>
+	"Object.h"
+	"Circle.h"
+	"global.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\allegro.h
+	"allegro5/base.h"
+	"allegro5/altime.h"
+	"allegro5/bitmap.h"
+	"allegro5/bitmap_draw.h"
+	"allegro5/bitmap_io.h"
+	"allegro5/bitmap_lock.h"
+	"allegro5/blender.h"
+	"allegro5/clipboard.h"
+	"allegro5/color.h"
+	"allegro5/config.h"
+	"allegro5/cpu.h"
+	"allegro5/debug.h"
+	"allegro5/display.h"
+	"allegro5/drawing.h"
+	"allegro5/error.h"
+	"allegro5/events.h"
+	"allegro5/file.h"
+	"allegro5/fixed.h"
+	"allegro5/fmaths.h"
+	"allegro5/fshook.h"
+	"allegro5/fullscreen_mode.h"
+	"allegro5/haptic.h"
+	"allegro5/joystick.h"
+	"allegro5/keyboard.h"
+	"allegro5/memory.h"
+	"allegro5/monitor.h"
+	"allegro5/mouse.h"
+	"allegro5/mouse_cursor.h"
+	"allegro5/path.h"
+	"allegro5/render_state.h"
+	"allegro5/shader.h"
+	"allegro5/system.h"
+	"allegro5/threads.h"
+	"allegro5/timer.h"
+	"allegro5/tls.h"
+	"allegro5/touch_input.h"
+	"allegro5/transformations.h"
+	"allegro5/utf8.h"
+	"allegro5/alcompat.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\base.h
+	<errno.h>
+	<limits.h>
+	<limits.h>
+	<stdarg.h>
+	<stddef.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	<sys/types.h>
+	<fortify/fortify.h>
+	<dmalloc.h>
+	"allegro5/internal/alconfig.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\internal\alconfig.h
+	"allegro5/platform/alplatf.h"
+	"allegro5/platform/alwatcom.h"
+	"allegro5/platform/almngw32.h"
+	"allegro5/platform/albcc32.h"
+	"allegro5/platform/almsvc.h"
+	"allegro5/platform/aliphonecfg.h"
+	"allegro5/platform/alosxcfg.h"
+	"allegro5/platform/alandroidcfg.h"
+	"allegro5/platform/alraspberrypicfg.h"
+	"allegro5/platform/alucfg.h"
+	"allegro5/platform/allegro_sdl_config.h"
+	"allegro5/platform/astdint.h"
+	"allegro5/platform/astdbool.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\platform\alplatf.h
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\platform\alwatcom.h
+	<io.h>
+	<i86.h>
+	<conio.h>
+	<fcntl.h>
+	<direct.h>
+	<malloc.h>
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\platform\almngw32.h
+	<io.h>
+	<fcntl.h>
+	<direct.h>
+	<malloc.h>
+	"allegro5/platform/alplatf.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\platform\albcc32.h
+	<io.h>
+	<fcntl.h>
+	<direct.h>
+	<malloc.h>
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\platform\almsvc.h
+	<io.h>
+	<fcntl.h>
+	<direct.h>
+	<malloc.h>
+	"allegro5/platform/alplatf.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\platform\aliphonecfg.h
+	<fcntl.h>
+	<unistd.h>
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\platform\alosxcfg.h
+	"allegro5/platform/alplatf.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\platform\alandroidcfg.h
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\platform\alraspberrypicfg.h
+	<fcntl.h>
+	<unistd.h>
+	<sys/types.h>
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\platform\alucfg.h
+	<fcntl.h>
+	<unistd.h>
+	"alunix.h"
+	"allegro5/platform/alplatf.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\platform\alunix.h
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\platform\allegro_sdl_config.h
+	<fcntl.h>
+	<unistd.h>
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\platform\astdint.h
+	<inttypes.h>
+	<stdint.h>
+	<limits.h>
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\platform\astdbool.h
+	<stdbool.h>
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\altime.h
+	"allegro5/base.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\bitmap.h
+	"allegro5/color.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\color.h
+	"allegro5/base.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\bitmap_draw.h
+	"allegro5/bitmap.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\bitmap_io.h
+	"allegro5/bitmap.h"
+	"allegro5/file.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\file.h
+	"allegro5/base.h"
+	"allegro5/path.h"
+	"allegro5/utf8.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\path.h
+	"allegro5/base.h"
+	"allegro5/utf8.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\utf8.h
+	"allegro5/base.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\bitmap_lock.h
+	"allegro5/bitmap.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\blender.h
+	"allegro5/base.h"
+	"allegro5/color.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\clipboard.h
+	"allegro5/base.h"
+	"allegro5/display.h"
+	"allegro5/utf8.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\display.h
+	"allegro5/bitmap.h"
+	"allegro5/color.h"
+	"allegro5/events.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\events.h
+	"allegro5/altime.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\config.h
+	"allegro5/file.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\cpu.h
+	"allegro5/base.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\debug.h
+	<assert.h>
+	"allegro5/base.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\drawing.h
+	"allegro5/color.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\error.h
+	"allegro5/base.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\fixed.h
+	"allegro5/base.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\fmaths.h
+	"allegro5/base.h"
+	"allegro5/fixed.h"
+	"allegro5/inline/fmaths.inl"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\inline\fmaths.inl
+	"allegro5/error.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\fshook.h
+	"allegro5/base.h"
+	"allegro5/file.h"
+	"allegro5/path.h"
+	<sys/types.h>
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\fullscreen_mode.h
+	"allegro5/base.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\haptic.h
+	"allegro5/base.h"
+	"allegro5/display.h"
+	"allegro5/events.h"
+	"allegro5/joystick.h"
+	"allegro5/keyboard.h"
+	"allegro5/mouse.h"
+	"allegro5/touch_input.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\joystick.h
+	"allegro5/base.h"
+	"allegro5/events.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\keyboard.h
+	"allegro5/base.h"
+	"allegro5/events.h"
+	"allegro5/keycodes.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\keycodes.h
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\mouse.h
+	"allegro5/base.h"
+	"allegro5/events.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\touch_input.h
+	"allegro5/base.h"
+	"allegro5/events.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\memory.h
+	"allegro5/base.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\monitor.h
+	"allegro5/base.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\mouse_cursor.h
+	"allegro5/base.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\render_state.h
+	"allegro5/base.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\shader.h
+	"allegro5/base.h"
+	"allegro5/transformations.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\transformations.h
+	"allegro5/display.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\system.h
+	"allegro5/config.h"
+	"allegro5/path.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\threads.h
+	"allegro5/altime.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\timer.h
+	"allegro5/base.h"
+	"allegro5/events.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\tls.h
+	"allegro5/base.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\alcompat.h
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\allegro_image.h
+	"allegro5/base.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\allegro_font.h
+	"allegro5/allegro.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\allegro_ttf.h
+	"allegro5/allegro.h"
+	"allegro5/allegro_font.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\allegro_primitives.h
+	<allegro5/allegro.h>
+
+1704378059 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\object.h
+	"Circle.h"
+
+1704378059 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\circle.h
+
+1704655474 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\global.h
+	<allegro5/allegro_audio.h>
+	<allegro5/allegro_acodec.h>
+	<allegro5/allegro_font.h>
+	<allegro5/allegro_ttf.h>
+	<allegro5/allegro_image.h>
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\allegro_audio.h
+	"allegro5/allegro.h"
+
+1704378061 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\allegro\include\allegro5\allegro_acodec.h
+	"allegro5/allegro.h"
+	"allegro5/allegro_audio.h"
+
+1704378059 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\circle.cpp
+	"Circle.h"
+	<iostream>
+
+1704378059 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\datacenter.cpp
+	"DataCenter.h"
+
+1704378059 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\datacenter.h
+	<vector>
+	<list>
+	"Hero.h"
+	"Bullet.h"
+	"Monster.h"
+
+1704663697 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\hero.h
+	<iostream>
+	<stdio.h>
+	<string.h>
+	<allegro5/allegro.h>
+	<allegro5/allegro_primitives.h>
+	<vector>
+	<map>
+	"Object.h"
+	"Circle.h"
+	"global.h"
+
+1704560055 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\monster.h
+	<stdio.h>
+	<string.h>
+	<iostream>
+	<allegro5/allegro.h>
+	<allegro5/allegro_primitives.h>
+	<vector>
+	<map>
+	"Object.h"
+	"Circle.h"
+	"global.h"
+
+1704662543 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\game_window.cpp
+	"game_window.h"
+	"DataCenter.h"
+	<iostream>
+
+1704658229 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\game_window.h
+	<allegro5/allegro.h>
+	<allegro5/allegro_image.h>
+	<vector>
+	<list>
+	<time.h>
+	"global.h"
+	"DataCenter.h"
+	"scene_manager.h"
+	"Bullet.h"
+	"Monster.h"
+	"Portal.h"
+
+1704378913 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\scene_manager.h
+	<allegro5/allegro.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_audio.h>
+	<allegro5/allegro_acodec.h>
+	"scene_classes/title_scene.h"
+	"scene_classes/game_scene.h"
+	"scene_classes/setting_scene.h"
+	<vector>
+
+1704378064 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\scene_classes\title_scene.h
+	<allegro5/allegro.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_audio.h>
+	<allegro5/allegro_acodec.h>
+	<vector>
+	<map>
+
+1704584088 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\scene_classes\game_scene.h
+	<allegro5/allegro.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_audio.h>
+	"../global.h"
+	"../Hero.h"
+	"../DataCenter.h"
+	<vector>
+	<map>
+	<string>
+
+1704379206 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\scene_classes\setting_scene.h
+	<allegro5/allegro.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_audio.h>
+	"../global.h"
+	<map>
+	<string>
+
+1704655469 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\global.cpp
+	"global.h"
+
+1704560055 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\hero.cpp
+	"Hero.h"
+	<iostream>
+
+1704378059 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\main.cpp
+	"game_window.h"
+
+1704560055 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\monster.cpp
+	"Monster.h"
+	<iostream>
+	<cmath>
+
+1704378063 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\scene_classes\end_scene.cpp
+
+1704586387 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\scene_classes\game_scene.cpp
+	"game_scene.h"
+	<iostream>
+	<map>
+
+1704379197 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\scene_classes\setting_scene.cpp
+	"setting_scene.h"
+	<iostream>
+	<string>
+	<map>
+
+1704471913 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\scene_classes\title_scene.cpp
+	"title_scene.h"
+	"../DataCenter.h"
+	<iostream>
+	<vector>
+	<map>
+
+1704558216 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\scene_manager.cpp
+	"scene_manager.h"
+	<stdio.h>
+	<vector>
+	<iostream>
+
+1704490506 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\button.cpp
+
+1704586291 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\portal.h
+	<allegro5/allegro.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_audio.h>
+	<allegro5/allegro_acodec.h>
+	<time.h>
+	"Object.h"
+	"Circle.h"
+	"global.h"
+
+1704662388 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\portal.cpp
+	"Portal.h"
+	<iostream>
+
+1704523529 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\button.cpp
+
+1704624492 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\portal.h
+	<allegro5/allegro.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_audio.h>
+	<allegro5/allegro_acodec.h>
+	<time.h>
+	"Object.h"
+	"Circle.h"
+	"global.h"
+
+1703317973 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\stageone.cpp
+
+1704624492 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\portal.cpp
+	"Portal.h"
+	<iostream>
+

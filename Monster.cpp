@@ -2,34 +2,46 @@
 #include <iostream>
 #include <cmath>
 
-const char direction_name[][100] = {"LEFT_ATTACK", "RIGHT_ATTACK", "LEFT_DEAD", "RIGHT_DEAD", "LEFT_DAMAGED", "RIGHT_DAMAGED", "LEFT_MOVE", "RIGHT_MOVE"};
+const char state_name[][100] = {"ATTACK", "DEAD", "DAMAGED", "MOVE"};
+const char dir_name[][100] = {"LEFT", "RIGHT"};
+const char mon_name[][100] = {"EYEBALL", "ZAPPER", "EXPLODER"};
 
 const int draw_frequency = 10;
 
-Monster::Monster(int x, int y)
+Monster::Monster(int x, int y, int name)
 {
-    this->circle = new Circle(x, y, 100);
+    this->circle = new Circle(x, y, 60);
 
-    imgCount[MonsterState::LEFT_ATTACK] = 4;
-    imgCount[MonsterState::RIGHT_ATTACK] = 4;
-    imgCount[MonsterState::LEFT_DEAD] = 6;
-    imgCount[MonsterState::RIGHT_DEAD] = 6;
-    imgCount[MonsterState::LEFT_DAMAGED] = 2;
-    imgCount[MonsterState::RIGHT_DAMAGED] = 2;
-    imgCount[MonsterState::LEFT_MOVE] = 2;
-    imgCount[MonsterState::RIGHT_MOVE] = 2;
+    my_name = static_cast<MonsterName>(name);
+
+    imgCount[MonsterName::ZAPPER][MonsterState::ATTACK] = 10;
+    imgCount[MonsterName::ZAPPER][MonsterState::DEAD] = 16;
+    imgCount[MonsterName::ZAPPER][MonsterState::DAMAGED] = 6;
+    imgCount[MonsterName::ZAPPER][MonsterState::MOVE] = 6;
+
+    imgCount[MonsterName::EYEBALL][MonsterState::ATTACK] = 11;
+    imgCount[MonsterName::EYEBALL][MonsterState::DEAD] = 12;
+    imgCount[MonsterName::EYEBALL][MonsterState::DAMAGED] = 6;
+    imgCount[MonsterName::EYEBALL][MonsterState::MOVE] = 8;
+
+    imgCount[MonsterName::EXPLODER][MonsterState::ATTACK] = 0;
+    imgCount[MonsterName::EXPLODER][MonsterState::DEAD] = 16;
+    imgCount[MonsterName::EXPLODER][MonsterState::DAMAGED] = 6;
+    imgCount[MonsterName::EXPLODER][MonsterState::MOVE] = 6;
 
     char buffer[50];
-    for (int i = 0; i < sizeof(direction_name) / sizeof(direction_name[0]); i++)
+
+    for (int i = 0; i < sizeof(state_name) / sizeof(state_name[0]); i++)
     {
-        for (int j = 0; j < imgCount[static_cast<MonsterState>(i)]; j++)
+
+        for (int j = 0; j < imgCount[my_name][static_cast<MonsterState>(i)]; j++)
         {
             ALLEGRO_BITMAP *img;
-            sprintf(buffer, "./Monster/MONSTER_%s_%d.png", direction_name[i], j + 1);
+            sprintf(buffer, "./Monster/%s/MONSTER_RIGHT_%s_%d.png", mon_name[static_cast<int>(my_name)], state_name[i], j + 1);
             img = al_load_bitmap(buffer);
             if (img)
             {
-                imgData[static_cast<MonsterState>(i)].push_back(img);
+                imgData[my_name][static_cast<MonsterState>(i)].push_back(img);
             }
             else
                 std::cout << buffer << std::endl;
@@ -39,18 +51,18 @@ Monster::Monster(int x, int y)
 
 void Monster::Update()
 {
+    counter = (counter + 1) % draw_frequency;
+    if (counter == 0)
+        sprite_pos = (sprite_pos + 1) % imgCount[my_name][state];
+
     float dx = hero_x - this->circle->x;
     float dy = hero_y - this->circle->y;
     float lenth = sqrt(dx * dx + dy * dy);
-    /*if (lenth > attack_range)
-            if (dx > 0)
-                direction = MonsterState::RIGHT_MOVE;
-            else
-                direction = MonsterState::LEFT_MOVE;
-        else if (dx > 0)
-            direction = MonsterState::RIGHT_ATTACK;
-        else
-            direction = MonsterState::LEFT_ATTACK;*/
+
+    if (dx > 0)
+        direction = MonsterDirection::RIGHT;
+    else
+        direction = MonsterDirection::LEFT;
 
     if (lenth > 0)
     {
@@ -60,10 +72,40 @@ void Monster::Update()
 
     this->circle->x += dx * speed;
     this->circle->y += dy * speed;
-}
 
+    if (hp < 0)
+    {
+        if (!start_death)
+            sprite_pos = 0;
+        start_death = true;
+        state = MonsterState::DEAD;
+        speed = 0;
+    }
+    else if (!start_damaged)
+    {
+        if (lenth < 300)
+        {
+            if (my_name != MonsterName::EXPLODER)
+                state = MonsterState::ATTACK;
+            if (my_name == MonsterName::EYEBALL)
+                speed = 4;
+        }
+
+        else
+        {
+            state = MonsterState::MOVE;
+            speed = 2;
+        }
+    }
+}
 void Monster::Draw()
 {
-    sprite_pos = (sprite_pos >= imgCount[direction]) ? sprite_pos % imgCount[direction] : sprite_pos;
-    al_draw_bitmap(imgData[direction][sprite_pos], this->circle->x, this->circle->y, 0);
+    if (sprite_pos == imgCount[my_name][state] - 1 && state == MonsterState::DEAD)
+        is_dead = true;
+    if (sprite_pos == imgCount[my_name][state] - 1 && state == MonsterState::DAMAGED)
+        start_damaged = false;
+
+    sprite_pos = (sprite_pos >= imgCount[my_name][state]) ? sprite_pos % imgCount[my_name][state] : sprite_pos;
+    bool flip_not = (direction == MonsterDirection::RIGHT) ? false : true;
+    al_draw_bitmap(imgData[my_name][state][sprite_pos], this->circle->x - MONSTER_WIDTH / 2, this->circle->y - MONSTER_HEIGHT / 2, flip_not);
 }

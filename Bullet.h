@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <utility>
+#include <map>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_font.h>
@@ -12,10 +13,17 @@
 #include "Circle.h"
 #include "global.h"
 
+enum class BulletType
+{
+    ROUND,
+    AURABLADE,
+    BEAM
+};
+
 class Bullet : public Object
 {
 public:
-    Bullet(int, int);
+    Bullet(int, int, int);
     ~Bullet();
 
     bool Update();
@@ -25,8 +33,10 @@ public:
 protected:
     int speed = 15;
     float direction_x, direction_y;
-
-    ALLEGRO_BITMAP *img;
+    int bullet_num = 3;
+    float bulletAngle = 0;
+    BulletType my_type = BulletType::ROUND;
+    ALLEGRO_BITMAP *imgData;
 };
 
 #endif

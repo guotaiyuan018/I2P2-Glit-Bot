@@ -4,24 +4,23 @@
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_audio.h>
+#include "../global.h"
+#include "../Hero.h"
+#include "../DataCenter.h"
 #include <vector>
 #include <map>
 #include <string>
 
-#define map_num 2
+#define bonus_frames 20
+#define map_num 3
 
 #define DEFAULT_BUTTON 0
 #define PAUSE_BUTTON 1
 
-#define NO_MOVE 0
-#define RIGHT 1
-#define UP_RIGHT 2
-#define UP 3
-#define UP_LEFT 4
-#define LEFT 5
-#define DOWN_LEFT 6
-#define DOWN 7
-#define DOWN_RIGHT 8
+#define W_BUTTON 0
+#define A_BUTTON 1
+#define S_BUTTON 2
+#define D_BUTTON 3
 
 using namespace std;
 
@@ -31,16 +30,20 @@ public:
     ~Game_scene();
 
     void load_scene();
-    void draw_scene();
+    void draw_background(int counter);
+    void draw_ui();
     int mouse_act(int x, int y);
-    int controller_state = 0;
+    void keyboard_act();
 
 private:
     vector<ALLEGRO_BITMAP*> maps;
-    vector<ALLEGRO_BITMAP*> hp_bar;
-    vector<ALLEGRO_BITMAP*> bots;
-    vector<ALLEGRO_BITMAP*> controller;
+    vector<ALLEGRO_BITMAP*> bonus;
+    vector<ALLEGRO_BITMAP*> hp_bar;// hp = 10
+    vector<ALLEGRO_BITMAP*> bot_info;// 3 bots
+    ALLEGRO_BITMAP* cur_controller[4];
+    ALLEGRO_BITMAP* controller[4][2];
     ALLEGRO_BITMAP* pause[2];
+    ALLEGRO_BITMAP* text = NULL;
 
     int cur_menu = 0;
     int cur_bot = 0;

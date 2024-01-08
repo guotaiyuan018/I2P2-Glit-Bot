@@ -8,13 +8,13 @@
 #include <map>
 #include <string>
 
-#define set_ui_num 5
+#define set_ui_num 4
 
-#define DEFAULT_BUTTON 0
-#define RESUME_BUTTON 1
-#define RESTART_BUTTON 2
-#define EXIT_BUTTON 3
-#define AUDIO_BUTTON 4
+#define RESUME_BUTTON 0
+#define RESTART_BUTTON 1
+#define EXIT_BUTTON 2
+#define AUDIO_BUTTON 3
+#define NO_HOVERED INT_MAX
 
 using namespace std;
 
@@ -24,15 +24,16 @@ public:
     ~Setting_scene();
 
     void load_scene();
-    void draw_scene();
+    void draw_background();
+    void draw_ui();
     int mouse_act(int x, int y);
 
 private:
-    ALLEGRO_BITMAP* set_background = NULL;
-    ALLEGRO_BITMAP* audio_state[2][2];//[button index][state]
-    ALLEGRO_BITMAP* set_ui[set_ui_num][2];//[button index][state]
+    ALLEGRO_BITMAP* set_background[2];
+    ALLEGRO_BITMAP* cur_set_ui[set_ui_num];
+    ALLEGRO_BITMAP* set_ui[set_ui_num + 1][2];
 
-    int cur_menu = 0;
+    int audio_state = 0;
 
     map <int, array<int, 5>>set_interface;
 };
