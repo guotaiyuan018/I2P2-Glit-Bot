@@ -817,13 +817,14 @@
 1704378059 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\datacenter.cpp
 	"DataCenter.h"
 
-1704697279 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\datacenter.h
+1704731782 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\datacenter.h
 	<vector>
 	<list>
 	"Hero.h"
 	"Bullet.h"
 	"Monster.h"
 	"Boss.h"
+	"Zone.h"
 
 1704694126 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\hero.h
 	<iostream>
@@ -849,12 +850,12 @@
 	"Circle.h"
 	"global.h"
 
-1704731206 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\game_window.cpp
+1704733517 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\game_window.cpp
 	"game_window.h"
 	"DataCenter.h"
 	<iostream>
 
-1704697279 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\game_window.h
+1704733741 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\game_window.h
 	<allegro5/allegro.h>
 	<allegro5/allegro_image.h>
 	<vector>
@@ -865,6 +866,7 @@
 	"scene_manager.h"
 	"Bullet.h"
 	"Monster.h"
+	"Zone.h"
 	"Portal.h"
 	"Boss.h"
 
@@ -927,7 +929,7 @@
 	<string>
 	<map>
 
-1704731115 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\scene_classes\game_scene.cpp
+1704734386 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\scene_classes\game_scene.cpp
 	"game_scene.h"
 	<iostream>
 	<map>
@@ -963,7 +965,7 @@
 	"Circle.h"
 	"global.h"
 
-1704662388 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\portal.cpp
+1704732909 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\portal.cpp
 	"Portal.h"
 	<iostream>
 
@@ -1002,7 +1004,7 @@
 	<iostream>
 	<cmath>
 
-1704729709 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\boss.h
+1704731869 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\boss.h
 	<stdio.h>
 	<string.h>
 	<iostream>
@@ -1014,7 +1016,7 @@
 	"Circle.h"
 	"global.h"
 
-1704697279 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\boss.cpp
+1704732990 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\boss.cpp
 	"Boss.h"
 	<iostream>
 	<cmath>
@@ -1027,4 +1029,20 @@
 	<map>
 	<vector>
 	<string>
+
+1704731783 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\zone.h
+	<stdio.h>
+	<string.h>
+	<iostream>
+	<allegro5/allegro.h>
+	<allegro5/allegro_primitives.h>
+	<vector>
+	<map>
+	"Object.h"
+	"Circle.h"
+	"global.h"
+
+1704731783 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\zone.cpp
+	"Zone.h"
+	<iostream>
 

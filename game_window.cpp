@@ -98,7 +98,7 @@ void game_window::set_enemy(int stage_num)
             monsterSet.emplace_back(m);
         }
     }
-    else if (stage_num != 2)
+    else if (stage_num == 3)
     {
         Boss *boss = create_boss();
         bossSet.emplace_back(boss);
@@ -264,7 +264,7 @@ int game_window::game_update()
             else
                 stage_clear = false;
         }
-        else if (cur_stage == 4)
+        else if (cur_stage == 3)
         {
             if (bossSet.empty())
                 stage_clear = true;
@@ -339,7 +339,7 @@ int game_window::process_event()
             if (load_next)
             {
                 std::cout << "stage:" << cur_stage << std::endl;
-                if (cur_stage < 4 && cur_stage != 2)
+                if (cur_stage != 2)
                     set_enemy(cur_stage);
                 loading = false;
                 load_next = false;
@@ -354,6 +354,7 @@ int game_window::process_event()
         else if (event.timer.source == boss_timer)
         {
             bossSet.front()->Attack(hero_x, hero_y);
+
             if (zoneSet.empty())
             {
                 zoneSet.emplace_back(create_zone(hero_x, hero_y));
@@ -372,6 +373,7 @@ int game_window::process_event()
         {
             mouse_down = true;
             scene_manager->change_scene();
+
             if (exit_game)
                 game_destroy();
             if (reset_game)
@@ -415,7 +417,6 @@ int game_window::process_event()
     if (frame_update)
     {
         instruction = game_update();
-
         draw_scene();
         frame_update = false;
     }
@@ -444,6 +445,9 @@ void game_window::draw_scene()
                 portal->Draw();
             }
 
+            if (!zoneSet.empty())
+                zoneSet.front()->Draw();
+
             for (vector<Bullet *>::iterator it = bulletSet.begin(); it != bulletSet.end(); it++)
                 (*it)->Draw();
 
@@ -451,10 +455,10 @@ void game_window::draw_scene()
                 (*it)->Draw();
 
             heroSet.front()->Draw();
+
             if (!bossSet.empty())
                 bossSet.front()->Draw();
-            if (!zoneSet.empty())
-                zoneSet.front()->Draw();
+
         }
         else
             al_set_mouse_cursor(display, cursor);

@@ -44,6 +44,11 @@ void Portal::Draw()
         this->circle->y = window_height / 2 - 20;
         al_draw_bitmap(port, this->circle->x - PORTAL_WIDTH / 2, this->circle->y - PORTAL_HEIGHT / 2, 0);
     }
+    else if(cur_stage == 3){
+        this->circle->x = window_width / 2;
+        this->circle->y = window_height / 2;
+        al_draw_bitmap(port, this->circle->x - PORTAL_WIDTH / 2, this->circle->y - PORTAL_HEIGHT / 2, 0);
+    }
     else al_draw_bitmap(port, x - PORTAL_WIDTH / 2, y - PORTAL_HEIGHT / 2, 0);
 }
 

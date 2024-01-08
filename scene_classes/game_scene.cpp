@@ -97,13 +97,12 @@ void Game_scene::draw_ui(){
         al_draw_bitmap(hp_bar2[DC->get_Hero().front()->getHP()], hero_x - 50, hero_y - 70, 0);
 
         int tmp;
-
         if(DC->get_Boss().empty()) tmp = 0;
         else tmp = DC->get_Boss().front()->getHP();
 
         int b_hp = (tmp + 4) / 5;
-
-        al_draw_bitmap(boss_hp[b_hp], 0, 0, 0);
+        cout << b_hp << endl;
+        al_draw_bitmap(boss_hp[b_hp < 0 ? 0 : b_hp], 0, 0, 0);
     }
     else
     {

@@ -11,7 +11,7 @@ Boss::Boss(int x, int y)
     speed = 0;
     state = BossState::WAKE;
 
-    this->circle = new Circle(x, y, 192);
+    this->circle = new Circle(x, y, 250);
     // std::cout << "boss\n";
     imgCount[BossState::ATTACK] = 10;
     imgCount[BossState::DEAD] = 11;

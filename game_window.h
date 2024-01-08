@@ -15,7 +15,7 @@
 #include "Portal.h"
 #include "Boss.h"
 
-#define STAGE_NUM 4
+#define STAGE_NUM 3
 
 #define GAME_INIT -1
 #define GAME_LOADING 0
