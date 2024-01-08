@@ -339,7 +339,7 @@ int game_window::process_event()
             if (load_next)
             {
                 std::cout << "stage:" << cur_stage << std::endl;
-                if (cur_stage != 2)
+                if (cur_stage != 2 && cur_stage <= STAGE_NUM)
                     set_enemy(cur_stage);
                 loading = false;
                 load_next = false;
@@ -417,6 +417,7 @@ int game_window::process_event()
     if (frame_update)
     {
         instruction = game_update();
+
         draw_scene();
         frame_update = false;
     }

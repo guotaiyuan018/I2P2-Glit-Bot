@@ -9,8 +9,10 @@
 #include "scene_classes/game_scene.h"
 #include "scene_classes/setting_scene.h"
 #include "scene_classes/end_scene.h"
-
 #include <vector>
+
+#define credit_frames 30
+
 using namespace std;
 
 enum{TITLE_SCENE = 0, BATTLE_SCENE = 1, SET_SCENE = 2, CREDIT_SCENE = 3, END_SCENE = 4};
@@ -38,7 +40,9 @@ private:
     Setting_scene *setting_scene = NULL;
     End_scene *end_scene = NULL;
 
-    ALLEGRO_BITMAP* credit_scene = NULL;
+    vector<ALLEGRO_BITMAP*> credit_background;
+    ALLEGRO_BITMAP *credit_text = NULL;
+
     ALLEGRO_BITMAP *crosshair = NULL;
 
     ALLEGRO_SAMPLE *sample = NULL;

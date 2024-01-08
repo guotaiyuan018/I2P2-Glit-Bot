@@ -23,7 +23,15 @@ void Scene_manager::load_scenes()
     setting_scene->load_scene();
     end_scene->load_scene();
 
-    credit_scene = al_load_bitmap("./Scenes/credit.png");
+    char buffer[50];
+
+    for(int i = 0; i < credit_frames; i++)
+    {
+        sprintf(buffer, "./Scenes/credit/breakdown/img%d.png", i+1);
+        ALLEGRO_BITMAP *img = al_load_bitmap(buffer);
+        if(img) credit_background.push_back(img);
+    }
+    credit_text = al_load_bitmap("./Scenes/credit/text.png");
 
     //audio
     sample = al_load_sample("./audio/title.wav");
@@ -101,7 +109,8 @@ void Scene_manager::draw_background(int anime_counter)
             break;
 
         case CREDIT_SCENE:
-            al_draw_bitmap(credit_scene, 0, 0, 0);
+            al_draw_bitmap(credit_background[(anime_counter/5) % credit_frames], 0, 0, 0);
+            al_draw_bitmap(credit_text, 0, 0, 0);
             break;
     }
     //cout << "sc man, draw bg finish\n";
@@ -233,10 +242,14 @@ void Scene_manager::reset(){
 }
 
 Scene_manager::~Scene_manager(){
-    al_destroy_bitmap(credit_scene);
     al_destroy_sample(sample);
     al_destroy_sample_instance(title_bgm);
     al_destroy_sample_instance(game_bgm);
+
+    for(int i = 0; i < credit_frames; i++){
+        al_destroy_bitmap(credit_background[i]);
+    }
+    al_destroy_bitmap(credit_text);
 
     delete title_scene;
     delete game_scene;
