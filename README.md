@@ -20,24 +20,37 @@
         - 不同型態角色攻擊模式相異
         - 擁有共同血量
         1. Bullet bot
-        ![bullet](https://hackmd.io/_uploads/r1esQsvua.png)
+
+        ![bullet](https://github.com/guotaiyuan018/I2P2-Glit-Bot/assets/148344642/6f54f005-fb6f-41c6-8d73-cd6ff05a6399)
+
         2. Blade bot
-        ![blade](https://hackmd.io/_uploads/ry1nmsvua.png)
+
+        ![blade](https://github.com/guotaiyuan018/I2P2-Glit-Bot/assets/148344642/daef2489-1409-4375-8da0-714b4a0c1633)
+
         3. Beam bot
-        ![beam](https://hackmd.io/_uploads/HkzgEsDup.png)
+
+        ![beam](https://github.com/guotaiyuan018/I2P2-Glit-Bot/assets/148344642/b4782706-398b-4461-b49e-d13da03bdaf0)
 
     - 敵人
         - 三種小怪與一隻boss
         - 小怪的攻擊模式為追蹤角色並自爆
         - 魔王的攻擊模式為追蹤角色位置並瞬移
         1. exploder
-        ![ex](https://hackmd.io/_uploads/HyqHSjPOa.png)
+
+        ![ex](https://github.com/guotaiyuan018/I2P2-Glit-Bot/assets/148344642/f9aa63ce-2215-4d39-bc62-881c469274f9)
+
         2. zapper
-        ![zp](https://hackmd.io/_uploads/rkVIHoPua.png)
+
+        ![zp](https://github.com/guotaiyuan018/I2P2-Glit-Bot/assets/148344642/d2702e72-f3f5-4a29-9c59-03dc6b8bdc8d)
+
         3. eyeball monster
-        ![eye](https://hackmd.io/_uploads/SkaUSsPuT.png)
+
+        ![eye](https://github.com/guotaiyuan018/I2P2-Glit-Bot/assets/148344642/53129746-20ea-4dd4-b3a7-d7daac4262e7)
+
         4. boss
-        ![Run](https://hackmd.io/_uploads/SydYrsvOp.gif)
+
+        ![Run](https://github.com/guotaiyuan018/I2P2-Glit-Bot/assets/148344642/bf9bb2bf-a63d-4de9-9b3f-dffa19b8dab6)
+
 
     - 計量
         1. 角色血量 = 10
@@ -46,13 +59,14 @@
 - 遊戲性
     1. 隨機更換角色型態
     2. 不同角色相異攻擊型態
-    3. 子彈更隨滑鼠方向
+    3. 子彈跟隨滑鼠方向
     4. 回血場景
     5. Boss瞬移攻擊
 - 移動
     - 邊界內八向移動
 ### 概念圖
 
-![concept-01](https://hackmd.io/_uploads/Sy1L8iP_6.png)
+![concept-01](https://github.com/guotaiyuan018/I2P2-Glit-Bot/assets/148344642/402a158c-cc78-4cb9-8331-c0659e2714c7)
+
 
 
