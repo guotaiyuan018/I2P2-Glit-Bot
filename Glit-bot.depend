@@ -817,14 +817,15 @@
 1704378059 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\datacenter.cpp
 	"DataCenter.h"
 
-1704378059 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\datacenter.h
+1704697279 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\datacenter.h
 	<vector>
 	<list>
 	"Hero.h"
 	"Bullet.h"
 	"Monster.h"
+	"Boss.h"
 
-1704663697 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\hero.h
+1704694126 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\hero.h
 	<iostream>
 	<stdio.h>
 	<string.h>
@@ -848,12 +849,12 @@
 	"Circle.h"
 	"global.h"
 
-1704662543 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\game_window.cpp
+1704697279 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\game_window.cpp
 	"game_window.h"
 	"DataCenter.h"
 	<iostream>
 
-1704658229 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\game_window.h
+1704697279 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\game_window.h
 	<allegro5/allegro.h>
 	<allegro5/allegro_image.h>
 	<vector>
@@ -865,6 +866,7 @@
 	"Bullet.h"
 	"Monster.h"
 	"Portal.h"
+	"Boss.h"
 
 1704378913 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\scene_manager.h
 	<allegro5/allegro.h>
@@ -906,7 +908,7 @@
 1704655469 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\global.cpp
 	"global.h"
 
-1704560055 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\hero.cpp
+1704694126 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\hero.cpp
 	"Hero.h"
 	<iostream>
 
@@ -920,7 +922,7 @@
 
 1704378063 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\scene_classes\end_scene.cpp
 
-1704586387 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\scene_classes\game_scene.cpp
+1704664226 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\scene_classes\game_scene.cpp
 	"game_scene.h"
 	<iostream>
 	<map>
@@ -991,6 +993,23 @@
 	"global.h"
 
 1704693968 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\boss.cpp
+	"Boss.h"
+	<iostream>
+	<cmath>
+
+1704697279 c:\users\cathy\documents\github\tmp\i2p2-glit-bot\boss.h
+	<stdio.h>
+	<string.h>
+	<iostream>
+	<allegro5/allegro.h>
+	<allegro5/allegro_primitives.h>
+	<vector>
+	<map>
+	"Object.h"
+	"Circle.h"
+	"global.h"
+
+1704697279 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\boss.cpp
 	"Boss.h"
 	<iostream>
 	<cmath>

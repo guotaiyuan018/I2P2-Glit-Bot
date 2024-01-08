@@ -428,7 +428,8 @@ void game_window::game_reset()
 
     al_stop_timer(timer);
     frame_update = false;
-    reset_game = false;
+
+    cur_stage = 0;
 
     game_begin();
 }
