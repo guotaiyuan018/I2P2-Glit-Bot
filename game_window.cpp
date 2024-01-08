@@ -387,7 +387,10 @@ int game_window::process_event()
             scene_manager->change_scene();
 
             if (exit_game)
+            {
+                game_mute = true;
                 game_destroy();
+            }
             if (reset_game)
                 game_reset();
         }

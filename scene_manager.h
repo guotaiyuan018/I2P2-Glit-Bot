@@ -48,6 +48,9 @@ private:
     ALLEGRO_SAMPLE *sample = NULL;
     ALLEGRO_SAMPLE_INSTANCE *title_bgm = NULL;
     ALLEGRO_SAMPLE_INSTANCE *game_bgm = NULL;
+    ALLEGRO_SAMPLE_INSTANCE *bonus_bgm = NULL;
+    ALLEGRO_SAMPLE_INSTANCE *fire_sfx = NULL;
+    ALLEGRO_SAMPLE_INSTANCE *boss_bgm = NULL;
 };
 
 #endif // SCENE_H_INCLUDED

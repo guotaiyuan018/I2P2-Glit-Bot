@@ -17,7 +17,7 @@ Scene_manager::Scene_manager()
 
 void Scene_manager::load_scenes()
 {
-    al_reserve_samples(10);
+    al_reserve_samples(15);
     title_scene->load_scene();
     game_scene->load_scene();
     setting_scene->load_scene();
@@ -43,6 +43,21 @@ void Scene_manager::load_scenes()
     game_bgm = al_create_sample_instance(sample);
     al_set_sample_instance_playmode(game_bgm, ALLEGRO_PLAYMODE_LOOP);
     al_attach_sample_instance_to_mixer(game_bgm, al_get_default_mixer());
+
+    sample = al_load_sample("./audio/bonefire.wav");
+    fire_sfx = al_create_sample_instance(sample);
+    al_set_sample_instance_playmode(fire_sfx, ALLEGRO_PLAYMODE_LOOP);
+    al_attach_sample_instance_to_mixer(fire_sfx, al_get_default_mixer());
+
+    sample = al_load_sample("./audio/bonus.wav");
+    bonus_bgm = al_create_sample_instance(sample);
+    al_set_sample_instance_playmode(bonus_bgm, ALLEGRO_PLAYMODE_LOOP);
+    al_attach_sample_instance_to_mixer(bonus_bgm, al_get_default_mixer());
+
+    sample = al_load_sample("./audio/boss.wav");
+    boss_bgm = al_create_sample_instance(sample);
+    al_set_sample_instance_playmode(boss_bgm, ALLEGRO_PLAYMODE_LOOP);
+    al_attach_sample_instance_to_mixer(boss_bgm, al_get_default_mixer());
 }
 
 void Scene_manager::draw_background(int anime_counter)
@@ -53,6 +68,15 @@ void Scene_manager::draw_background(int anime_counter)
             //audio
             if(al_get_sample_instance_playing(game_bgm))
                 al_stop_sample_instance(game_bgm);
+
+            if(al_get_sample_instance_playing(bonus_bgm))
+                al_stop_sample_instance(bonus_bgm);
+
+            if(al_get_sample_instance_playing(fire_sfx))
+                al_stop_sample_instance(fire_sfx);
+
+            if(al_get_sample_instance_playing(boss_bgm))
+                al_stop_sample_instance(boss_bgm);
 
             if(!game_mute)
             {
@@ -72,10 +96,58 @@ void Scene_manager::draw_background(int anime_counter)
 
             if(!game_mute)
             {
-                al_set_sample_instance_gain(game_bgm, 1);
-                al_play_sample_instance(game_bgm);
+                switch(cur_stage)
+                {
+                case 2: // bonus
+                {
+                    if(al_get_sample_instance_playing(game_bgm))
+                        al_stop_sample_instance(game_bgm);
+
+                    al_set_sample_instance_gain(fire_sfx, healing ? 1 : 0.2);
+                    al_set_sample_instance_gain(bonus_bgm, 1);
+                    al_play_sample_instance(fire_sfx);
+                    al_play_sample_instance(bonus_bgm);
+
+                    break;
+                }
+                case 3: // boss
+                {
+                    if(al_get_sample_instance_playing(bonus_bgm))
+                        al_stop_sample_instance(bonus_bgm);
+
+                    if(al_get_sample_instance_playing(fire_sfx))
+                        al_stop_sample_instance(fire_sfx);
+
+                    al_set_sample_instance_gain(boss_bgm, 1);
+                    al_play_sample_instance(boss_bgm);
+
+                    break;
+                }
+                default:
+                {
+                    al_set_sample_instance_gain(game_bgm, 1);
+                    al_play_sample_instance(game_bgm);
+                    break;
+                }
+                }
             }
-            else al_stop_sample_instance(game_bgm);
+            else
+            {
+                al_stop_sample_instance(game_bgm);
+                switch(cur_stage)
+                {
+                case 2:
+                    al_stop_sample_instance(fire_sfx);
+                    al_stop_sample_instance(bonus_bgm);
+                    break;
+                case 3:
+                    al_stop_sample_instance(boss_bgm);
+                    break;
+                default:
+                    al_stop_sample_instance(game_bgm);
+                    break;
+                }
+            }
 
             //visual
             game_scene->draw_background((anime_counter/5) % bonus_frames);
@@ -87,6 +159,9 @@ void Scene_manager::draw_background(int anime_counter)
             {
                 al_set_sample_instance_gain(title_bgm, 0);
                 al_set_sample_instance_gain(game_bgm, 0);
+                al_set_sample_instance_gain(fire_sfx, 0);
+                al_set_sample_instance_gain(bonus_bgm, 0);
+                al_set_sample_instance_gain(boss_bgm, 0);
             }
             else {
                 switch(prev_scene)
@@ -95,8 +170,19 @@ void Scene_manager::draw_background(int anime_counter)
                         al_set_sample_instance_gain(title_bgm, 1);
                         break;
                     case BATTLE_SCENE:
-                        al_set_sample_instance_gain(game_bgm, 1);
-                        break;
+                        switch(cur_stage)
+                        {
+                        case 2:
+                            al_set_sample_instance_gain(fire_sfx, healing ? 1 : 0.2);
+                            al_set_sample_instance_gain(bonus_bgm, 1);
+                            break;
+                        case 3:
+                            al_set_sample_instance_gain(boss_bgm, 1);
+                            break;
+                        default:
+                            al_set_sample_instance_gain(game_bgm, 1);
+                            break;
+                        }
                 }
             }
 
