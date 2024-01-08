@@ -75,6 +75,7 @@ private:
     ALLEGRO_TIMER *glitch_timer = NULL;
     ALLEGRO_TIMER *boss_timer = NULL;
     ALLEGRO_TIMER *monster_pro = NULL;
+    ALLEGRO_TIMER *monster_timer = NULL;
 
     Scene_manager *scene_manager = NULL;
 
