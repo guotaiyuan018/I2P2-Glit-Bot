@@ -56,6 +56,8 @@
 		<Unit filename="Object.h" />
 		<Unit filename="Portal.cpp" />
 		<Unit filename="Portal.h" />
+		<Unit filename="Zone.cpp" />
+		<Unit filename="Zone.h" />
 		<Unit filename="button.h" />
 		<Unit filename="game_window.cpp" />
 		<Unit filename="game_window.h" />

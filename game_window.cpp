@@ -14,10 +14,13 @@ game_window::game_window()
     event_queue = al_create_event_queue();
     timer = al_create_timer(1.0 / FPS);
     glitch_timer = al_create_timer(5);
+    boss_timer = al_create_timer(5);
 
     if (!timer)
         show_err_msg(-1);
     if (!glitch_timer)
+        show_err_msg(-1);
+    if (!boss_timer)
         show_err_msg(-1);
 
     al_init_image_addon();
@@ -31,6 +34,7 @@ game_window::game_window()
     al_register_event_source(event_queue, al_get_mouse_event_source());
     al_register_event_source(event_queue, al_get_timer_event_source(timer));
     al_register_event_source(event_queue, al_get_timer_event_source(glitch_timer));
+    al_register_event_source(event_queue, al_get_timer_event_source(boss_timer));
 
     al_set_window_title(display, "Glit-Bot");
 
@@ -73,6 +77,12 @@ Boss *game_window::create_boss()
     return boss;
 }
 
+Zone *game_window::create_zone(int init_x, int init_y)
+{
+    Zone *z = new Zone(init_x, init_y);
+    return z;
+}
+
 void game_window::set_enemy(int stage_num)
 {
     if (stage_num < 2)
@@ -88,12 +98,11 @@ void game_window::set_enemy(int stage_num)
             monsterSet.emplace_back(m);
         }
     }
-    else
+    else if (stage_num != 2)
     {
-        std::cout << "start create\n";
         Boss *boss = create_boss();
         bossSet.emplace_back(boss);
-        std::cout << "finish create\n";
+        al_start_timer(boss_timer);
     }
 }
 
@@ -235,8 +244,8 @@ int game_window::game_update()
                     isDamage = bossSet.front()->getCircle()->isOverlap(bossSet.front()->getCircle(), heroSet.front()->getCircle());
                 if (isDamage)
                 {
-                    bossSet.front()->Damaged(3);
-                    heroSet.front()->Damaged(3);
+                    // bossSet.front()->Damaged(1);
+                    heroSet.front()->Damaged(1);
                 }
             }
 
@@ -254,7 +263,7 @@ int game_window::game_update()
             else
                 stage_clear = false;
         }
-        else if (cur_stage == 3)
+        else if (cur_stage == 4)
         {
             if (bossSet.empty())
                 stage_clear = true;
@@ -301,7 +310,8 @@ int game_window::process_event()
             frame_update = true;
             if (load_next)
             {
-                if (cur_stage < 3)
+                std::cout << "stage:" << cur_stage << std::endl;
+                if (cur_stage < 4 && cur_stage != 2)
                     set_enemy(cur_stage);
                 loading = false;
                 load_next = false;
@@ -317,6 +327,16 @@ int game_window::process_event()
         {
             if (rand() % 100)
                 heroSet.front()->Glitch(rand() % 3);
+        }
+        else if (event.timer.source == boss_timer)
+        {
+            bossSet.front()->Attack(hero_x, hero_y);
+            if (zoneSet.empty())
+            {
+                zoneSet.emplace_back(create_zone(hero_x, hero_y));
+            }
+            else
+                zoneSet.clear();
         }
     }
     else if (event.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
@@ -410,6 +430,8 @@ void game_window::draw_scene()
             heroSet.front()->Draw();
             if (!bossSet.empty())
                 bossSet.front()->Draw();
+            if (!zoneSet.empty())
+                zoneSet.front()->Draw();
         }
         else
             al_set_mouse_cursor(display, cursor);

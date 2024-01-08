@@ -11,10 +11,11 @@
 #include "scene_manager.h"
 #include "Bullet.h"
 #include "Monster.h"
+#include "Zone.h"
 #include "Portal.h"
 #include "Boss.h"
 
-#define STAGE_NUM 3
+#define STAGE_NUM 4
 
 #define GAME_INIT -1
 #define GAME_LOADING 0
@@ -57,6 +58,7 @@ public:
     Bullet *create_bullet(int, int, int);
     Monster *create_monster(int, int, int);
     Boss *create_boss();
+    Zone *create_zone(int, int);
 
 private:
     ALLEGRO_BITMAP *icon;
@@ -71,6 +73,7 @@ private:
     ALLEGRO_EVENT event;
     ALLEGRO_TIMER *timer = NULL;
     ALLEGRO_TIMER *glitch_timer = NULL;
+    ALLEGRO_TIMER *boss_timer = NULL;
     ALLEGRO_TIMER *monster_pro = NULL;
 
     Scene_manager *scene_manager = NULL;
@@ -83,6 +86,7 @@ private:
     vector<Monster *> &monsterSet = DC->get_Monster();
     list<Hero *> &heroSet = DC->get_Hero();
     list<Boss *> &bossSet = DC->get_Boss();
+    list<Zone *> &zoneSet = DC->get_Zone();
 
     Portal *portal = NULL;
 

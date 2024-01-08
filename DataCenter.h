@@ -6,6 +6,7 @@
 #include "Bullet.h"
 #include "Monster.h"
 #include "Boss.h"
+#include "Zone.h"
 
 class DataCenter
 {
@@ -27,12 +28,17 @@ public:
     {
         return bossSet;
     }
+    std::list<Zone *> &get_Zone()
+    {
+        return zoneSet;
+    }
 
 private:
     std::list<Hero *> heroSet;
     std::vector<Bullet *> bulletSet;
     std::vector<Monster *> monsterSet;
     std::list<Boss *> bossSet;
+    std::list<Zone *> zoneSet;
 };
 extern DataCenter *const DC;
 
