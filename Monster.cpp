@@ -59,10 +59,13 @@ void Monster::Update()
     float dy = hero_y - this->circle->y;
     float lenth = sqrt(dx * dx + dy * dy);
 
-    if (dx > 0)
-        direction = MonsterDirection::RIGHT;
-    else
-        direction = MonsterDirection::LEFT;
+    if (!start_death)
+    {
+        if (dx > 0)
+            direction = MonsterDirection::RIGHT;
+        else
+            direction = MonsterDirection::LEFT;
+    }
 
     if (lenth > 0)
     {

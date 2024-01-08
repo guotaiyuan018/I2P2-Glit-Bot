@@ -48,6 +48,11 @@ public:
             start_damaged = true;
         }
     }
+    void Freeze()
+    {
+        speed = 0;
+    }
+    void Go() { speed = 2; }
     void Draw();
     int getHP() { return this->hp; }
     bool getDying() { return start_death; }

@@ -316,7 +316,7 @@
 
 1703347025 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\circle.h
 
-1704691107 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\global.h
+1704735516 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\global.h
 	<allegro5/allegro_audio.h>
 	<allegro5/allegro_acodec.h>
 	<allegro5/allegro_font.h>
@@ -330,13 +330,14 @@
 1702795766 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\datacenter.cpp
 	"DataCenter.h"
 
-1704693052 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\datacenter.h
+1704706206 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\datacenter.h
 	<vector>
 	<list>
 	"Hero.h"
 	"Bullet.h"
 	"Monster.h"
 	"Boss.h"
+	"Zone.h"
 
 1703324048 ated upstream
 
@@ -363,7 +364,7 @@
 	"Circle.h"
 	"global.h"
 
-1704556886 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\monster.h
+1704738475 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\monster.h
 	<stdio.h>
 	<string.h>
 	<iostream>
@@ -375,25 +376,29 @@
 	"Circle.h"
 	"global.h"
 
-1704691107 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\global.cpp
+1704735516 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\global.cpp
 	"global.h"
 
 1704035730 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\main.cpp
 	"game_window.h"
 
-1704694329 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\monster.cpp
+1704700695 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\monster.cpp
 	"Monster.h"
 	<iostream>
 	<cmath>
 
-1704261053 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\scene_classes\end_scene.cpp
+1704735517 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\scene_classes\end_scene.cpp
+	"end_scene.h"
+	<iostream>
+	<string>
+	<map>
 
-1704691107 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\scene_classes\game_scene.cpp
+1704738473 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\scene_classes\game_scene.cpp
 	"game_scene.h"
 	<iostream>
 	<map>
 
-1704624492 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\scene_classes\game_scene.h
+1704735517 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\scene_classes\game_scene.h
 	<allegro5/allegro.h>
 	<allegro5/allegro_image.h>
 	<allegro5/allegro_audio.h>
@@ -425,13 +430,13 @@
 	"Hero.h"
 	<iostream>
 
-1704559343 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\scene_manager.cpp
+1704738473 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\scene_manager.cpp
 	"scene_manager.h"
 	<stdio.h>
 	<vector>
 	<iostream>
 
-1704379023 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\scene_manager.h
+1704738473 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\scene_manager.h
 	<allegro5/allegro.h>
 	<allegro5/allegro_image.h>
 	<allegro5/allegro_audio.h>
@@ -439,6 +444,7 @@
 	"scene_classes/title_scene.h"
 	"scene_classes/game_scene.h"
 	"scene_classes/setting_scene.h"
+	"scene_classes/end_scene.h"
 	<vector>
 
 1702089572 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\allegro\include\allegro5\allegro_acodec.h
@@ -460,7 +466,7 @@
 	<vector>
 	<map>
 
-1704692992 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\game_window.h
+1704738475 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\game_window.h
 	<allegro5/allegro.h>
 	<allegro5/allegro_image.h>
 	<vector>
@@ -471,10 +477,11 @@
 	"scene_manager.h"
 	"Bullet.h"
 	"Monster.h"
+	"Zone.h"
 	"Portal.h"
 	"Boss.h"
 
-1704694808 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\game_window.cpp
+1704738588 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\game_window.cpp
 	"game_window.h"
 	"DataCenter.h"
 	<iostream>
@@ -983,11 +990,11 @@
 
 1703317973 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\stageone.cpp
 
-1704691107 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\portal.cpp
+1704735516 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\portal.cpp
 	"Portal.h"
 	<iostream>
 
-1704692808 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\boss.h
+1704738760 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\boss.h
 	<stdio.h>
 	<string.h>
 	<iostream>
@@ -999,7 +1006,7 @@
 	"Circle.h"
 	"global.h"
 
-1704693968 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\boss.cpp
+1704738473 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\boss.cpp
 	"Boss.h"
 	<iostream>
 	<cmath>
@@ -1043,6 +1050,31 @@
 	"global.h"
 
 1704731783 source:c:\users\cathy\documents\github\tmp\i2p2-glit-bot\zone.cpp
+	"Zone.h"
+	<iostream>
+
+1704706206 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\zone.h
+	<stdio.h>
+	<string.h>
+	<iostream>
+	<allegro5/allegro.h>
+	<allegro5/allegro_primitives.h>
+	<vector>
+	<map>
+	"Object.h"
+	"Circle.h"
+	"global.h"
+
+1704735517 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\scene_classes\end_scene.h
+	<allegro5/allegro.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_audio.h>
+	"../global.h"
+	<map>
+	<vector>
+	<string>
+
+1704706206 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\zone.cpp
 	"Zone.h"
 	<iostream>
 

@@ -47,10 +47,13 @@ void Boss::Update()
     float dy = hero_y - this->circle->y;
     float lenth = sqrt(dx * dx + dy * dy);
 
-    if (dx > 0)
-        direction = BossDirection::RIGHT;
-    else
-        direction = BossDirection::LEFT;
+    if (!start_death)
+    {
+        if (dx > 0)
+            direction = BossDirection::RIGHT;
+        else
+            direction = BossDirection::LEFT;
+    }
 
     if (lenth > 0)
     {

@@ -15,6 +15,7 @@ game_window::game_window()
     timer = al_create_timer(1.0 / FPS);
     glitch_timer = al_create_timer(5);
     boss_timer = al_create_timer(5);
+    monster_timer = al_create_timer(1);
 
     if (!timer)
         show_err_msg(-1);
@@ -22,6 +23,8 @@ game_window::game_window()
         show_err_msg(-1);
     if (!boss_timer)
         show_err_msg(-1);
+    if (!monster_timer)
+        show_err_msg(-10);
 
     al_init_image_addon();
     al_init_acodec_addon();
@@ -35,6 +38,7 @@ game_window::game_window()
     al_register_event_source(event_queue, al_get_timer_event_source(timer));
     al_register_event_source(event_queue, al_get_timer_event_source(glitch_timer));
     al_register_event_source(event_queue, al_get_timer_event_source(boss_timer));
+    al_register_event_source(event_queue, al_get_timer_event_source(monster_timer));
 
     al_set_window_title(display, "Glit-Bot");
 
@@ -254,6 +258,8 @@ int game_window::game_update()
             if (isDead)
             {
                 bossSet.erase(bossSet.begin());
+                zoneSet.clear();
+                al_stop_timer(boss_timer);
             }
         }
 
@@ -294,11 +300,11 @@ int game_window::game_update()
                 }
             }
         }
-        else if(cur_stage == 3)
+        else if (cur_stage == 3)
         {
-            if(stage_clear)
+            if (stage_clear)
             {
-                if(!portal)
+                if (!portal)
                     portal = new Portal();
                 enter_portal = portal->getCircle()->isOverlap(portal->getCircle(), heroSet.front()->getCircle());
 
@@ -341,10 +347,10 @@ int game_window::process_event()
                 std::cout << "stage:" << cur_stage << std::endl;
                 if (cur_stage != 2 && cur_stage <= STAGE_NUM)
                     set_enemy(cur_stage);
-                loading = false;
-                load_next = false;
+                al_start_timer(monster_timer);
             }
-
+            loading = false;
+            load_next = false;
         }
         else if (event.timer.source == glitch_timer)
         {
@@ -361,6 +367,12 @@ int game_window::process_event()
             }
             else
                 zoneSet.clear();
+        }
+        else if (event.timer.source == monster_timer)
+        {
+            al_stop_timer(monster_timer);
+            for (auto s : monsterSet)
+                s->Go();
         }
     }
     else if (event.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
@@ -459,7 +471,6 @@ void game_window::draw_scene()
 
             if (!bossSet.empty())
                 bossSet.front()->Draw();
-
         }
         else
             al_set_mouse_cursor(display, cursor);
