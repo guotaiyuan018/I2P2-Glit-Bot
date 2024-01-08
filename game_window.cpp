@@ -88,7 +88,7 @@ void game_window::set_enemy(int stage_num)
             monsterSet.emplace_back(m);
         }
     }
-    else
+    else if(stage_num == 3)
     {
         std::cout << "start create\n";
         Boss *boss = create_boss();
@@ -100,6 +100,7 @@ void game_window::set_enemy(int stage_num)
 void game_window::game_begin()
 {
     cur_stage = 0;
+    game_won = false;
 
     Hero *h = new Hero();
     DC->get_Hero().emplace_front(h);
@@ -275,9 +276,29 @@ int game_window::game_update()
                 if (enter_portal)
                 {
                     enter_portal = false;
+                    cur_stage++;
                     loading = true;
                     load_next = true;
-                    cur_stage++;
+
+                    delete portal;
+                    portal = NULL;
+                }
+            }
+        }
+        else if(cur_stage == 3)
+        {
+            if(stage_clear)
+            {
+                if(!portal)
+                    portal = new Portal();
+                enter_portal = portal->getCircle()->isOverlap(portal->getCircle(), heroSet.front()->getCircle());
+
+                if (enter_portal)
+                {
+                    enter_portal = false;
+                    game_won = true;
+                    scene_manager->change_scene();
+
                     delete portal;
                     portal = NULL;
                 }
@@ -299,19 +320,21 @@ int game_window::process_event()
         if (event.timer.source == timer)
         {
             frame_update = true;
+            counter = (counter + 1);
+
+            if (cur_scene == BATTLE_SCENE && !al_get_timer_started(glitch_timer))
+            {
+                al_start_timer(glitch_timer);
+            }
+
             if (load_next)
             {
-                if (cur_stage < 3)
+                if (cur_stage != 2)
                     set_enemy(cur_stage);
                 loading = false;
                 load_next = false;
             }
 
-            counter = (counter + 1);
-            if (cur_scene == BATTLE_SCENE && !al_get_timer_started(glitch_timer))
-            {
-                al_start_timer(glitch_timer);
-            }
         }
         else if (event.timer.source == glitch_timer)
         {
@@ -422,14 +445,15 @@ void game_window::draw_scene()
 
 void game_window::game_reset()
 {
-    reset_game = false;
-    monsterSet.clear();
-    scene_manager->reset();
-
     al_stop_timer(timer);
     frame_update = false;
+    scene_manager->reset();
+
+    monsterSet.clear();
 
     cur_stage = 0;
+    game_won = false;
+    reset_game = false;
 
     game_begin();
 }

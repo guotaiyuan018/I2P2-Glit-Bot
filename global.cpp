@@ -15,6 +15,8 @@ bool loading = false;
 
 bool healing = false;
 
+bool game_won = false;
+
 int hero_x = window_width / 2;
 int hero_y = window_height / 2;
 

@@ -8,12 +8,12 @@
 #include "scene_classes/title_scene.h"
 #include "scene_classes/game_scene.h"
 #include "scene_classes/setting_scene.h"
-//#include "scene_classes/end_scene.h"
+#include "scene_classes/end_scene.h"
 
 #include <vector>
 using namespace std;
 
-enum{TITLE_SCENE = 0, BATTLE_SCENE = 1, SET_SCENE = 2, CREDIT_SCENE = 3};
+enum{TITLE_SCENE = 0, BATTLE_SCENE = 1, SET_SCENE = 2, CREDIT_SCENE = 3, END_SCENE = 4};
 
 class Scene_manager{
 public:
@@ -36,7 +36,7 @@ private:
     Title_scene *title_scene = NULL;
     Game_scene *game_scene = NULL;
     Setting_scene *setting_scene = NULL;
-    //End_scene *end_scene = NULL;
+    End_scene *end_scene = NULL;
 
     ALLEGRO_BITMAP* credit_scene = NULL;
     ALLEGRO_BITMAP *crosshair = NULL;

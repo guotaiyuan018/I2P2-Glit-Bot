@@ -52,7 +52,7 @@ private:
     int sprite_pos = 1;
     int counter = 0;
     int speed = 0;
-    int hp = 10;
+    int hp = 50;
     int attack_range = 10;
     bool is_dead = false;
     bool start_death = false;

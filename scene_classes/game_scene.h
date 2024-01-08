@@ -37,8 +37,13 @@ public:
 
 private:
     vector<ALLEGRO_BITMAP*> maps;
+
     vector<ALLEGRO_BITMAP*> bonus;
-    vector<ALLEGRO_BITMAP*> hp_bar;// hp = 10
+
+    vector<ALLEGRO_BITMAP*> hp_bar1;// hp = 10
+    vector<ALLEGRO_BITMAP*> hp_bar2;// hp = 10
+    vector<ALLEGRO_BITMAP*> boss_hp;// hp = 50 / 5
+
     vector<ALLEGRO_BITMAP*> bot_info;// 3 bots
     ALLEGRO_BITMAP* cur_controller[4];
     ALLEGRO_BITMAP* controller[4][2];

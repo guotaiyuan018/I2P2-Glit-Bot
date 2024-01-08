@@ -26,12 +26,21 @@ void Game_scene::load_scene(){
         cur_controller[i] = controller[i][0];
     }
 
-    //load hp bar
-    for(int i = 0; i < 10; i++){
-        sprintf(buffer, "./Scenes/battle/HP/%d.png", i+1);
+    //load hp bars
+    for(int i = 0; i <= 10; i++){
+        sprintf(buffer, "./Scenes/battle/HP/%d.png", i);
         ALLEGRO_BITMAP *img = al_load_bitmap(buffer);
-        if(img) hp_bar.push_back(img);
+        if(img) hp_bar1.push_back(img);
+
+        sprintf(buffer, "./Scenes/battle/boss_stage/hero/%d.png", i);
+        img = al_load_bitmap(buffer);
+        if(img) hp_bar2.push_back(img);
+
+        sprintf(buffer, "./Scenes/battle/boss_stage/boss/%d.png", i*5);
+        img = al_load_bitmap(buffer);
+        if(img) boss_hp.push_back(img);
     }
+
 
     //load bot info
     for(int i = 0; i < 3; i++){
@@ -58,7 +67,7 @@ void Game_scene::draw_background(int counter){
         al_draw_bitmap(bonus[counter], 0, 0, 0);
     }
     else if(cur_stage == 3){
-        al_draw_bitmap(maps[2], 0, 0, 0); // for boss stage
+        al_draw_bitmap(maps[2], 0, 0, 0);
     }
     else al_draw_bitmap(maps[cur_stage], 0, 0, 0);
 }
@@ -70,7 +79,6 @@ void Game_scene::draw_ui(){
         al_draw_bitmap(cur_controller[i], 0, 0, 0);
     }
 
-    al_draw_bitmap(hp_bar[DC->get_Hero().front()->getHP()-1], 0, 0, 0);
     al_draw_bitmap(bot_info[DC->get_Hero().front()->getNAME()], 0, 0, 0);
 
     if(cur_stage == 2)
@@ -83,6 +91,24 @@ void Game_scene::draw_ui(){
         else healing = false;
     }
     else healing = false;
+
+    if(cur_stage == 3)
+    {
+        al_draw_bitmap(hp_bar2[DC->get_Hero().front()->getHP()], hero_x - 50, hero_y - 70, 0);
+
+        int tmp;
+
+        if(DC->get_Boss().empty()) tmp = 0;
+        else tmp = DC->get_Boss().front()->getHP();
+
+        int b_hp = (tmp + 4) / 5;
+
+        al_draw_bitmap(boss_hp[b_hp], 0, 0, 0);
+    }
+    else
+    {
+        al_draw_bitmap(hp_bar1[DC->get_Hero().front()->getHP()], 0, 0, 0);
+    }
 }
 
 void Game_scene::keyboard_act(){
@@ -119,6 +145,6 @@ Game_scene::~Game_scene(){
         for(int j = 0;j < 2; j++)al_destroy_bitmap(controller[i][j]);
         al_destroy_bitmap(cur_controller[i]);
     }
-    for(int i = 0; i < 10; i++)al_destroy_bitmap(hp_bar[i]);
+    for(int i = 0; i < 10; i++)al_destroy_bitmap(hp_bar1[i]);
     for(int i = 0; i < 3; i++)al_destroy_bitmap(bot_info[i]);
 }

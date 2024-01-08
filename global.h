@@ -24,6 +24,7 @@ extern bool start_atk;
 extern bool game_mute;
 extern bool loading;
 extern bool healing;
+extern bool game_won;
 extern int hero_x;
 extern int hero_y;
 extern int cur_scene;
