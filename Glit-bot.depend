@@ -481,7 +481,7 @@
 	"Portal.h"
 	"Boss.h"
 
-1704736724 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\game_window.cpp
+1704738588 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\game_window.cpp
 	"game_window.h"
 	"DataCenter.h"
 	<iostream>
@@ -994,7 +994,7 @@
 	"Portal.h"
 	<iostream>
 
-1704735516 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\boss.h
+1704738760 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\boss.h
 	<stdio.h>
 	<string.h>
 	<iostream>
