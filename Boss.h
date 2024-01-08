@@ -38,9 +38,12 @@ public:
         hp -= damage_val;
         if (hp > 0)
         {
-            state = BossState::DAMAGED;
-            sprite_pos = 0;
-            start_damaged = true;
+            if (!start_atk)
+            {
+                state = BossState::DAMAGED;
+                sprite_pos = 0;
+                start_damaged = true;
+            }
         }
     }
     void Draw();
