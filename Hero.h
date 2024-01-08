@@ -44,7 +44,7 @@ public:
     void Glitch(int);
     void Damaged(int damage)
     {
-        if (!start_damaged)
+        if (!start_damaged && !start_glitch)
         {
             std::cout << hero_hp << std::endl;
             hero_hp -= damage;
@@ -56,9 +56,10 @@ public:
 
     void heal(int counter)
     {
-        if(!(counter%150))
+        if (!(counter % 150))
         {
-            if(hero_hp < 10) hero_hp++;
+            if (hero_hp < 10)
+                hero_hp++;
         }
     }
 

@@ -156,7 +156,6 @@ void Hero::Glitch(int name)
         state = HeroState::GLITCH;
         sprite_pos = 0;
         start_glitch = true;
-        start_damaged = false;
     }
 }
 
@@ -175,23 +174,21 @@ void Hero::Draw()
 
     if (sprite_pos == imgCount[direction][state] - 1)
     {
-
         if (state == HeroState::GLITCH && start_glitch)
         {
             state = HeroState::IDLE;
-            start_glitch = false;
-            start_atk = false;
         }
         if (state == HeroState::ATTACK && start_atk)
         {
             state = HeroState::IDLE;
-            start_atk = false;
         }
         if (state == HeroState::DAMAGED && start_damaged)
         {
             state = HeroState::IDLE;
-            start_damaged = false;
         }
+        start_glitch = false;
+        start_atk = false;
+        start_damaged = false;
     }
 
     sprite_pos = (sprite_pos >= imgCount[direction][state]) ? sprite_pos % imgCount[direction][state] : sprite_pos;
