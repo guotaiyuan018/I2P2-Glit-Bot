@@ -26,6 +26,7 @@ Portal::Portal()
     this->circle = new Circle(x, y + 20, 30);
 
     port = al_load_bitmap("./Scenes/battle/portal.png");
+
 }
 
 Portal::~Portal()

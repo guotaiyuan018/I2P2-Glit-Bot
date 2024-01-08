@@ -68,6 +68,9 @@ private:
     BossDirection direction = BossDirection::RIGHT;
     std::map<BossState, std::vector<ALLEGRO_BITMAP *>> imgData;
     std::map<BossState, int> imgCount;
+
+    ALLEGRO_SAMPLE* sample = NULL;
+    ALLEGRO_SAMPLE_INSTANCE* roar = NULL;
 };
 
 #endif

@@ -67,6 +67,7 @@ void Scene_manager::load_scenes()
     boss_bgm = al_create_sample_instance(sample);
     al_set_sample_instance_playmode(boss_bgm, ALLEGRO_PLAYMODE_LOOP);
     al_attach_sample_instance_to_mixer(boss_bgm, al_get_default_mixer());
+
 }
 
 void Scene_manager::draw_background(int anime_counter)

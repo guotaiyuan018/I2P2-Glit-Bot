@@ -81,6 +81,10 @@ private:
     std::map<HeroName, std::map<HeroDirection, std::map<HeroState, std::vector<ALLEGRO_BITMAP *>>>> imgData;
     // ALLEGRO_BITMAP *imgData;
     std::map<HeroDirection, std::map<HeroState, int>> imgCount;
+
+    ALLEGRO_SAMPLE* sample = NULL;
+    ALLEGRO_SAMPLE_INSTANCE* sfx[3];
+    ALLEGRO_SAMPLE_INSTANCE* glitting = NULL;
 };
 
 #endif

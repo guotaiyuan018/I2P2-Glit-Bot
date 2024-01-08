@@ -35,6 +35,13 @@ Boss::Boss(int x, int y)
                 std::cout << buffer << std::endl;
         }
     }
+
+    al_reserve_samples(1);
+    sample = al_load_sample("./audio/roar.wav");
+    roar = al_create_sample_instance(sample);
+    al_set_sample_instance_playmode(roar, ALLEGRO_PLAYMODE_ONCE);
+    al_attach_sample_instance_to_mixer(roar, al_get_default_mixer());
+    al_set_sample_instance_gain(roar, 0.3);
 }
 
 void Boss::Update()
@@ -89,6 +96,10 @@ void Boss::Attack(int x, int y)
         {
             state = BossState::ATTACK;
             sprite_pos = 0;
+
+            if(al_get_sample_instance_playing(roar))
+                al_stop_sample_instance(roar);
+            if(!game_mute) al_play_sample_instance(roar);
         }
     }
 }

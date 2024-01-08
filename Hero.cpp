@@ -46,6 +46,24 @@ Hero::Hero()
             }
         }
     }
+
+    al_reserve_samples(5);
+
+    for(int i = 0; i < 3; i++)
+    {
+        sprintf(buffer, "./audio/%s.wav", hero_name[i]);
+        sample = al_load_sample(buffer);
+        sfx[i] = al_create_sample_instance(sample);
+        al_set_sample_instance_playmode(sfx[i], ALLEGRO_PLAYMODE_ONCE);
+        al_attach_sample_instance_to_mixer(sfx[i], al_get_default_mixer());
+        al_set_sample_instance_gain(sfx[i], 0.1);
+    }
+
+    sample = al_load_sample("./audio/glitch.wav");
+    glitting = al_create_sample_instance(sample);
+    al_set_sample_instance_playmode(glitting, ALLEGRO_PLAYMODE_ONCE);
+    al_attach_sample_instance_to_mixer(glitting, al_get_default_mixer());
+    al_set_sample_instance_gain(glitting, 0.3);
 }
 
 void Hero::Update()
@@ -146,6 +164,14 @@ void Hero::Update()
 
     hero_x = x, hero_y = y;
     // hero_x = x, hero_y = y;
+
+    if(start_glitch)
+    {
+        if(al_get_sample_instance_playing(glitting))
+        al_stop_sample_instance(glitting);
+
+        if(!game_mute) al_play_sample_instance(glitting);
+    }
 }
 
 void Hero::Glitch(int name)
@@ -163,9 +189,15 @@ void Hero::Attack()
 {
     if (!start_glitch)
     {
+        int type = static_cast<int>(my_name);
+        if(al_get_sample_instance_playing(sfx[type]))
+            al_stop_sample_instance(sfx[type]);
+
         state = HeroState::ATTACK;
         sprite_pos = 0;
         start_atk = true;
+
+        if(!game_mute)al_play_sample_instance(sfx[type]);
     }
 }
 

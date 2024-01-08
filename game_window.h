@@ -76,6 +76,9 @@ private:
     ALLEGRO_TIMER *monster_pro = NULL;
     ALLEGRO_TIMER *monster_timer = NULL;
 
+    ALLEGRO_SAMPLE *sample = NULL;
+    ALLEGRO_SAMPLE_INSTANCE* teleport = NULL;
+
     Scene_manager *scene_manager = NULL;
 
     int Monster_Pro_Count = 0;
