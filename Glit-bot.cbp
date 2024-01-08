@@ -39,10 +39,11 @@
 			<Add option="-Wall" />
 			<Add directory="../allegro/include" />
 		</Compiler>
+		<Unit filename="Boss.cpp" />
+		<Unit filename="Boss.h" />
 		<Unit filename="Bullet.cpp" />
 		<Unit filename="Bullet.h" />
 		<Unit filename="Button.cpp" />
-		<Unit filename="Button.h" />
 		<Unit filename="Circle.cpp" />
 		<Unit filename="Circle.h" />
 		<Unit filename="DataCenter.cpp" />
@@ -55,6 +56,7 @@
 		<Unit filename="Object.h" />
 		<Unit filename="Portal.cpp" />
 		<Unit filename="Portal.h" />
+		<Unit filename="button.h" />
 		<Unit filename="game_window.cpp" />
 		<Unit filename="game_window.h" />
 		<Unit filename="global.cpp" />

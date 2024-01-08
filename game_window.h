@@ -12,6 +12,7 @@
 #include "Bullet.h"
 #include "Monster.h"
 #include "Portal.h"
+#include "Boss.h"
 
 #define STAGE_NUM 3
 
@@ -55,6 +56,7 @@ public:
 
     Bullet *create_bullet(int, int, int);
     Monster *create_monster(int, int, int);
+    Boss *create_boss();
 
 private:
     ALLEGRO_BITMAP *icon;
@@ -80,6 +82,7 @@ private:
     vector<Bullet *> &bulletSet = DC->get_Bullet();
     vector<Monster *> &monsterSet = DC->get_Monster();
     list<Hero *> &heroSet = DC->get_Hero();
+    list<Boss *> &bossSet = DC->get_Boss();
 
     Portal *portal = NULL;
 

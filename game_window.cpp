@@ -67,17 +67,33 @@ Monster *game_window::create_monster(int x, int y, int monster_type)
     return m;
 }
 
+Boss *game_window::create_boss()
+{
+    Boss *boss = new Boss(window_width / 2, window_height / 3);
+    return boss;
+}
+
 void game_window::set_enemy(int stage_num)
 {
-    for (int i = 0; i < (stage_num) * 3 + 3; i++)
+    if (stage_num < 2)
     {
-        int monster_type = (stage_num == 0) ? 2 : rand() % 2;
+        for (int i = 0; i < (stage_num) * 3 + 3; i++)
+        {
+            int monster_type = (stage_num == 0) ? 2 : rand() % 2;
 
-        int loc_x = rand() % window_width;
-        int loc_y = rand() % window_height;
+            int loc_x = rand() % window_width;
+            int loc_y = rand() % window_height;
 
-        Monster *m = create_monster(loc_x, loc_y, monster_type);
-        monsterSet.emplace_back(m);
+            Monster *m = create_monster(loc_x, loc_y, monster_type);
+            monsterSet.emplace_back(m);
+        }
+    }
+    else
+    {
+        std::cout << "start create\n";
+        Boss *boss = create_boss();
+        bossSet.emplace_back(boss);
+        std::cout << "finish create\n";
     }
 }
 
@@ -142,7 +158,8 @@ int game_window::game_update()
     {
         DC->get_Hero().front()->Update();
 
-        if(healing) DC->get_Hero().front()->heal(counter);
+        if (healing)
+            DC->get_Hero().front()->heal(counter);
 
         for (int i = 0; i < bulletSet.size(); i++)
         {
@@ -193,19 +210,66 @@ int game_window::game_update()
                 i--;
             }
         }
+        if (!bossSet.empty())
+        {
+            bossSet.front()->Update();
+
+            bool isCollide = false;
+            for (int j = 0; j < bulletSet.size(); j++)
+            {
+                isCollide = bossSet.front()->getCircle()->isOverlap(bossSet.front()->getCircle(), bulletSet[j]->getCircle());
+                if (isCollide)
+                {
+                    bossSet.front()->Damaged(3);
+
+                    bulletSet.erase(bulletSet.begin() + j);
+                    j--;
+                }
+            }
+
+            bool isDamage = false;
+            if (!isCollide)
+            {
+                bool isDying = bossSet.front()->getDying();
+                if (!isDying)
+                    isDamage = bossSet.front()->getCircle()->isOverlap(bossSet.front()->getCircle(), heroSet.front()->getCircle());
+                if (isDamage)
+                {
+                    bossSet.front()->Damaged(3);
+                    heroSet.front()->Damaged(3);
+                }
+            }
+
+            bool isDead = bossSet.front()->getDead();
+            if (isDead)
+            {
+                bossSet.erase(bossSet.begin());
+            }
+        }
 
         if (cur_stage < 2)
         {
-            if(monsterSet.empty()) stage_clear = true;
-            else stage_clear = false;
+            if (monsterSet.empty())
+                stage_clear = true;
+            else
+                stage_clear = false;
         }
-        else stage_clear = false; // implement the boss stage clear logic here
+        else if (cur_stage == 3)
+        {
+            if (bossSet.empty())
+                stage_clear = true;
+            else
+                stage_clear = false;
+        }
+        else
+            stage_clear = false; // implement the boss stage clear logic here
 
         if (cur_stage < STAGE_NUM)
         {
-            if(cur_stage == 2 || stage_clear)
+            if (cur_stage == 2 || stage_clear)
             {
-                if(!portal) portal = new Portal();
+                if (!portal)
+                    portal = new Portal();
                 enter_portal = portal->getCircle()->isOverlap(portal->getCircle(), heroSet.front()->getCircle());
 
                 if (enter_portal)
@@ -235,9 +299,10 @@ int game_window::process_event()
         if (event.timer.source == timer)
         {
             frame_update = true;
-            if(load_next)
+            if (load_next)
             {
-                if(cur_stage < 2) set_enemy(cur_stage);
+                if (cur_stage < 3)
+                    set_enemy(cur_stage);
                 loading = false;
                 load_next = false;
             }
@@ -319,7 +384,7 @@ void game_window::draw_scene()
 {
     al_clear_to_color(al_map_rgb(100, 100, 100));
 
-    if(loading)
+    if (loading)
     {
         al_draw_bitmap(load_page, 0, 0, 0);
     }
@@ -339,11 +404,12 @@ void game_window::draw_scene()
             for (vector<Bullet *>::iterator it = bulletSet.begin(); it != bulletSet.end(); it++)
                 (*it)->Draw();
 
-            DC->get_Hero().front()->Draw();
-
             for (vector<Monster *>::iterator it = monsterSet.begin(); it != monsterSet.end(); it++)
                 (*it)->Draw();
 
+            heroSet.front()->Draw();
+            if (!bossSet.empty())
+                bossSet.front()->Draw();
         }
         else
             al_set_mouse_cursor(display, cursor);
