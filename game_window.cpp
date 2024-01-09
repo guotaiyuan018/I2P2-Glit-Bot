@@ -71,13 +71,19 @@ void game_window::game_init()
     scene_manager = new Scene_manager();
     scene_manager->load_scenes();
 
-    al_reserve_samples(1);
+    al_reserve_samples(2);
 
     sample = al_load_sample("./audio/teleport.wav");
     teleport = al_create_sample_instance(sample);
     al_set_sample_instance_playmode(teleport, ALLEGRO_PLAYMODE_ONCE);
     al_attach_sample_instance_to_mixer(teleport, al_get_default_mixer());
     al_set_sample_instance_gain(teleport, 0.3);
+
+    sample = al_load_sample("./audio/victory.wav");
+    victory = al_create_sample_instance(sample);
+    al_set_sample_instance_playmode(victory, ALLEGRO_PLAYMODE_ONCE);
+    al_attach_sample_instance_to_mixer(victory, al_get_default_mixer());
+    al_set_sample_instance_gain(victory, 0.3);
 }
 
 Bullet *game_window::create_bullet(int x, int y, int type)
@@ -334,14 +340,11 @@ int game_window::game_update()
 
                 if (enter_portal)
                 {
-                    if(al_get_sample_instance_playing(teleport))
-                        al_stop_sample_instance(teleport);
-
-                    if(!game_mute) al_play_sample_instance(teleport);
-
                     enter_portal = false;
                     game_won = true;
                     scene_manager->change_scene();
+
+                    if(!game_mute) al_play_sample_instance(victory);
 
                     delete portal;
                     portal = NULL;
@@ -519,6 +522,8 @@ void game_window::game_reset()
     scene_manager->reset();
 
     monsterSet.clear();
+
+    bossSet.clear();
 
     cur_stage = 0;
     game_won = false;

@@ -78,6 +78,7 @@ private:
 
     ALLEGRO_SAMPLE *sample = NULL;
     ALLEGRO_SAMPLE_INSTANCE* teleport = NULL;
+    ALLEGRO_SAMPLE_INSTANCE* victory = NULL;
 
     Scene_manager *scene_manager = NULL;
 
