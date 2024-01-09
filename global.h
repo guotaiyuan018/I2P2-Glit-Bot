@@ -31,7 +31,10 @@ extern int cur_scene;
 extern int prev_scene;
 extern int cur_stage;
 extern int mouse_x, mouse_y;
+extern int atk_x, atk_y;
 
-extern ALLEGRO_BITMAP* load_page[4];
+extern bool freeze;
+
+extern ALLEGRO_BITMAP *load_page[4];
 
 #endif // GLOBAL_H_INCLUDED

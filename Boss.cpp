@@ -90,9 +90,11 @@ void Boss::Attack(int x, int y)
             sprite_pos = 0;
             speed = 0;
             start_atk = true;
+            freeze = false;
         }
         else
         {
+            atk_x = hero_x, atk_y = hero_y;
             state = BossState::ATTACK;
             sprite_pos = 0;
 
@@ -100,6 +102,7 @@ void Boss::Attack(int x, int y)
                 al_stop_sample_instance(roar);
             if (!game_mute)
                 al_play_sample_instance(roar);
+            freeze = true;
         }
     }
 }
@@ -122,10 +125,11 @@ void Boss::Draw()
         state = BossState::MOVE;
         start_atk = false;
         speed = 3;
+        freeze = false;
     }
 
     if (sprite_pos == 4 && state == BossState::ATTACK)
-        this->circle->x = hero_x, this->circle->y = hero_y;
+        this->circle->x = atk_x, this->circle->y = atk_y;
 
     sprite_pos = (sprite_pos >= imgCount[state]) ? sprite_pos % imgCount[state] : sprite_pos;
     bool flip_not = (direction == BossDirection::RIGHT) ? false : true;

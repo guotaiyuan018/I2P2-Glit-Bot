@@ -316,7 +316,7 @@
 
 1703347025 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\circle.h
 
-1704774148 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\global.h
+1704778903 c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\global.h
 	<allegro5/allegro_audio.h>
 	<allegro5/allegro_acodec.h>
 	<allegro5/allegro_font.h>
@@ -376,7 +376,7 @@
 	"Circle.h"
 	"global.h"
 
-1704774148 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\global.cpp
+1704778771 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\global.cpp
 	"global.h"
 
 1704035730 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\main.cpp
@@ -1006,7 +1006,7 @@
 	"Circle.h"
 	"global.h"
 
-1704774147 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\boss.cpp
+1704778873 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\boss.cpp
 	"Boss.h"
 	<iostream>
 	<cmath>
@@ -1074,7 +1074,7 @@
 	<vector>
 	<string>
 
-1704706206 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\zone.cpp
+1704778903 source:c:\users\guota\desktop\i2p2_chen\final-project\glit_bot\i2p2-glit-bot\zone.cpp
 	"Zone.h"
 	<iostream>
 

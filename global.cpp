@@ -27,4 +27,8 @@ int prev_scene = 0;
 
 int cur_stage = 0;
 
-ALLEGRO_BITMAP* load_page[4];
+int atk_x = 0, atk_y = 0;
+
+bool freeze = false;
+
+ALLEGRO_BITMAP *load_page[4];

@@ -12,5 +12,8 @@ Zone::Zone(int init_x, int init_y)
 
 void Zone::Draw()
 {
-    al_draw_bitmap(imgData, hero_x - ZONE_WIDTH / 2, hero_y - ZONE_HEIGHT / 2, 0);
+    if (freeze)
+        al_draw_bitmap(imgData, atk_x - ZONE_WIDTH / 2, atk_y - ZONE_HEIGHT / 2, 0);
+    else
+        al_draw_bitmap(imgData, hero_x - ZONE_WIDTH / 2, hero_y - ZONE_HEIGHT / 2, 0);
 }
