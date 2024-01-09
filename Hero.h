@@ -47,7 +47,8 @@ public:
         if (!start_damaged && !start_glitch)
         {
             std::cout << hero_hp << std::endl;
-            hero_hp -= damage;
+            if (hero_hp - damage > 0)
+                hero_hp -= damage;
             sprite_pos = 0;
             state = HeroState::DAMAGED;
         }
@@ -82,9 +83,9 @@ private:
     // ALLEGRO_BITMAP *imgData;
     std::map<HeroDirection, std::map<HeroState, int>> imgCount;
 
-    ALLEGRO_SAMPLE* sample = NULL;
-    ALLEGRO_SAMPLE_INSTANCE* sfx[3];
-    ALLEGRO_SAMPLE_INSTANCE* glitting = NULL;
+    ALLEGRO_SAMPLE *sample = NULL;
+    ALLEGRO_SAMPLE_INSTANCE *sfx[3];
+    ALLEGRO_SAMPLE_INSTANCE *glitting = NULL;
 };
 
 #endif

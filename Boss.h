@@ -53,7 +53,6 @@ public:
 
 private:
     int draw_frequency = 10;
-    int atk_x = 0, atk_y = 0;
     int Boss_WIDTH = 384, Boss_HEIGHT = 384;
     int sprite_pos = 0;
     int counter = 0;
@@ -69,8 +68,8 @@ private:
     std::map<BossState, std::vector<ALLEGRO_BITMAP *>> imgData;
     std::map<BossState, int> imgCount;
 
-    ALLEGRO_SAMPLE* sample = NULL;
-    ALLEGRO_SAMPLE_INSTANCE* roar = NULL;
+    ALLEGRO_SAMPLE *sample = NULL;
+    ALLEGRO_SAMPLE_INSTANCE *roar = NULL;
 };
 
 #endif
