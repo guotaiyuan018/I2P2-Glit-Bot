@@ -50,11 +50,12 @@ void game_window::game_init()
     icon = al_load_bitmap("./icon.png");
 
     char buffer[50];
-    for(int i = 0; i < 4; i++)
+    for (int i = 0; i < 4; i++)
     {
         sprintf(buffer, "./loading/%d.png", i);
-        ALLEGRO_BITMAP* img = al_load_bitmap(buffer);
-        if(img) load_page[i] = img;
+        ALLEGRO_BITMAP *img = al_load_bitmap(buffer);
+        if (img)
+            load_page[i] = img;
     }
 
     al_set_display_icon(display, icon);
@@ -315,10 +316,11 @@ int game_window::game_update()
 
                 if (enter_portal)
                 {
-                    if(al_get_sample_instance_playing(teleport))
+                    if (al_get_sample_instance_playing(teleport))
                         al_stop_sample_instance(teleport);
 
-                    if(!game_mute) al_play_sample_instance(teleport);
+                    if (!game_mute)
+                        al_play_sample_instance(teleport);
 
                     enter_portal = false;
                     cur_stage++;
@@ -344,7 +346,8 @@ int game_window::game_update()
                     game_won = true;
                     scene_manager->change_scene();
 
-                    if(!game_mute) al_play_sample_instance(victory);
+                    if (!game_mute)
+                        al_play_sample_instance(victory);
 
                     delete portal;
                     portal = NULL;
@@ -549,7 +552,8 @@ void game_window::game_destroy()
     al_destroy_mouse_cursor(crosshair);
     al_destroy_mouse_cursor(cursor);
 
-    for(int i = 0; i < 4; i++) al_destroy_bitmap(load_page[i]);
+    for (int i = 0; i < 4; i++)
+        al_destroy_bitmap(load_page[i]);
 
     delete scene_manager;
     delete portal;
